@@ -5,7 +5,7 @@ var DataStore = require("nedb");
 var BASE_API_PATH = "/api/v1";
 var dbFileName = __dirname + "/contacts.json";
 
-console.log("Starting server...");
+console.log("Starting API server...");
 
 var app = express();
 app.use(bodyParser.json());
@@ -181,11 +181,14 @@ app.put(BASE_API_PATH + "/contacts/:name", (req, res) => {
     });
 });
 
-
+/*
 app.get("/", (req, res) => {
     res.send("<html><body><h1>My server</h1></body></html>");
 });
+*/
+
+app.use("/",express.static(__dirname+"/public"));
 
 app.listen(process.env.PORT);
 
-console.log("Server ready!");
+console.log("Server ready with static content!");
