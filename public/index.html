@@ -10,6 +10,7 @@
     </head>
     <body ng-controller="ListCtrl">
         <h1>Contacts</h1> 
+        <form name="contactForm">
         <table class="table">
             <thead>
                 <tr>
@@ -20,8 +21,8 @@
             </thead>
             <tr>
                 <td><input class="form-control" ng-model="newContact.name"></td>
-                <td><input class="form-control" ng-model="newContact.phone"></td>
-                <td><button class="btn btn-primary" ng-click="addContact()">Add Contact</button> </td>
+                <td><input ng-class="{'is-invalid': !contactForm.phone.$valid}" name="phone" class="form-control" required ng-pattern="/^[0-9]+$/" ng-model="newContact.phone"></td>
+                <td><button class="btn btn-primary" ng-disabled="!contactForm.$valid" ng-click="addContact()">Add Contact</button> </td>
             </tr>
 
             <tr ng-repeat="contact in contacts">
@@ -29,6 +30,7 @@
                 <td>{{contact.phone}}</td>
             </tr>
         </table>
+        </form>
         <h5><a href="https://documenter.getpostman.com/view/359472/aws1718/RVnTmM8k">api documentation</a></h5>
     </body>
 </html>
