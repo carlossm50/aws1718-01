@@ -2,195 +2,97 @@
 
 var express = require("express");
 var bodyParser = require("body-parser");
-var DataStore = require("nedb");
+var path = require('path');
+var contacts = require("./contacts.js");
 
-var BASE_API_PATH = "/api/v1";
-var dbFileName = __dirname + "/contacts.json";
-
-console.log("Starting API server...");
+var port = (process.env.PORT || 16778);
+var baseAPI = "/api/v1";
 
 var app = express();
+
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 
-var initialContacts = [
-    { "name": "peter", "phone": 12345 },
-    { "name": "john", "phone": 6789 }
-];
+contacts.add([{
+        name: "pepe",
+        phone: "12345",
+        email: "pepe@pepe.com"
+    }, {
+        name: "luis",
+        phone: "67890",
+        email: "luis@pepe.com"
+    }]);
 
-var db = new DataStore({
-    filename: dbFileName,
-    autoload: true
-});
-
-db.find({},(err,contacts)=>{
-    if(err){
-        console.error("Error accesing DB");
-        process.exit(1);
-    }else{
-        if(contacts.length == 0){
-            console.log("Empty DB, initializaing data...");
-            db.insert(initialContacts);
-        }else{
-            console.log("Loaded DB with "+contacts.length+" contacts.");
-        }
-           
-    }
-});
-
-
-app.get(BASE_API_PATH + "/contacts", (req, res) => {
-    // Obtain all contacts
-    console.log(Date()+" - GET /contacts");
+app.get(baseAPI + "/contacts", (request, response) => {
+    console.log("GET /contacts"); 
     
-    db.find({},(err,contacts)=>{
-        if(err){
-            console.error("Error accesing DB");
-            res.sendStatus(500);
-        }else{
-            res.send(contacts.map((contact)=>{
-                delete contact._id;
-                return contact;
-            }));
-        }
+    contacts.allContacts((err,contacts)=>{
+        response.send(contacts);    
+    });
+});
+
+app.post(baseAPI + "/contacts", (request, response) => {
+    console.log("POST /contacts");
+    var contact = request.body;
+    contacts.add(contact);
+    response.sendStatus(201);
+});
+
+app.delete(baseAPI + "/contacts", (request, response) => {
+    console.log("DELETE /contacts");
+
+    contacts.removeAll((err,numRemoved)=>{
+        console.log("contacts removed:"+numRemoved);
+        response.sendStatus(200);    
     });
 
 });
 
-app.post(BASE_API_PATH + "/contacts", (req, res) => {
-    // Create a new contact
-    console.log(Date()+" - POST /contacts");
+app.get(baseAPI + "/contacts/:name", (request, response) => {
+    console.log("GET /contacts/"+name);
+    var name = request.params.name;
 
-    var contact = req.body;
-
-    db.insert(contact);
-
-    res.sendStatus(201);
-});
-
-app.put(BASE_API_PATH + "/contacts", (req, res) => {
-    // Forbidden
-    console.log(Date()+" - PUT /contacts");
-
-    res.sendStatus(405);
-});
-
-app.delete(BASE_API_PATH + "/contacts", (req, res) => {
-    // Remove all contacts
-    console.log(Date()+" - DELETE /contacts");
-
-    db.remove({});
-    
-    res.sendStatus(200);
-});
-
-
-app.post(BASE_API_PATH + "/contacts/:name", (req, res) => {
-    // Forbidden
-    console.log(Date()+" - POST /contacts");
-
-    res.sendStatus(405);
-});
-
-
-
-app.get(BASE_API_PATH + "/contacts/:name", (req, res) => {
-    // Get a single contact
-    var name = req.params.name;
-    console.log(Date()+" - GET /contacts/"+name);
-
-    db.find({"name": name},(err,contacts)=>{
-        if(err){
-            console.error("Error accesing DB");
-            res.sendStatus(500);
-        }else{
-            if(contacts.length>1){
-                console.warn("Incosistent DB: duplicated name");
-            }
-            res.send(contacts.map((contact)=>{
-                delete contact._id;
-                return contact;
-            })[0]);
+    contacts.get(name,(err,contacts)=>{
+        if (contacts.length === 0) {
+            response.sendStatus(404);
+        }
+        else {
+            response.send(contacts[0]);  
         }
     });
 });
 
 
-app.delete(BASE_API_PATH + "/contacts/:name", (req, res) => {
-    // Delete a single contact
-    var name = req.params.name;
-    console.log(Date()+" - DELETE /contacts/"+name);
+app.delete(baseAPI + "/contacts/:name", (request, response) => {
+    var name = request.params.name;
 
-    db.remove({"name": name},{},(err,numRemoved)=>{
-        if(err){
-            console.error("Error accesing DB");
-            res.sendStatus(500);
-        }else{
-            if(numRemoved>1){
-                console.warn("Incosistent DB: duplicated name");
-            }else if(numRemoved == 0) {
-                res.sendStatus(404);
-            } else {
-                res.sendStatus(200);
-            }
-        }
+    contacts.remove(name,(err,numRemoved)=>{
+        console.log("contacts removed:"+numRemoved);
+        response.sendStatus(200);    
     });
-});
-app.delete(BASE_API_PATH + "/contacts/:name", (req, res) => {
-    // Delete a single contact
-    var name = req.params.name;
-    console.log(Date()+" - DELETE /contacts/"+name);
 
-    db.remove({"name": name},{},(err,numRemoved)=>{
-        if(err){
-            console.error("Error accesing DB");
-            res.sendStatus(500);
-        }else{
-            if(numRemoved>1){
-                console.warn("Incosistent DB: duplicated name");
-            }else if(numRemoved == 0) {
-                res.sendStatus(404);
-            } else {
-                res.sendStatus(200);
-            }
+    console.log("DELETE /contacts/" + name);
+});
+
+
+app.put(baseAPI + "/contacts/:name", (request, response) => {
+    var name = request.params.name;
+    var updatedContact = request.body;
+
+    contacts.update(name, updatedContact ,(err,numUpdates) => {
+        console.log("contacts updated:"+numUpdates);
+        if (numUpdates === 0) {
+            response.sendStatus(404);    
+        } else {
+            response.sendStatus(200);    
         }
+        
     });
+
+    console.log("UPDATE /contacts/"+name);
 });
 
-app.put(BASE_API_PATH + "/contacts/:name", (req, res) => {
-    // Update contact
-    var name = req.params.name;
-    var updatedContact = req.body;
-    console.log(Date()+" - PUT /contacts/"+name);
 
-    if(name != updatedContact.name){
-        res.sendStatus(409);
-        return;
-    }
-
-    db.update({"name": name},updatedContact,(err,numUpdated)=>{
-        if(err){
-            console.error("Error accesing DB");
-            res.sendStatus(500);
-        }else{
-            if(numUpdated>1){
-                console.warn("Incosistent DB: duplicated name");
-            }else if(numUpdated == 0) {
-                res.sendStatus(404);
-            } else {
-                res.sendStatus(200);
-            }
-        }
-    });
+app.listen(port, () => {
+    console.log("Server with GUI up and running!!");
 });
-
-/*
-app.get("/", (req, res) => {
-    res.send("<html><body><h1>My server</h1></body></html>");
-});
-*/
-
-app.use("/",express.static(__dirname+"/public"));
-
-app.listen(process.env.PORT);
-
-console.log("Server ready with static content!");

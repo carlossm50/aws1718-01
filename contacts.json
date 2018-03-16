@@ -1,3 +1,9 @@
-{"name":"john","phone":6789,"_id":"A3g1qdllNtJtNax5"}
-{"name":"peter","phone":12345,"_id":"WT6126SYmsApyDWz"}
-{"name":"xxx","phone":"3456","_id":"eMYwAxPimt0Hf5cH"}
+{"name":"luis","phone":"67890","email":"luis@pepe.com","_id":"ruvBEjqoaPRRPKEI"}
+{"$$deleted":true,"_id":"ruvBEjqoaPRRPKEI"}
+{"name":"pepe","phone":"12345","email":"pepe@pepe.com","_id":"vMQQ0Tx3IP7wMFvJ"}
+{"name":"luis","phone":"67890","email":"luis@pepe.com","_id":"zdPB7t8Lvfn5zsxg"}
+{"$$deleted":true,"_id":"vMQQ0Tx3IP7wMFvJ"}
+{"$$deleted":true,"_id":"zdPB7t8Lvfn5zsxg"}
+{"name":"pepe","phone":"12345","email":"pepe@pepe.com","_id":"Gywn1Bxh0v6WR3R1"}
+{"name":"luis","phone":"67890","email":"luis@pepe.com","_id":"D4wVehrmia4APdpN"}
+{"$$deleted":true,"_id":"Gywn1Bxh0v6WR3R1"}
