@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html  ng-app="ContactListApp">
+    <head>
+        <title>
+            Nombre del Proyecto
+        </title>
+		<!--
+		<link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
+        <script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
+        -->
+        <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
+        <script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
+        
+        <script type="text/javascript" src="contact-list-app.js"></script>
+        <script type="text/javascript" src="list-ctrl.js"></script>
+    </head>
+   <body ng-controller="ListCtrl">
+        <h1>Projects</h1>
+        <form name="contactForm">
+            <table class="table">
+    			<tr>
+    				
+    				<td><a class="btn btn-primary" style="color:#fff" href="crearProyecto.html">New</a> </td> 
+    				<td><input class="form-control" ng-model="newContact.name"></td>
+    				<td><button class="btn btn-primary" ng-click="GetContact(contact.name)">Search</button> </td>
+    			</tr>
+			</table>
+			<table class="table">
+                <thead>
+				
+                    <tr>
+                        <th>Referencia</th>
+                        <th>Nombre</th>
+                        <th>Responsable</th>
+						<th>Tipo</th>                        
+                    </tr>
+                </thead>
+    
+                <tr ng-repeat="contact in contacts">
+                    <td>{{contact.name}}</td>
+                    <td>{{contact.phone}}</td>
+                    <td>{{contact.email}}</td>
+					<td>{{contact.email}}</td>
+                    <td>
+					   <a class="btn btn-primary" style="color:#fff" href="index.html">View</a> 
+					   <button class="btn btn-danger" ng-click="delContact(contact.name)">Delete</button> 
+					   <button class="btn btn-warning" ng-click="updateContact(contact.name)">Edit</button>
+					</td> 
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>
