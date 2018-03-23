@@ -1,62 +1,62 @@
 angular
-    .module("ContactListApp")
+    .module("ProjectListApp")
+    
     .controller("ListCtrl", function($scope,$http) {
-        
         console.log("Controller initialized");
-        
+
         function refresh(){
-            $http.get("/api/v1/contacts").then(function (response){
-                $scope.contacts = response.data;
+            $http.get("/api/v1/projects").then(function (response){
+                $scope.projects = response.data;
             });
         }
         
         
-        $scope.GetContact = function (){
+        $scope.GetProject = function (){
             
-            $http.get("/api/v1/contacts/"+$scope.newContact.name).then(function (response){
-            $scope.contacts = response.data;
+            $http.get("/api/v1/projects/"+$scope.newProject.projname).then(function (response){
+            $scope.projects = response.data;
             });
         } 
         
-        $scope.addContact = function (){
+        $scope.addProject = function (){
             
             $http
-                .post("/api/v1/contacts", $scope.newContact)
+                .post("/api/v1/projects", $scope.newProject)
                 .then(function (){
                     refresh();  
                 });
         }
         
-        $scope.delallContact = function (){
+        $scope.delallProject = function (){
             $http
-                .delete("/api/v1/contacts", $scope.delallContact)
+                .delete("/api/v1/projects", $scope.delallProject)
                 .then(function (){
                     refresh();  
                 });
         }
         
-        $scope.delContact = function (){
+        $scope.delProject = function (){
             
             $http
-                .delete("/api/v1/contacts/"+$scope.newContact.name , $scope.deleteContact)
+                .delete("/api/v1/projects/"+$scope.newProject.projname , $scope.deleteProject)
                 .then(function (){
                     refresh();  
                 });
         }
         
-        $scope.delContact = function (_name){
+        $scope.delProject = function (_name){
             
             $http
-                .delete("/api/v1/contacts/"+_name , $scope.deleteContact)
+                .delete("/api/v1/projects/"+_name , $scope.deleteProject)
                 .then(function (){
                     refresh();  
                 });
         }
         
-        $scope.updateContact = function (){
+        $scope.updateProject = function (){
             
             $http
-                .put("/api/v1/contacts/"+$scope.newContact.name , {name:$scope.newContact.name,phone:$scope.newContact.phone,email:$scope.newContact.email})
+                .put("/api/v1/projects/"+$scope.newProject.projname , {projname:$scope.newProject.projname,tipo:$scope.newProject.tipo,referencia:$scope.newProject.referencia})
                 .then(function (){
                     refresh();  
                 });
@@ -64,3 +64,4 @@ angular
         refresh();
         
     });
+    

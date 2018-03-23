@@ -3,7 +3,7 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var path = require('path');
-var contacts = require("./contacts.js");
+var projects = require("./projects.js");
 
 var port = (process.env.PORT || 16778);
 var baseAPI = "/api/v1";
@@ -13,48 +13,37 @@ var app = express();
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 
- /*
-    contacts.add([{
-            name: "pepe",
-            phone: "12345",
-            email: "pepe@pepe.com"
-        }, {
-            name: "luis",
-            phone: "67890",
-            email: "luis@pepe.com"
-        }])
-
-*/
-app.get(baseAPI + "/contacts", (request, response) => {
-    console.log("GET /contacts"); 
+ 
+app.get(baseAPI + "/projects", (request, response) => {
+    console.log("GET /projects"); 
     
-    contacts.allContacts((err,contacts)=>{
+    projects.allContacts((err,contacts)=>{
         response.send(contacts);    
     });
 });
 
-app.post(baseAPI + "/contacts", (request, response) => {
-    console.log("POST /contacts");
+app.post(baseAPI + "/projects", (request, response) => {
+    console.log("POST /projects");
     var contact = request.body;
-    contacts.add(contact);
+    projects.add(contact);
     response.sendStatus(201);
 });
 
-app.delete(baseAPI + "/contacts", (request, response) => {
-    console.log("DELETE /contacts");
+app.delete(baseAPI + "/projects", (request, response) => {
+    console.log("DELETE /projects");
 
-    contacts.removeAll((err,numRemoved)=>{
-        console.log("contacts removed:"+numRemoved);
+    projects.removeAll((err,numRemoved)=>{
+        console.log("projects removed:"+numRemoved);
         response.sendStatus(200);    
     });
 
 });
 
-app.get(baseAPI + "/contacts/:name", (request, response) => {
-    console.log("GET /contacts/"+request.params.name);
-    var name = request.params.name;
+app.get(baseAPI + "/projects/:projname", (request, response) => {
+    console.log("GET /projects/"+request.params.projname);
+    var name = request.params.projname;
 
-    contacts.get(name,(err,contacts)=>{
+    projects.get(name,(err,contacts)=>{
         if (contacts.length === 0) {
             response.sendStatus(404);
         }
@@ -65,24 +54,24 @@ app.get(baseAPI + "/contacts/:name", (request, response) => {
 });
 
 
-app.delete(baseAPI + "/contacts/:name", (request, response) => {
-    var name = request.params.name;
+app.delete(baseAPI + "/projects/:projname", (request, response) => {
+    var name = request.params.projname;
 
-    contacts.remove(name,(err,numRemoved)=>{
-        console.log("contacts removed:"+numRemoved);
+    projects.remove(name,(err,numRemoved)=>{
+        console.log("projects removed:"+numRemoved);
         response.sendStatus(200);    
     });
 
-    console.log("DELETE /contacts/" + name);
+    console.log("DELETE /projects/" + name);
 });
 
 
-app.put(baseAPI + "/contacts/:name", (request, response) => {
-    var name = request.params.name;
+app.put(baseAPI + "/projects/:projname", (request, response) => {
+    var name = request.params.projname;
     var updatedContact = request.body;
 
-    contacts.update(name, updatedContact ,(err,numUpdates) => {
-        console.log("contacts updated:"+numUpdates);
+    projects.update(name, updatedContact ,(err,numUpdates) => {
+        console.log("projects updated:"+numUpdates);
         if (numUpdates === 0) {
             response.sendStatus(404);    
         } else {
@@ -91,7 +80,7 @@ app.put(baseAPI + "/contacts/:name", (request, response) => {
         
     });
 
-    console.log("UPDATE /contacts/"+name);
+    console.log("UPDATE /projects/"+name);
 });
 
 
