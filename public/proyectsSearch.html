@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html  ng-app="ProjectListApp">
+    <head>
+        <title>
+            Search projects
+        </title>
+		<!--
+		<link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
+        <script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
+        -->
+        <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
+        <script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
+        
+        <script type="text/javascript" src="project-list-app.js"></script>
+        <script type="text/javascript" src="list-ctrl.js"></script>
+    </head>
+   <body ng-controller="ListCtrl">
+        <h1>Projects</h1>
+        <form name="projectForm">
+            <table class="table">
+    			<tr>
+    				<td><a class="btn btn-primary" style="color:#fff"  href="crearProyecto.html">New</a> </td> 
+    				<td><input class="form-control" ng-model="newProject.projname"></td>
+    				<td><button class="btn btn-primary" ng-click="GetProject(contact.name)">Search</button> </td>
+    			</tr>
+			</table>
+			<table class="table">
+                <thead>
+				
+                    <tr>
+                       <th>Project Name</th>
+                        <th>Type</th>
+                        <th>Reference</th>                   
+                    </tr>
+                </thead>
+    
+                <tr ng-repeat="contact in projects | filter:newProject.projname">
+                    <td>{{contact.projname}}</td>
+                    <td>{{contact.tipo}}</td>
+                    <td>{{contact.referencia}}</td>
+                    
+                    <td>
+					   <a class="btn btn-primary" style="color:#fff" href="crearProyecto.html">View</a> 
+					   <button class="btn btn-danger" ng-click="delProject(contact.projname)">Delete</button> 
+					   <button class="btn btn-warning">Edit</button>
+					</td> 
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>
