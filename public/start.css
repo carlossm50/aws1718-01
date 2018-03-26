@@ -1,0 +1,51 @@
+.logo{
+    width: auto;
+    height: 100px;
+    
+}
+
+header{
+   
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    padding-bottom: 100px;
+    background-image: linear-gradient(rgba(0,0,0,0.3),rgba(255,255,255,1)), url(img/Universidad.jpg);
+}
+
+h1{
+    padding-top: 30px;
+   
+}
+
+.test{
+    color:#fff;
+}
+
+.menu{
+    padding-top: 10px;
+    object-position: right;
+    background-color:#8C1227;
+    padding-left: 10px;
+}
+
+label{
+    color: white;
+}
+
+footer{
+    color: white;
+    padding-top: 10px;
+    text-align: center;
+    background-color:#8C1227; 
+    padding-bottom: 10px;
+}
+
+.proyecto{
+    margin: 10px;
+    padding: 10px;
+}
+
+.proyecto span{
+    display:block;
+}
