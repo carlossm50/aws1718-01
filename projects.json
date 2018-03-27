@@ -1,9 +1,6 @@
-{"projname":"proyecto2","tipo":"tipo2","referencia":"proyecto-2","_id":"M2lbKQwOraJF3NvZ"}
-{"$$deleted":true,"_id":"M2lbKQwOraJF3NvZ"}
-{"projname":"proyecto1","tipo":"tipo1","referencia":"proyecto-1","_id":"gK5GSnYXFU4jyEgV"}
-{"projname":"proyecto2","tipo":"tipo2","referencia":"proyecto-2","_id":"bewsyb6AIim7Nqmc"}
-{"$$deleted":true,"_id":"bewsyb6AIim7Nqmc"}
-{"$$deleted":true,"_id":"gK5GSnYXFU4jyEgV"}
-{"projname":"proyecto1","tipo":"tipo1","referencia":"proyecto-1","_id":"15TdrdWpB9qbQol6"}
-{"projname":"proyecto2","tipo":"tipo2","referencia":"proyecto-2","_id":"2p2h2Zj7w2j48jbg"}
-{"$$deleted":true,"_id":"15TdrdWpB9qbQol6"}
+{"projname":"Herramientas para la Ciencia de los Datos de la Web","tipo":"Tipo de Proyecto/Ayuda: Plan Estatal 2013-2016 Retos - Proyectos I+D+i","referencia":"TIN2016-75394-R","_id":"1p2h2Zj7w2j48jbg"}
+{"projname":"Herramientas para Big Data","tipo":"Tipo de Proyecto/Ayuda: Plan Estatal 2013-2016 Retos","referencia":"TIN2016-75394-D","_id":"2p2h2Zj7w2j48jbg"}
+{"projname":"Proyecto DAW","tipo":"DAW","referencia":"DAW1718","grInv":[{"inv_name":"Paola Martinez"},{"inv_name":"Carlos Severino"}],"_id":"7zWOdXFUQQLC0Ttm"}
+{"projname":"Proyecto DAW","tipo":"DAW","referencia":"DAW1718","grInv":[{"inv_name":"Paola Martinez"},{"inv_name":"Carlos Severino"}],"_id":"SVEpivSxgd0W99c8"}
+{"projname":"Proyecto de investigacion","tipo":"I+D+I","referencia":"IDI019","grInv":[{"texto":"Juan Francisco"},{"texto":"Pedro Fernandez"},{"texto":"Maria Magdalena"}],"_id":"VkCRtPPu70nNV7O2"}
+{"projname":"Proyecto AWS","tipo":"AWS","referencia":"WAS1718","fecha_ini":"01/01/2018","fecha_fin":"01/05/2018","grInv":[{"inv_name":"Carlos Severino"},{"inv_name":"Maria Magdalena"}],"grTrb":[{"trb_name":"Paola"},{"trb_name":"Mairelis"}],"_id":"mOgb09VHSEfno0Op"}

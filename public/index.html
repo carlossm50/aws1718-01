@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html  ng-app="ProjectListApp">
 
 <head>
     <meta charset="utf-8">
@@ -15,9 +15,16 @@
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+        
+        <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
+        <script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
+        
+        <script type="text/javascript" src="project-list-app.js"></script>
+        <script type="text/javascript" src="list-ctrl.js"></script>
+        
 </head>
 
-<body>
+<body ng-controller="ListCtrl">
 
     <header>
         <section class="proyectomenu">
@@ -55,18 +62,22 @@
         </div>
 
     </header>
+<section>
 
+    <a class="btn btn-primary" style="color:#fff" href="proyectsSearch.html">View</a> 
+</section>
     <section class="proyectos">
         <div class="container">
             <div class="row">
-                <div class="col-sm">
+                <!--Inicio del epeat del card-->
+                <div ng-repeat="contact in projects"  class="col-sm">
                     <div class="card proyecto" style="width: 18rem;">
                             <img class="card-img-top" src="http://eldia.com.do/wp-content/uploads/2017/08/12-ECONO-1p01-1.jpg" alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title">Herramientas para la Ciencia de los Datos de la Web</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Tipo de Proyecto/Ayuda: Plan Estatal 2013-2016 Retos - Proyectos I+D+i</h6>
+                            <h5 class="card-title">{{contact.projname}}: {{$index}} </h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Tipo: {{contact.tipo}}</h6>
                             <p class="card-text">
-                                <p class="h6">Responsable: David Ruiz Cortés / Rafael Corchuelo Gil</p>
+                                <p class="h6">Responsable: {{contact.referencia}}</p>
                                 proyecto
                                 <p class="h6">Referencia: TIN2016-75394-R</p>
                                 <p class="h6">Fecha de Inicio: 30-12-2016</p>
@@ -75,135 +86,110 @@
                             <a href="#" class="card-link" data-toggle="modal" data-target="#exampleModalCenter">Más información</a>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm">
-                    <div class="card proyecto" proyecto style="width: 18rem;">
-                            <img class="card-img-top" src="http://eldia.com.do/wp-content/uploads/2017/08/12-ECONO-1p01-1.jpg" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Herramientas para la Ciencia</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Tipo de Proyecto/Ayuda: Plan Estatal 2013-2016</h6>
-                            <p class="card-text">
-                                <p class="h6">Responsable: David Ruiz Cortés</p>
-                                proyecto
-                                <p class="h6">Referencia: TIN2016-75394-R</p>
-                                <p class="h6">Fecha de Inicio: 30-12-2018</p>
-                                <p class="h6">Fecha de Finalización: 29-12-2020</p>
-                            </p>
-                            <a href="#" class="card-link" data-toggle="modal" data-target="#exampleModalCenter">Más información</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm">
-                        <div class="card proyecto" proyecto style="width: 18rem;">
-                                <img class="card-img-top" src="http://eldia.com.do/wp-content/uploads/2017/08/12-ECONO-1p01-1.jpg" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Herramientas para la Ciencia</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Tipo de Proyecto/Ayuda: Plan Estatal 2013-2016</h6>
-                                <p class="card-text">
-                                    <p class="h6">Responsable: David Ruiz Cortés</p>
-                                    proyecto
-                                    <p class="h6">Referencia: TIN2016-75394-R</p>
-                                    <p class="h6">Fecha de Inicio: 30-12-2018</p>
-                                    <p class="h6">Fecha de Finalización: 29-12-2020</p>
-                                </p>
-                                <a href="#" class="card-link" data-toggle="modal" data-target="#exampleModalCenter">Más información</a>
+                    
+                    <!--Fin del epeat del card-->
+                    
+                    <!--Inicio del Modal -->
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    
+                                    <h5 class="modal-title" id="exampleModalLongTitle">{{contact.projname}} : {{$index}}</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-sm">
+                                                    <img src="http://eldia.com.do/wp-content/uploads/2017/08/12-ECONO-1p01-1.jpg" style="width:100%;height:250px;"/>
+                                            </div>
+                                            <div class="col-sm">
+                                                    <p>Responsable:
+                                                            <a href="/sisius/sis_showpub.php?idpers=4046">{{contact.projname}}</a> /
+                                                            <a href="/sisius/sis_showpub.php?idpers=3263">Rafael Corchuelo Gil</a>
+                                                            <br>Tipo de Proyecto/Ayuda: Plan Estatal 2013-2016 Retos - Proyectos I+D+i
+                                                            <br>Referencia: TIN2016-75394-R
+                                                            <br>Fecha de Inicio: 30-12-2016
+                                                            <br>Fecha de Finalización: 29-12-2019
+                                                            <br>
+                                                        </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        
+                                    <div align="left" style="margin-left:1cm">
+                                      
+                                        <p>
+                                            <b>Empresa/Organismo financiador/es:</b>
+                                        </p>
+                                        <ul>
+                                            <li>Ministerio de Economía y Competitividad</li>
+                                        </ul>
+                                        </ul>
+                                        <p>
+                                            <b>Equipo:</b>
+                                        </p>
+                                        <ul>
+                                            <li>Equipo de Investigación:
+                                                <ul>
+                                                    <li>
+                                                        <a href="/sisius/sis_showpub.php?idpers=4045">Antonia María Reina Quintero</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/sisius/sis_showpub.php?idpers=3277">Miguel Toro Bonilla</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/sisius/sis_showpub.php?idpers=15395">Inmaculada Concepción Hernández Salmerón</a> (alta: 21/02/2017)</li>
+                                                </ul>
+                                            </li>
+                                            <li>Equipo de Trabajo:
+                                                <ul>
+                                                    <li>Fabricia Carneiro Roos-Frantz</li>
+                                                    <li>
+                                                        <a href="/sisius/sis_showpub.php?idpers=18678">Patricia Jiménez Aguirre</a>
+                                                    </li>
+                                                    <li>Craig Knoblock</li>
+                                                    <li>Pedro Nombre Szekely</li>
+                                                    <li>
+                                                        <a href="/sisius/sis_showpub.php?idpers=13473">Carlos Rivero Osuna</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/sisius/sis_showpub.php?idpers=15394">Hassan Sleiman</a>
+                                                    </li>
+                                                    <li>Rafael Zancan Frantz</li>
+                                                    <li>Daniel Ayala Hernández</li>
+                                                    <li>Andrea Jesús Cimmino Arriaga</li>
+                                                    <li>Fernando Ortega Gallego</li>
+                                                    <li>Juan Carlos Roldán Salvador</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            
+                                </div>
                             </div>
                         </div>
                     </div>
-            </div>
-        </div>
-
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        
-                        <h5 class="modal-title" id="exampleModalLongTitle">Herramientas para la Ciencia de los Datos de la Web</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-sm">
-                                        <img src="http://eldia.com.do/wp-content/uploads/2017/08/12-ECONO-1p01-1.jpg" style="width:100%;height:250px;"/>
-                                </div>
-                                <div class="col-sm">
-                                        <p>Responsable:
-                                                <a href="/sisius/sis_showpub.php?idpers=4046">David Ruiz Cortés</a> /
-                                                <a href="/sisius/sis_showpub.php?idpers=3263">Rafael Corchuelo Gil</a>
-                                                <br>Tipo de Proyecto/Ayuda: Plan Estatal 2013-2016 Retos - Proyectos I+D+i
-                                                <br>Referencia: TIN2016-75394-R
-                                                <br>Fecha de Inicio: 30-12-2016
-                                                <br>Fecha de Finalización: 29-12-2019
-                                                <br>
-                                            </p>
-                                </div>
-                            </div>
-                        </div>
-                            
-                        <div align="left" style="margin-left:1cm">
-                          
-                            <p>
-                                <b>Empresa/Organismo financiador/es:</b>
-                            </p>
-                            <ul>
-                                <li>Ministerio de Economía y Competitividad</li>
-                            </ul>
-                            </ul>
-                            <p>
-                                <b>Equipo:</b>
-                            </p>
-                            <ul>
-                                <li>Equipo de Investigación:
-                                    <ul>
-                                        <li>
-                                            <a href="/sisius/sis_showpub.php?idpers=4045">Antonia María Reina Quintero</a>
-                                        </li>
-                                        <li>
-                                            <a href="/sisius/sis_showpub.php?idpers=3277">Miguel Toro Bonilla</a>
-                                        </li>
-                                        <li>
-                                            <a href="/sisius/sis_showpub.php?idpers=15395">Inmaculada Concepción Hernández Salmerón</a> (alta: 21/02/2017)</li>
-                                    </ul>
-                                </li>
-                                <li>Equipo de Trabajo:
-                                    <ul>
-                                        <li>Fabricia Carneiro Roos-Frantz</li>
-                                        <li>
-                                            <a href="/sisius/sis_showpub.php?idpers=18678">Patricia Jiménez Aguirre</a>
-                                        </li>
-                                        <li>Craig Knoblock</li>
-                                        <li>Pedro Nombre Szekely</li>
-                                        <li>
-                                            <a href="/sisius/sis_showpub.php?idpers=13473">Carlos Rivero Osuna</a>
-                                        </li>
-                                        <li>
-                                            <a href="/sisius/sis_showpub.php?idpers=15394">Hassan Sleiman</a>
-                                        </li>
-                                        <li>Rafael Zancan Frantz</li>
-                                        <li>Daniel Ayala Hernández</li>
-                                        <li>Andrea Jesús Cimmino Arriaga</li>
-                                        <li>Fernando Ortega Gallego</li>
-                                        <li>Juan Carlos Roldán Salvador</li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
-                    </div>
+                    
+                    <!--Fin del Modal -->
                 </div>
             </div>
         </div>
+
+        
     </section>
 
     <footer>
 
+
         <div>
+            
             Universidad de Sevilla. C/ S. Fernando, 4, C.P. 41004-Sevilla, España. Centralita exterior: 954551000
         </div>
 
