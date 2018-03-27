@@ -5,55 +5,81 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Project Investigation</title>
-    <meta name="description" content="An interactive getting started guide for Brackets.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="start.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 <body>
 
     <header>
         <section class="proyectomenu">
+             <!--Menu-->
+                <nav class="navbar navbar-expand-lg">
+                    <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a class="labels" href="index.html">
+                        <span class="glyphicon glyphicon-home"></span> INICIO </a></li>
 
-            <div class="menu">
-                <nav>
-                    |
-                    <a href="index.html">
-                        <label class="label">INICIO</label>
-                    </a>|
+                    <li><a class="labels" href="http://investigacion.us.es/investigacion">
+                    <span class="glyphicon glyphicon-th-large"></span> SISIUS </a></li>
 
-                    <a href="http://investigacion.us.es/investigacion">
-                        <label class="label">SISIUS</label>
-                    </a>|
+                    <li><a class="labels" href="index.html">
+                        <span class="glyphicon glyphicon-book"></span> PROYECTOS </a></li>
 
-                    <a href="index.html">
-                        <label class="label">PROYECTOS</label>
-                    </a>|
-
-                    <a href="http://investigacion.us.es/contactos">
-                        <label class="label">CONTACTOS</label>
-                    </a>|
-                </nav>
-            </div>
-            <div>
-                <div class="Wid90 OvHidden MarAuto"></div>
-            </div>
+                    <li><a class="labels" href="http://investigacion.us.es/contactos">
+                        <span class="glyphicon glyphicon-phone-alt"></span> CONTACTOS </a></li>
+                    </ul>
+                <!--Dropdown login begining-->
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown"><a class="dropdown-toggle labels" data-toggle="dropdown" href="#">LOGIN <span class="glyphicon glyphicon-log-in"></span></a>
+                <div class="dropdown-menu"> 
+                 <!--Login begining-->
+                <div id="Contenedor">
+                     <div class="Icon">
+                           <!--User Icon-->
+                          <span class="glyphicon glyphicon-user"></span>
+                        </div>
+                <div class="ContentForm">
+                    <form class="form container-fluid" action="indexadmin.html" method="post" name="Login">
+                        <div class="input-group input-group-lg">
+                         <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-envelope"></i></span>
+                         <input type="email" class="form-control" name="user" placeholder="Correo" id="Correo" aria-describedby="sizing-addon1" required>
+                       </div>
+                       <br>
+                       <div class="input-group input-group-lg">
+                         <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-lock"></i></span>
+                         <input type="password" name="password" class="form-control" placeholder="******" aria-describedby="sizing-addon1" required>
+                       </div>
+                       <br>
+                       <button class="btn btn-lg btn-primary btn-block btn-signin" id="IngresoLog" type="submit">Entrar</button>
+                       <div class="opcioncontra"><a href="">Olvidaste tu contraseña?</a></div>
+                    </form>
+                </div>
+                </div> <!--Login end-->
+                    </div>
+                     </li>
+                    </ul><!--Dropdown login end-->
+                </div>
+            </nav>
+            <div class="row">
+                    <a href="http://www.us.es/">
+                        <img class="logo" src="img/logoUS.png">
+                    </a>
+                    <h1 class="test">
+                        Proyectos de investigaci&oacuten de la USE</h1>
+            </div> 
         </section>
-        <div class="row">
-            <a href="http://www.us.es/">
-                <img class="logo" src="img/logoUS.png">
-            </a>
-            <h1 class="test">
-                Proyectos de investigaci&oacuten de la USE</h1>
-        </div>
-
     </header>
 
     <section class="proyectos">
