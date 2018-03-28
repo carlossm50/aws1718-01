@@ -16,7 +16,6 @@
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-<<<<<<< HEAD
         
         <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
         <script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
@@ -24,10 +23,8 @@
         <script type="text/javascript" src="project-list-app.js"></script>
         <script type="text/javascript" src="list-ctrl.js"></script>
         
-=======
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
->>>>>>> 8e871c263994f90f711f4e495dc67d90473d2bbf
 </head>
 
 <body ng-controller="ListCtrl">
@@ -98,7 +95,7 @@
     <section class="proyectos">
         <div class="container">
             <div class="row">
-                <!--Inicio del epeat del card-->
+                <!--Inicio del Repeat del card-->
                 <div ng-repeat="contact in projects"  class="col-sm">
                     <div class="card proyecto" style="width: 18rem;">
                             <img class="card-img-top" src="http://eldia.com.do/wp-content/uploads/2017/08/12-ECONO-1p01-1.jpg" alt="Card image cap">
@@ -106,13 +103,13 @@
                             <h5 class="card-title">{{contact.projname}}: {{$index}} </h5>
                             <h6 class="card-subtitle mb-2 text-muted">Tipo: {{contact.tipo}}</h6>
                             <p class="card-text">
-                                <p class="h6">Responsable: {{contact.referencia}}</p>
+                                <p class="h6">Responsable: {{contact.respondable}}</p>
                                 proyecto
-                                <p class="h6">Referencia: TIN2016-75394-R</p>
-                                <p class="h6">Fecha de Inicio: 30-12-2016</p>
-                                <p class="h6">Fecha de Finalización: 29-12-2019</p>
+                                <p class="h6">Referencia: {{contact.referencia}}</p>
+                                <p class="h6">Fecha de Inicio: {{contact.fecha_ini}}</p>
+                                <p class="h6">Fecha de Finalización: {{contact.fecha_fin}}</p>
                             </p>
-                            <a href="#" class="card-link" data-toggle="modal" data-target="#exampleModalCenter">Más información</a>
+                            <a href="#" class="card-link" data-toggle="modal" data-target="#exampleModalCenter" ng-click="indice($index)">Más información</a>
                         </div>
                     </div>
                     
@@ -124,7 +121,7 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     
-                                    <h5 class="modal-title" id="exampleModalLongTitle">{{contact.projname}} : {{$index}}</h5>
+                                    <h5 class="modal-title" id="exampleModalLongTitle">{{OneProject.projname}} </h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -137,12 +134,11 @@
                                             </div>
                                             <div class="col-sm">
                                                     <p>Responsable:
-                                                            <a href="/sisius/sis_showpub.php?idpers=4046">{{contact.projname}}</a> /
-                                                            <a href="/sisius/sis_showpub.php?idpers=3263">Rafael Corchuelo Gil</a>
-                                                            <br>Tipo de Proyecto/Ayuda: Plan Estatal 2013-2016 Retos - Proyectos I+D+i
-                                                            <br>Referencia: TIN2016-75394-R
-                                                            <br>Fecha de Inicio: 30-12-2016
-                                                            <br>Fecha de Finalización: 29-12-2019
+                                                            <a href="/sisius/sis_showpub.php?idpers=4046">{{OneProject.projname}}</a> 
+                                                            <br>Tipo de Proyecto/Ayuda: {{OneProject.tipo}}
+                                                            <br>Referencia: {{OneProject.referencia}}
+                                                            <br>Fecha de Inicio: {{OneProject.fecha_ini}}
+                                                            <br>Fecha de Finalización: {{OneProject.fecha_fin}}
                                                             <br>
                                                         </p>
                                             </div>
@@ -155,7 +151,7 @@
                                             <b>Empresa/Organismo financiador/es:</b>
                                         </p>
                                         <ul>
-                                            <li>Ministerio de Economía y Competitividad</li>
+                                            <li>{{OneProject.respondable}}</li>
                                         </ul>
                                         </ul>
                                         <p>
@@ -164,35 +160,16 @@
                                         <ul>
                                             <li>Equipo de Investigación:
                                                 <ul>
-                                                    <li>
-                                                        <a href="/sisius/sis_showpub.php?idpers=4045">Antonia María Reina Quintero</a>
+                                                    <li ng-repeat="Inv in OneProject.grInv ">
+                                                        <a href="/sisius/sis_showpub.php?idpers=4045">{{Inv.inv_name}}</a>
                                                     </li>
-                                                    <li>
-                                                        <a href="/sisius/sis_showpub.php?idpers=3277">Miguel Toro Bonilla</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="/sisius/sis_showpub.php?idpers=15395">Inmaculada Concepción Hernández Salmerón</a> (alta: 21/02/2017)</li>
                                                 </ul>
                                             </li>
                                             <li>Equipo de Trabajo:
                                                 <ul>
-                                                    <li>Fabricia Carneiro Roos-Frantz</li>
-                                                    <li>
-                                                        <a href="/sisius/sis_showpub.php?idpers=18678">Patricia Jiménez Aguirre</a>
+                                                    <li ng-repeat="Trb in OneProject.grTrb ">
+                                                        <a href="/sisius/sis_showpub.php?idpers=4045">{{Trb.trb_name}}</a>
                                                     </li>
-                                                    <li>Craig Knoblock</li>
-                                                    <li>Pedro Nombre Szekely</li>
-                                                    <li>
-                                                        <a href="/sisius/sis_showpub.php?idpers=13473">Carlos Rivero Osuna</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="/sisius/sis_showpub.php?idpers=15394">Hassan Sleiman</a>
-                                                    </li>
-                                                    <li>Rafael Zancan Frantz</li>
-                                                    <li>Daniel Ayala Hernández</li>
-                                                    <li>Andrea Jesús Cimmino Arriaga</li>
-                                                    <li>Fernando Ortega Gallego</li>
-                                                    <li>Juan Carlos Roldán Salvador</li>
                                                 </ul>
                                             </li>
                                         </ul>

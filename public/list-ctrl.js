@@ -14,6 +14,11 @@ angular
             });
         }
         
+        $scope.indice = function (dato){
+            //alert(dato);
+            
+            $scope.OneProject = $scope.projects[dato];
+        }
         $scope.GetProject = function (){
             
             $http.get("/api/v1/projects/"+$scope.newProject.projname).then(function (response){
@@ -95,8 +100,8 @@ angular
 				//var pos = $scope.tareas.indexOf({texto:dato});
 				$scope.grTrab.splice(dato);
 		}
-    //Fin para pruebea de lista     
-
+    
+        
         refresh();
         
     });
