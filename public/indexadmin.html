@@ -9,39 +9,55 @@
     <link rel="stylesheet" href="start.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 <body>
 
-    <header>
-        <section class="proyectomenu">
-
-            <div class="menu">
-                <nav>
-                    |
-                    <a href="index.html">
-                        <label class="label">INICIO</label>
-                    </a>|
-
-                    <a href="http://investigacion.us.es/investigacion">
-                        <label class="label">SISIUS</label>
-                    </a>|
-
-                    <a href="index.html">
-                        <label class="label">PROYECTOS</label>
-                    </a>|
-
-                    <a href="http://investigacion.us.es/contactos">
-                        <label class="label">CONTACTOS</label>
-                    </a>|
+        <header>
+                <section class="proyectomenu">
+                     <!--Menu-->
+                        <nav class="menu navbar-expand-lg">
+                            <div class="container-fluid">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a class="labels" href="index.html">
+                                <span class="glyphicon glyphicon-home"></span> INICIO </a></li>
+                                <!--Dropdown-->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle labels" href="#" id="navbardrop" data-toggle="dropdown">
+                                    <span class="glyphicon glyphicon-th-large"></span> SISIUS </a>
+                                    <!--Dropdown lisk-->
+                                    <div class="dropdown-menu btn-light">
+                                            <a class="dropdown-item" href="https://investigacion.us.es/investigacion">Investigaci&oacuten</a>
+                                            <a class="dropdown-item" href="https://investigacion.us.es/secretariado-investigacion">Secretariado de Investigaci&oacuten</a>
+                                            <a class="dropdown-item" href="https://investigacion.us.es/promocion">Secretariado de Promoci&oacuten</a>
+                                            <a class="dropdown-item" href="https://investigacion.us.es/scisi">Secretariado SCISI</a>
+                                            <a class="dropdown-item" href="https://investigacion.us.es/doctorado">Doctorado</a>
+                                            <a class="dropdown-item" href="https://investigacion.us.es/area-investigacion">&Aacuterea de Investigaci&oacuten</a>
+                                            <a class="dropdown-item" href="https://investigacion.us.es/encuentros-jornadas">Encuentros y Jornadas</a>
+                                    </div>
+                            </li>
+        
+                            <li><a class="labels" href="index.html">
+                                <span class="glyphicon glyphicon-book"></span> PROYECTOS </a></li>
+        
+                            <li><a class="labels" href="http://investigacion.us.es/contactos">
+                                <span class="glyphicon glyphicon-phone-alt"></span> CONTACTOS </a></li>
+                        </ul>
+                         <!--Dropdown login begining-->
+                     <ul class="nav navbar-nav navbar-right">
+                        <li><a class="labels" href="index.html">LOGOUT <span class="glyphicon glyphicon-log-out"></span></a>
+                        </li>
+                    </ul>
+                  </div>           
                 </nav>
-            </div>
             <div>
                 <div class="Wid90 OvHidden MarAuto"></div>
             </div>
@@ -210,5 +226,9 @@
     </footer>
 
 </body>
-
+<script>
+        $(document).ready(function(){
+            $(".dropdown-toggle").dropdown();
+        });
+    </script>
 </html>

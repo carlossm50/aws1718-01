@@ -23,18 +23,29 @@ h1{
 
 }
 
-.navbar{
+.menu{
     background-color:#8C1227;
 
-}
-
-.menu span{
-    color: white;
 }
 
 .labels{
     color: white;
 }
+
+.navbar-nav > li > .dropdown-menu{
+    background-color:#8C1227;
+}
+
+.navbar-nav > li > .dropdown-menu a{
+    color:white;
+}
+
+.navbar-nav > li > .dropdown-menu a:hover{
+    color: #337ab7;
+    background-color:#eee;
+    border-color:#337ab7; 
+}
+
 
 .social-sharing {
 	display: block;
@@ -144,7 +155,7 @@ footer{
 	margin-top: 20px;
 	font-size: 14px;
 }
- 
+
 
  
 
