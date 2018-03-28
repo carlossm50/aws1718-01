@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html  ng-app="ProjectListApp">
 
 <head>
     <meta charset="utf-8">
@@ -16,6 +16,13 @@
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+        
+        <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
+        <script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
+        
+        <script type="text/javascript" src="project-list-app.js"></script>
+        <script type="text/javascript" src="list-ctrl.js"></script>
+        
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/fontawesome.min.css">
@@ -24,7 +31,12 @@
 
 </head>
 
+<<<<<<< HEAD
 <body>
+=======
+<body ng-controller="ListCtrl">
+
+>>>>>>> bff3539d52569447b5582cf47ce39213c6cc39fd
     <header>
         <section class="proyectomenu">
              <!--Menu-->
@@ -96,8 +108,12 @@
             </div> 
         </section>
     </header>
+<section>
 
+    <a class="btn btn-primary" style="color:#fff" href="proyectsSearch.html">View</a> 
+</section>
     <section class="proyectos">
+<<<<<<< HEAD
             <div class="container">
                 <div class="row">
                     <div class="col-sm">
@@ -237,14 +253,115 @@
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
     
                         </div>
+=======
+        <div class="container">
+            <div class="row">
+                <!--Inicio del Repeat del card-->
+                <div ng-repeat="contact in projects"  class="col-sm">
+                    <div class="card proyecto" style="width: 18rem;">
+                            <img class="card-img-top" src="http://eldia.com.do/wp-content/uploads/2017/08/12-ECONO-1p01-1.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">{{contact.projname}}: {{$index}} </h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Tipo: {{contact.tipo}}</h6>
+                            <p class="card-text">
+                                <p class="h6">Responsable: {{contact.respondable}}</p>
+                                proyecto
+                                <p class="h6">Referencia: {{contact.referencia}}</p>
+                                <p class="h6">Fecha de Inicio: {{contact.fecha_ini}}</p>
+                                <p class="h6">Fecha de Finalización: {{contact.fecha_fin}}</p>
+                            </p>
+                            <a href="#" class="card-link" data-toggle="modal" data-target="#exampleModalCenter" ng-click="indice($index)">Más información</a>
+                        </div>
                     </div>
+                    
+                    <!--Fin del epeat del card-->
+                    
+                    <!--Inicio del Modal -->
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    
+                                    <h5 class="modal-title" id="exampleModalLongTitle">{{OneProject.projname}} </h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-sm">
+                                                    <img src="http://eldia.com.do/wp-content/uploads/2017/08/12-ECONO-1p01-1.jpg" style="width:100%;height:250px;"/>
+                                            </div>
+                                            <div class="col-sm">
+                                                    <p>Responsable:
+                                                            <a href="/sisius/sis_showpub.php?idpers=4046">{{OneProject.projname}}</a> 
+                                                            <br>Tipo de Proyecto/Ayuda: {{OneProject.tipo}}
+                                                            <br>Referencia: {{OneProject.referencia}}
+                                                            <br>Fecha de Inicio: {{OneProject.fecha_ini}}
+                                                            <br>Fecha de Finalización: {{OneProject.fecha_fin}}
+                                                            <br>
+                                                        </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        
+                                    <div align="left" style="margin-left:1cm">
+                                      
+                                        <p>
+                                            <b>Empresa/Organismo financiador/es:</b>
+                                        </p>
+                                        <ul>
+                                            <li>{{OneProject.respondable}}</li>
+                                        </ul>
+                                        </ul>
+                                        <p>
+                                            <b>Equipo:</b>
+                                        </p>
+                                        <ul>
+                                            <li>Equipo de Investigación:
+                                                <ul>
+                                                    <li ng-repeat="Inv in OneProject.grInv ">
+                                                        <a href="/sisius/sis_showpub.php?idpers=4045">{{Inv.inv_name}}</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>Equipo de Trabajo:
+                                                <ul>
+                                                    <li ng-repeat="Trb in OneProject.grTrb ">
+                                                        <a href="/sisius/sis_showpub.php?idpers=4045">{{Trb.trb_name}}</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            
+                                </div>
+                            </div>
+                        </div>
+>>>>>>> bff3539d52569447b5582cf47ce39213c6cc39fd
+                    </div>
+                    
+                    <!--Fin del Modal -->
                 </div>
             </div>
+<<<<<<< HEAD
         </section>
+=======
+        </div>
+
+        
+    </section>
+>>>>>>> bff3539d52569447b5582cf47ce39213c6cc39fd
 
     <footer>
 
+
         <div>
+            
             Universidad de Sevilla. C/ S. Fernando, 4, C.P. 41004-Sevilla, España. Centralita exterior: 954551000
         </div>
         <aside class="social-sharing">
