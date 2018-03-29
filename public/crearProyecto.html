@@ -1,114 +1,127 @@
 <!DOCTYPE html>
-<html  ng-app="ProjectListApp">
-    <head>
-        <title>
-            Nombre del Proyecto
-        </title>
-        
-		<link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
-        <script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
-  		<script type="text/javascript" src="project-list-app.js"></script>
-        <script type="text/javascript" src="list-ctrl.js"></script>
-        <link rel="stylesheet" type="text/css" href="ToDoList.css">       
-        
-        
-        
-    </head>
-    <body ng-controller="ListCtrl">
-        <h1>Proyecto</h1>
-        
-        <form name="ProyectoForm">
-            
-            <!--<h3 style="float: left"> <strong>Nombre del Proyecto</strong> </h3> -->
-            
-            <div name="datosProyecto">
-            	
-                <table>
-                    
-                    <tr>					
-                        <td><label for="male">Nombre</label></td> 
-						<td><input class="form-control" type="text" ng-model="newProject.projname" name="Prjname" maxlength="60" size="60" required></td>
-                    </tr>
-					<tr>
-						<td><label for="male">Tipo de Proyecto/ayuda</label></td> 
-						<td><input class="form-control" type="text" ng-model="newProject.tipo" name="tipo" maxlength="60" size="60" required></td>
-					</tr>
-					<tr>					
-                        <td><label for="male">Referencia</label></td> 
-						<td><input class="form-control" type="text" ng-model="newProject.referencia" name="referencia" maxlength="60" size="60" required></td>                      
-                    </tr>
-                    <tr>					
-                        <td><label for="male">Fecha de Inicio</label></td> 
-						<td><input class="form-control" type="text" ng-model="newProject.fecha_ini" ng-pattern="/\d{4}-\d{2}-\d{2}/" name="fch_ini" maxlength="60" size="60" required></td>                      
-                    </tr>
-					<tr>
-						<td><label for="male">Fecha de Finalización</label></td> 
-						<td><input class="form-control" type="text" ng-model="newProject.fecha_fin" required ng-pattern='/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/' name="fch_fin" maxlength="60" size="60" ></td>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+</head>
+<body>
+<!-- Form to add projects -->
+<section>
+<div class="container">
+  <h2>Modal Example</h2>
+  <!-- Trigger the modal with a button -->
+  <span class="glyphicon glyphicon-plus" data-toggle="modal" data-target="#myModal"></span>
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h3 class="modal-title">Formulario para agregar proyecto</h3>
+        </div>
+        <div class="container">
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home">Datos generales</a></li>
+    <li><a data-toggle="tab" href="#menu1">Financiaci&oacuten</a></li>
+    <li><a data-toggle="tab" href="#menu3">Socios</a></li>
+    <li><a data-toggle="tab" href="#menu2">Equipo de investigaci&oacuten</a></li>
+    <li><a data-toggle="tab" href="#menu3">Equipo de trabajo</a></li>
+    <li><a data-toggle="tab" href="#menu4">Contratados</a></li>
+  </ul>
 
-					</tr>
-                </table>
-            </div>
-            
-            <div name="financiador">
-				<fieldset>            
-					<legend>Empresa/Organismo Financiador/es</legend>
-					<table>
-						<th>Nombre</th>
-						<tr>
-							<td><input class="form-control" type="text" ng-model="newProject.respondable" name="financiador" maxlength="60" size="60" required></td>
-						</tr>
-					</table>
-				</fieldset>
-            </div>
-            
-			<!-- -->            
-			<div id="myDIV" class="header">
-				   <h2 style="margin:5px">Equipo de Investigacion</h2>
-				   <input list="browsers" type="text" id="InpEqInv" ng-model="nuevoInv" placeholder="Title...">  					
-				   <span  ng-click="agregarTarea();" class="addBtn">Add</span>
-				   
-				   <datalist id="browsers">		
-						<option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name}}</option>			
-				    </datalist>
-			</div>
-			
-			<ul class="list-unstyled">
-		        <li ng-repeat="tarea in tareas">
-		            <span class="hecho-{{tarea.hecho}}" >{{tarea.inv_name}} </span>
-					<button type="button" class="close" aria-label="Close" ng-click="eliminarTarea($index)">&times;</button>
-		        </li>
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active"> <!--Inicio datos generales proyecto--> 
+      <h4>Proyecto</h4>
+      <form ng-app="" name="myForm">
+      	Nombre <input class="form-control" type="text" ng-model="newProject.projname" name="Prjname" maxlength="60" size="60" required>
+      	Tipo/ayuda <input class="form-control" type="text" ng-model="newProject.tipo" name="tipo" maxlength="60" size="60" required>
+        Referencia <input class="form-control" type="text" ng-model="newProject.referencia" name="referencia" maxlength="60" size="60" required>
+        Fecha de inicio <input class="form-control" type="date" ng-model="newProject.fecha_ini" name="fch_ini" ng-pattern="/^(\d{4})-(\d{2})-(\d{2})$/"  maxlength="12" size="12" required>
+        Fecha de finalizaci&oacuten <input class="form-control" type="text" ng-model="newProject.fecha_fin" name="fch_fin" ng-pattern="/^(\d{4})-(\d{2})-(\d{2})$/" maxlength="12" size="12" required>
+        Responsable(es) Nombre <input class="form-control" type="text" ng-model="newProject.responsable" name="responsable" maxlength="60" size="60" required>
+		</form>
+    </div> <!--Fin datos generales proyecto--> 
+    <div id="menu1" class="tab-pane fade"> <!--Inicio financiadores--> 
+      <h4>Empresa/Organismo Financiador/es</h4> 
+      <form ng-app="" name="myForm">
+      	Nombre <input class="form-control" type="text" ng-model="newProject.financiador" name="financiador" maxlength="60" size="60" required>
+	  </form>
+    </div> <!--Fin financiadores--> 
+    <div id="menu2" class="tab-pane fade"> <!--Inicio Socios--> 
+      <h4>Socios</h4>
+      <form ng-app="" name="myForm">
+      	Nombre <input class="form-control" type="text" ng-model="newProject.socio" name="socio" maxlength="60" size="60" required>
+	  </form>
+    </div> <!--Fin Socios--> 
+    <div id="menu3" class="tab-pane fade"> <!--Inicio Equipo de Investigación--> 
+      <h3>Investigadores</h3>
+      <form ng-app="" name="myForm">
+      	<input class="form-control" list="browsers" type="text" id="InpEqInv" ng-model="nuevoInv" placeholder="Title...">  					
+			<span class="glyphicon glyphicon-plus" ng-click="agregarTarea(0);"></span>
+			<datalist id="browsers">		
+				<option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name}}</option>			
+			</datalist>
+	  </form>
+            <ul class="list-unstyled">
+		      <li ng-repeat="tarea in tareas">
+		         <span class="hecho-{{tarea.hecho}}" >{{tarea.inv_name}} </span>
+				 <span class="glyphicon glyphicon-trash" ng-click="eliminarTarea(0,$index)"></span>
+		      </li>
 			</ul>
-
-
-
-			<!--Equipo de Trabajo-->            
-			<div id="myDIV" class="header">
-				   <h2 style="margin:5px">Equipo de Trabajo</h2>
-				   <input list="Workgroup" type="text" id="InpEqTrb" ng-model="nuevoTrb" placeholder="Title...">  					
-				   <span  ng-click="agregarPtrabajo();" class="addBtn">Add</span>
+    </div> <!--Fin Equipo de Investigación--> 
+      <div id="menu4" class="tab-pane fade"> <!--Inicio Equipo de Trabajo--> 
+     	<h3>Equipo de trabajo</h3>
+     		 <form ng-app="" name="myForm">
+      	<input class="form-control" list="Workgroup" type="text" id="InpEqTrb" ng-model="nuevoTrb" placeholder="Title...">  					
+			<span class="glyphicon glyphicon-plus" ng-click="agregarPtrabajo(0);"></span>
 				   
-				   <datalist id="Workgroup">		<!--Lista de Trabajo -->	
-						<option ng-repeat="pt_name in pertrab" value="{{pt_name}}">{{pt_name}}</option>			
-				    </datalist>
-			</div>
-			
-			<ul class="list-unstyled">
-		        <li ng-repeat="tarea in grTrab">
-		            <span class="hecho-{{tarea.hecho}}" >{{tarea.trb_name}} </span>
-					<button type="button" class="close" aria-label="Close" ng-click="eliminarPtrabajo($index)">&times;</button>
-		        </li>
+		<datalist id="Workgroup">		<!--Lista de Trabajo -->	
+			<option ng-repeat="pt_name in pertrab" value="{{pt_name}}">{{pt_name}}</option>			
+		</datalist>
+	  </form>
+      	<ul class="list-unstyled">
+		   <li ng-repeat="tarea in grTrab">
+		     <span class="hecho-{{tarea.hecho}}" >{{tarea.trb_name}} </span>
+				<span class="glyphicon glyphicon-trash" ng-click="eliminarPtrabajo(0,$index)">&times;</span>
+		   </li>
+		</ul>
+    </div><!--Fin Equipo de Trabajo--> 
+    	 
+    <div id="menu5" class="tab-pane fade"> <!--Inicio Contratados--> 
+      <h3>Contratados</h3>
+      <form ng-app="" name="myForm">
+      	<input class="form-control" list="browsers" type="text" id="InpEqInv" ng-model="nuevoInv" placeholder="Title...">  					
+			<span class="glyphicon glyphicon-plus" ng-click="agregarTarea(0);"></span>
+			<datalist id="browsers">		
+				<option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name}}</option>			
+			</datalist>
+	  </form>
+      		<ul class="list-unstyled">
+		      <li ng-repeat="tarea in tareas">
+		          <span class="hecho-{{tarea.hecho}}" >{{tarea.inv_name}} </span>
+				 <span class="glyphicon glyphicon-trash" ng-click="eliminarTarea(0,$index)"></span>
+		      </li>
 			</ul>
-			<!--Fin Equipo trabajo-->
-
-		<td>
-			<td><a class="btn btn-primary" style="color:#fff" ng-click="addProject()" href="proyectsSearch.html">Add</a> </td> 
-		</td> 
-
-        </form>
-		
-		
-
-	<h1>Este es el footer</h1>
-	</body>
-   <!-- <h5><a href="https://documenter.getpostman.com/view/359472/aws1718/RVnTmM8k">api documentation</a></h5>-->
+    </div> <!--Fin Contratados-->
+  </div>
+</div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+</section>
+</body>
 </html>

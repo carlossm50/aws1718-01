@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="ProjectListApp">
 
 <head>
     <meta charset="utf-8">
@@ -7,6 +7,7 @@
     <title>Project Investigation</title>
     <meta name="description" content="An interactive getting started guide for Brackets.">
     <link rel="stylesheet" href="start.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -16,10 +17,15 @@
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="project-list-app.js"></script>
+    <script type="text/javascript" src="list-ctrl.js"></script>
 </head>
 
-<body>
+<body ng-controller="ListCtrl">
 
         <header>
                 <section class="proyectomenu">
@@ -51,12 +57,125 @@
                             <li><a class="labels" href="http://investigacion.us.es/contactos">
                                 <span class="glyphicon glyphicon-phone-alt"></span> CONTACTOS </a></li>
                         </ul>
-                         <!--Dropdown login begining-->
+                         <!--Begining Logout-->
                      <ul class="nav navbar-nav navbar-right">
-                        <li><a class="labels" href="index.html">LOGOUT <span class="glyphicon glyphicon-log-out"></span></a>
+                        <li><a class="labels" href="index.html">LOGOUT<span class="glyphicon glyphicon-log-out"></span></a>
                         </li>
-                    </ul>
-                  </div>           
+                    </ul><!--End Logout-->
+                    <section>
+<div class="container">
+  <!-- Trigger the modal with a button -->
+  <span class="glyphicon glyphicon-plus" data-toggle="modal" data-target="#myModal"></span>
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h3 class="modal-title">Formulario para agregar proyecto</h3>
+        </div>
+        <div class="container">
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home">Datos generales</a></li>
+    <li><a data-toggle="tab" href="#menu1">Financiaci&oacuten</a></li>
+    <li><a data-toggle="tab" href="#menu3">Socios</a></li>
+    <li><a data-toggle="tab" href="#menu2">Equipo de investigaci&oacuten</a></li>
+    <li><a data-toggle="tab" href="#menu3">Equipo de trabajo</a></li>
+    <li><a data-toggle="tab" href="#menu4">Contratados</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active"> <!--Inicio datos generales proyecto--> 
+      <h4>Proyecto</h4>
+      <form ng-app="" name="myForm">
+      	Nombre <input class="form-control" type="text" ng-model="newProject.projname" name="Prjname" maxlength="60" size="60" required>
+      	Tipo/ayuda <input class="form-control" type="text" ng-model="newProject.tipo" name="tipo" maxlength="60" size="60" required>
+        Referencia <input class="form-control" type="text" ng-model="newProject.referencia" name="referencia" maxlength="60" size="60" required>
+        Fecha de inicio <input class="form-control" type="date" ng-model="newProject.fecha_ini" name="fch_ini" ng-pattern="/^(\d{4})-(\d{2})-(\d{2})$/"  maxlength="12" size="12" required>
+        Fecha de finalizaci&oacuten <input class="form-control" type="text" ng-model="newProject.fecha_fin" name="fch_fin" ng-pattern="/^(\d{4})-(\d{2})-(\d{2})$/" maxlength="12" size="12" required>
+        Responsable(es) Nombre <input class="form-control" type="text" ng-model="newProject.responsable" name="responsable" maxlength="60" size="60" required>
+		</form>
+    </div> <!--Fin datos generales proyecto--> 
+    <div id="menu1" class="tab-pane fade"> <!--Inicio financiadores--> 
+      <h4>Empresa/Organismo Financiador/es</h4> 
+      <form ng-app="" name="myForm">
+      	Nombre <input class="form-control" type="text" ng-model="newProject.financiador" name="financiador" maxlength="60" size="60" required>
+	  </form>
+    </div> <!--Fin financiadores--> 
+    <div id="menu2" class="tab-pane fade"> <!--Inicio Socios--> 
+      <h4>Socios</h4>
+      <form ng-app="" name="myForm">
+      	Nombre <input class="form-control" type="text" ng-model="newProject.socio" name="socio" maxlength="60" size="60" required>
+	  </form>
+    </div> <!--Fin Socios--> 
+    <div id="menu3" class="tab-pane fade"> <!--Inicio Equipo de Investigación--> 
+      <h3>Investigadores</h3>
+      <form ng-app="" name="myForm">
+      	<input class="form-control" list="browsers" type="text" id="InpEqInv" ng-model="nuevoInv" placeholder="Title...">  					
+			<span class="glyphicon glyphicon-plus" ng-click="agregarTarea(0);"></span>
+			<datalist id="browsers">		
+				<option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name}}</option>			
+			</datalist>
+	  </form>
+            <ul class="list-unstyled">
+		      <li ng-repeat="tarea in tareas">
+		         <span class="hecho-{{tarea.hecho}}" >{{tarea.inv_name}} </span>
+				 <span class="glyphicon glyphicon-trash" ng-click="eliminarTarea(0,$index)"></span>
+		      </li>
+			</ul>
+    </div> <!--Fin Equipo de Investigación--> 
+      <div id="menu4" class="tab-pane fade"> <!--Inicio Equipo de Trabajo--> 
+     	<h3>Equipo de trabajo</h3>
+     		 <form ng-app="" name="myForm">
+      	<input class="form-control" list="Workgroup" type="text" id="InpEqTrb" ng-model="nuevoTrb" placeholder="Title...">  					
+			<span class="glyphicon glyphicon-plus" ng-click="agregarPtrabajo(0);"></span>
+				   
+		<datalist id="Workgroup">		<!--Lista de Trabajo -->	
+			<option ng-repeat="pt_name in pertrab" value="{{pt_name}}">{{pt_name}}</option>			
+		</datalist>
+	  </form>
+      	<ul class="list-unstyled">
+		   <li ng-repeat="tarea in grTrab">
+		     <span class="hecho-{{tarea.hecho}}" >{{tarea.trb_name}} </span>
+				<span class="glyphicon glyphicon-trash" ng-click="eliminarPtrabajo(0,$index)">&times;</span>
+		   </li>
+		</ul>
+    </div><!--Fin Equipo de Trabajo--> 
+    	 
+    <div id="menu5" class="tab-pane fade"> <!--Inicio Contratados--> 
+      <h3>Contratados</h3>
+      <form ng-app="" name="myForm">
+      	<input class="form-control" list="browsers" type="text" id="InpEqInv" ng-model="nuevoInv" placeholder="Title...">  					
+			<span class="glyphicon glyphicon-plus" ng-click="agregarTarea(0);"></span>
+			<datalist id="browsers">		
+				<option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name}}</option>			
+			</datalist>
+	  </form>
+      		<ul class="list-unstyled">
+		      <li ng-repeat="tarea in tareas">
+		          <span class="hecho-{{tarea.hecho}}" >{{tarea.inv_name}} </span>
+				 <span class="glyphicon glyphicon-trash" ng-click="eliminarTarea(0,$index)"></span>
+		      </li>
+			</ul>
+    </div> <!--Fin Contratados-->
+  </div>
+</div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+</section>
+                        
+                  </div>
+                  <!-- Form to add projects -->
                 </nav>
             <div>
                 <div class="Wid90 OvHidden MarAuto"></div>
@@ -69,159 +188,223 @@
             <h1 class="test">
                 Proyectos de investigaci&oacuten de la USE</h1>
         </div>
-
     </header>
 
     <section class="proyectos">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm">
-                    <div class="card proyecto" style="width: 18rem;">
-                            <img class="card-img-top" src="http://eldia.com.do/wp-content/uploads/2017/08/12-ECONO-1p01-1.jpg" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Herramientas para la Ciencia de los Datos de la Web</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Tipo de Proyecto/Ayuda: Plan Estatal 2013-2016 Retos - Proyectos I+D+i</h6>
-                            <p class="card-text">
-                                <p class="h6">Responsable: David Ruiz Cortés / Rafael Corchuelo Gil</p>
-                                proyecto
-                                <p class="h6">Referencia: TIN2016-75394-R</p>
-                                <p class="h6">Fecha de Inicio: 30-12-2016</p>
-                                <p class="h6">Fecha de Finalización: 29-12-2019</p>
-                            </p>
-                            <a href="#" class="card-link" data-toggle="modal" data-target="#exampleModalCenter">Más información</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="card proyecto" proyecto style="width: 18rem;">
-                            <img class="card-img-top" src="http://eldia.com.do/wp-content/uploads/2017/08/12-ECONO-1p01-1.jpg" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Herramientas para la Ciencia</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Tipo de Proyecto/Ayuda: Plan Estatal 2013-2016</h6>
-                            <p class="card-text">
-                                <p class="h6">Responsable: David Ruiz Cortés</p>
-                                proyecto
-                                <p class="h6">Referencia: TIN2016-75394-R</p>
-                                <p class="h6">Fecha de Inicio: 30-12-2018</p>
-                                <p class="h6">Fecha de Finalización: 29-12-2020</p>
-                            </p>
-                            <a href="#" class="card-link" data-toggle="modal" data-target="#exampleModalCenter">Más información</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm">
-                        <div class="card proyecto" proyecto style="width: 18rem;">
-                                <img class="card-img-top" src="http://eldia.com.do/wp-content/uploads/2017/08/12-ECONO-1p01-1.jpg" alt="Card image cap">
+            <div class="container">
+                <div class="row">
+                    <!--Inicio del Repeat del card-->
+                    <div ng-repeat="contact in projects"  class="col-sm">
+                        <div class="card proyecto" style="width: 18rem;">
+                                <img class="card-img-top" src="https://eldia.com.do/wp-content/uploads/2017/08/12-ECONO-1p01-1.jpg" alt="Card image cap">
                             <div class="card-body">
-                                <h5 class="card-title">Herramientas para la Ciencia</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Tipo de Proyecto/Ayuda: Plan Estatal 2013-2016</h6>
+                                <h5 class="card-title">{{contact.projname}} </h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Tipo: {{contact.tipo}}</h6>
                                 <p class="card-text">
-                                    <p class="h6">Responsable: David Ruiz Cortés</p>
-                                    proyecto
-                                    <p class="h6">Referencia: TIN2016-75394-R</p>
-                                    <p class="h6">Fecha de Inicio: 30-12-2018</p>
-                                    <p class="h6">Fecha de Finalización: 29-12-2020</p>
+                                    <p class="h6">Responsable: {{contact.respondable}}</p>
+                                    <p class="h6">Referencia: {{contact.referencia}}</p>
+                                    <p class="h6">Fecha de Inicio: {{contact.fecha_ini}}</p>
+                                    <p class="h6">Fecha de Finalización: {{contact.fecha_fin}}</p>
                                 </p>
-                                <a href="#" class="card-link" data-toggle="modal" data-target="#exampleModalCenter">Más información</a>
+                                <a href="#" class="card-link" data-toggle="modal" data-target="#exampleModalCenter" ng-click="indice($index)">Más información</a>
+                                <a href="#" class="card-link" data-toggle="modal" data-target="#ModalEdit" ng-click="indice($index)">Editar</a>
+                                
                             </div>
                         </div>
-                    </div>
-            </div>
-        </div>
-
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        
-                        <h5 class="modal-title" id="exampleModalLongTitle">Herramientas para la Ciencia de los Datos de la Web</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-sm">
-                                        <img src="http://eldia.com.do/wp-content/uploads/2017/08/12-ECONO-1p01-1.jpg" style="width:100%;height:250px;"/>
+                    </div><!--Fin del Repeat del card-->
+    
+                    <!--Inicio del Modal del Mostrar detalle-->
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    
+                                    <h5 class="modal-title" id="exampleModalLongTitle">{{OneProject.projname}} </h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                 </div>
-                                <div class="col-sm">
-                                        <p>Responsable:
-                                                <a href="/sisius/sis_showpub.php?idpers=4046">David Ruiz Cortés</a> /
-                                                <a href="/sisius/sis_showpub.php?idpers=3263">Rafael Corchuelo Gil</a>
-                                                <br>Tipo de Proyecto/Ayuda: Plan Estatal 2013-2016 Retos - Proyectos I+D+i
-                                                <br>Referencia: TIN2016-75394-R
-                                                <br>Fecha de Inicio: 30-12-2016
-                                                <br>Fecha de Finalización: 29-12-2019
-                                                <br>
-                                            </p>
+                                <div class="modal-body">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-sm">
+                                                    <img src="https://eldia.com.do/wp-content/uploads/2017/08/12-ECONO-1p01-1.jpg" style="width:100%;height:250px;"/>
+                                            </div>
+                                            <div class="col-sm">
+                                                    <p>Responsable:
+                                                            <a href="/sisius/sis_showpub.php?idpers=4046">{{OneProject.respondable}}</a> 
+                                                            <br>Tipo de Proyecto/Ayuda: {{OneProject.tipo}}
+                                                            <br>Referencia: {{OneProject.referencia}}
+                                                            <br>Fecha de Inicio: {{OneProject.fecha_ini}}
+                                                            <br>Fecha de Finalización: {{OneProject.fecha_fin}}
+                                                            <br>
+                                                        </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        
+                                    <div align="left" style="margin-left:1cm">
+                                      
+                                        <p>
+                                            <b>Empresa/Organismo financiador/es:</b>
+                                        </p>
+                                        <ul>
+                                            <li>{{OneProject.respondable}}</li>
+                                        </ul>
+                                        </ul>
+                                        <p>
+                                            <b>Equipo:</b>
+                                        </p>
+                                        <ul>
+                                            <li>Equipo de Investigación:
+                                                <ul>
+                                                    <li ng-repeat="Inv in OneProject.grInv ">
+                                                        <a href="/sisius/sis_showpub.php?idpers=4045">{{Inv.inv_name}}</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>Equipo de Trabajo:
+                                                <ul>
+                                                    <li ng-repeat="Trb in OneProject.grTrb ">
+                                                        <a href="/sisius/sis_showpub.php?idpers=4045">{{Trb.trb_name}}</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            
                                 </div>
                             </div>
                         </div>
-                            
-                        <div align="left" style="margin-left:1cm">
-                          
-                            <p>
-                                <b>Empresa/Organismo financiador/es:</b>
-                            </p>
-                            <ul>
-                                <li>Ministerio de Economía y Competitividad</li>
-                            </ul>
-                            </ul>
-                            <p>
-                                <b>Equipo:</b>
-                            </p>
-                            <ul>
-                                <li>Equipo de Investigación:
-                                    <ul>
+                    </div> <!--Fin del Modal del Mostrar detalle-->
+                    
+                    <!--Inicio del Modal del Mostrar editar-->
+                    <div class="modal fade" id="ModalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Editar {{OneProject.projname}}</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-sm">
+                                                    <img src="https://eldia.com.do/wp-content/uploads/2017/08/12-ECONO-1p01-1.jpg" style="width:100%;height:250px;"/>
+                                            </div>
+                                            <div class="col-sm">
+                                                    <p>
+                                                        <table>
+                                                            <tr>
+                                                                <td>Responsable:</td>
+                                                                <td><input type="text" name="responsable" placeholder="Responsable" ng-model="OneProject.respondable"/></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Tipo de Proyecto/Ayuda:</td>
+                                                                <td><input type="text" name="tipo" placeholder="Tipo de Proyecto" ng-model="OneProject.tipo"/> </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Referencia: </td>
+                                                                <td><input type="text" name="referencia" placeholder="Referencia" ng-model="OneProject.referencia"/> </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Fecha de Inicio:</td>
+                                                                <td><input type="text" name="fech_ini" placeholder="Fecha de Inicio" ng-model="OneProject.fecha_ini"/> </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Fecha de Finalización:</td>
+                                                                <td><input type="text" name="fech_fin" placeholder="Fecha de Finalización" ng-model="OneProject.fecha_fin"/>  </td>
+                                                            </tr>
+                                                        </table>
+    
+                                                    </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        
+                                    <div align="left" style="margin-left:1cm">
+                                      
+                                        <p>
+                                            <b>Empresa/Organismo financiador/es:</b>
+                                        </p>
+                                        <ul>
+                                            <li>{{OneProject.respondable}}</li>
+                                        </ul>
+                                        </ul>
+                                        <p>
+                                            <b>Equipo:</b>
+                                        </p>
                                         <li>
-                                            <a href="/sisius/sis_showpub.php?idpers=4045">Antonia María Reina Quintero</a>
-                                        </li>
-                                        <li>
-                                            <a href="/sisius/sis_showpub.php?idpers=3277">Miguel Toro Bonilla</a>
-                                        </li>
-                                        <li>
-                                            <a href="/sisius/sis_showpub.php?idpers=15395">Inmaculada Concepción Hernández Salmerón</a> (alta: 21/02/2017)</li>
-                                    </ul>
-                                </li>
-                                <li>Equipo de Trabajo:
-                                    <ul>
-                                        <li>Fabricia Carneiro Roos-Frantz</li>
-                                        <li>
-                                            <a href="/sisius/sis_showpub.php?idpers=18678">Patricia Jiménez Aguirre</a>
-                                        </li>
-                                        <li>Craig Knoblock</li>
-                                        <li>Pedro Nombre Szekely</li>
-                                        <li>
-                                            <a href="/sisius/sis_showpub.php?idpers=13473">Carlos Rivero Osuna</a>
-                                        </li>
-                                        <li>
-                                            <a href="/sisius/sis_showpub.php?idpers=15394">Hassan Sleiman</a>
-                                        </li>
-                                        <li>Rafael Zancan Frantz</li>
-                                        <li>Daniel Ayala Hernández</li>
-                                        <li>Andrea Jesús Cimmino Arriaga</li>
-                                        <li>Fernando Ortega Gallego</li>
-                                        <li>Juan Carlos Roldán Salvador</li>
-                                    </ul>
-                                </li>
-                            </ul>
+                                          <datalist id="browsers">		
+                                                   <option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name}}</option>			
+                                         </datalist>
+                                         </li>
+                                         
+                                        <ul>
+                                            <li> 
+                                                <div id="myDIV" >Equipo de Investigación: 
+                                                     <input list="browsers" type="text"  ng-model="EditaInv" placeholder="Title...">  					
+                                                     <button class="btn btn-primary" ng-click="agregarTarea(1)" >Add</span>
+                                                 </div>
+                                             
+                                             
+                                                <ul  style="width:250px">
+                                                    <li ng-repeat="Inv in OneProject.grInv ">
+                                                        <a href="/sisius/sis_showpub.php?idpers=4045">{{Inv.inv_name}}</a>
+                                                        <button type="button" class="close" aria-label="Close" ng-click="eliminarTarea(1,$index)">&times;</button>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                           <datalist id="Workgroup">		<!--Lista de Trabajo -->	
+                                                <option ng-repeat="pt_name in pertrab" value="{{pt_name}}">{{pt_name}}</option>			
+                                            </datalist>                                            
+                                            </li>
+                                            <li>Equipo de Trabajo:
+                                                               <input list="Workgroup" type="text" id="InpEqTrb" ng-model="EditaTrb" placeholder="Title...">  					
+                                                               <span  ng-click="agregarPtrabajo(1);" class="addBtn">Add</span>
+                                                <ul style="width:250px">
+                                                    <li ng-repeat="Trb in OneProject.grTrb ">
+                                                        <a href="/sisius/sis_showpub.php?idpers=4045">{{Trb.trb_name}}</a>
+                                                        <button type="button" class="close" aria-label="Close" ng-click="eliminarPtrabajo(1,$index)">&times;</button>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" ng-click="updateProject1()" data-dismiss="modal">Save</button>
+            
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
-                    </div>
+                    </div> <!--Inicio del Modal del Mostrar editar-->
                 </div>
             </div>
-        </div>
-    </section>
-
+        </section>
+    
     <footer>
 
         <div>
             Universidad de Sevilla. C/ S. Fernando, 4, C.P. 41004-Sevilla, España. Centralita exterior: 954551000
         </div>
+         <!--Social sharing-->
+         <aside class="social-sharing">
+                <ul class="menu-social">
+                    <li class="social-item"><a title="Twitter" href="https://twitter.com/unisevilla" target="_blank"><span class="screen-reader-text">Twitter</span></a></li>
+                    <li class="social-item"><a title="Facebook" href="https://www.facebook.com/UniversidaddeSevillaoficial" target="_blank"><span class="screen-reader-text">Facebook</span></a></li>
+                    <li class="social-item"><a title="YouTube" href="http://www.youtube.com/universidaddesevilla" target="_blank"><span class="screen-reader-text">YouTube</span></a></li>
+                    <li class="social-item"><a title="Instagram" href="https://www.instagram.com/unisevilla/" target="_blank" data-action="share/whatsapp/share"><span class="screen-reader-text">Instagram</span></a></li>
+                </ul>
+        </aside>
 
     </footer>
 
@@ -230,5 +413,5 @@
         $(document).ready(function(){
             $(".dropdown-toggle").dropdown();
         });
-    </script>
+</script>
 </html>
