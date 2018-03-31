@@ -15,25 +15,32 @@ header{
 
 h1{
     padding-top: 30px;
-   
 }
 
 .test{
     color:white;
-
 }
 
-.navbar{
+.menu{
     background-color:#8C1227;
-
-}
-
-.menu span{
-    color: white;
 }
 
 .labels{
     color: white;
+}
+
+.navbar-nav > li > .dropdown-menu{
+    background-color:#8C1227;
+}
+
+.navbar-nav > li > .dropdown-menu a{
+    color:white;
+}
+
+.navbar-nav > li > .dropdown-menu a:hover{
+    color: #337ab7;
+    background-color:#eee;
+    border-color:#337ab7; 
 }
 
 .social-sharing {
@@ -81,10 +88,10 @@ ul.menu-social li a[href*="twitter.com"]::before {
 	content: "\f099";
 }
 ul.menu-social li a[href*="youtube.com"]::before {
-	content: "\f231";
+	content: "\f167";
 }
-ul.menu-social li a[href*="instagram://send"]::before {
-	content: "\f232";
+ul.menu-social li a[href*="instagram.com"]::before {
+	content: "\f16d";
 }
 
 footer{
@@ -142,10 +149,44 @@ footer{
 .opcioncontra{
 	text-align: center;
 	margin-top: 20px;
-	font-size: 14px;
+    font-size: 14px;
 }
- 
 
- 
+.modal-header{
+	background-color: #8C1227;
+	color: #ffff;
+}
 
- 
+.modal-body{
+	overflow: auto;
+}
+
+input {
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border: 1px solid #337ab7;
+	border-radius: 4px;
+	padding: 0 4px 0 4px;
+ }
+
+.modal-footer{
+	background-color: #8C1227;
+}
+
+.gp_color{
+	color: #8C1227;
+}
+.gb_color{
+	color:red;
+}
+
+.nav-tabs { border-bottom: 2px solid #DDD;
+	width:70.5%;
+ }
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover { border-width: 0; }
+.nav-tabs > li > a { border: none; color: #ffffff; background: #8C1227; }
+.nav-tabs > li.active > a, .nav-tabs > li > a:hover { border: none;  color: #337ab7 !important; background: #fff; }
+.nav-tabs > li > a::after { content: ""; background: #8C1227; height: 2px; position: absolute; width: 50%; left: 0px; bottom: -1px; transition: all 25ms ease 0s; transform: scale(0); }
+.nav-tabs > li.active > a::after, .nav-tabs > li:hover > a::after { transform: scale(1); }
+.tab-pane { padding: 15px 0; }
+.tab-content{padding:20px}
