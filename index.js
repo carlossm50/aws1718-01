@@ -25,8 +25,23 @@ app.get(baseAPI + "/projects", (request, response) => {
 app.post(baseAPI + "/projects", (request, response) => {
     console.log("POST /projects");
     var contact = request.body;
-    projects.add(contact);
-    response.sendStatus(201);
+     var name = request.body.projname;
+     
+    projects.get(name,(err,contacts)=>{
+        if (contacts.length != 0) {
+            response.sendStatus(409);
+        }
+        else {
+            projects.add(contact);
+            response.sendStatus(201)
+        }
+    });
+    
+});
+
+app.post(baseAPI  + "/projects/:projname", (request, response) => {
+    console.log("POS /projects");
+    response.sendStatus(405);    
 });
 
 app.delete(baseAPI + "/projects", (request, response) => {
@@ -59,7 +74,10 @@ app.delete(baseAPI + "/projects/:projname", (request, response) => {
 
     projects.remove(name,(err,numRemoved)=>{
         console.log("projects removed:"+numRemoved);
-        response.sendStatus(200);    
+        if(numRemoved != 0)
+        response.sendStatus(200)
+        else
+          response.sendStatus(404)
     });
 
     console.log("DELETE /projects/" + name);
@@ -83,6 +101,10 @@ app.put(baseAPI + "/projects/:projname", (request, response) => {
     console.log("UPDATE /projects/"+name);
 });
 
+app.put(baseAPI  + "/projects", (request, response) => {
+    console.log("PUT /projects");
+    response.sendStatus(405);    
+});
 
 app.listen(port, () => {
     console.log("Server with GUI up and running!!");
