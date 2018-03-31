@@ -126,14 +126,6 @@ angular
         $scope.updateProject1 = function (){
             
             $http
-<<<<<<< HEAD
-                .put("/api/v1/projects/"+$scope.OneProject.projname , $scope.OneProject)//{projname:$scope.newProject.projname,tipo:$scope.newProject.tipo,referencia:$scope.newProject.referencia})
-                .then(function (){
-                    refresh();  
-                });
-        }
-        
-=======
                 .put("/api/v1/projects/"+$scope.OneProject.projname , $scope.OneProject)
                 .then(function (response){
                     refresh(); 
@@ -150,7 +142,6 @@ angular
         }
      
      /*     
->>>>>>> 9762ef9c4591bad98106518877f41980650ce6d0
         $scope.updateProject = function (){
             
             $http
@@ -167,10 +158,7 @@ angular
 		$scope.agregarTarea = function (_op) {
 
     		if(_op === 0){
-<<<<<<< HEAD
-=======
                 
->>>>>>> 9762ef9c4591bad98106518877f41980650ce6d0
     	    	if ($scope.nuevoInv != null)
     				$scope.tareas.push({inv_name: $scope.nuevoInv});
     			$scope.nuevoInv = null;
@@ -254,8 +242,6 @@ angular
 			}
 				
 				
-<<<<<<< HEAD
-=======
 		}
     
    //Inicio agregar y eliminar Personal contratado a la lista 
@@ -394,7 +380,6 @@ angular
 			}
 				
 				
->>>>>>> 9762ef9c4591bad98106518877f41980650ce6d0
 		}
 
 //Inicio agregar y eliminar Responsable(s)
