@@ -27,156 +27,74 @@
 
 <body ng-controller="ListCtrl">
 
-        <header>
-                <section class="proyectomenu">
-                     <!--Menu-->
-                        <nav class="menu navbar-expand-lg">
-                            <div class="container-fluid">
-                        <ul class="nav navbar-nav">
-                            <li class="active"><a class="labels" href="index.html">
-                                <span class="glyphicon glyphicon-home"></span> INICIO </a></li>
-                                <!--Dropdown-->
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle labels" href="#" id="navbardrop" data-toggle="dropdown">
-                                    <span class="glyphicon glyphicon-th-large"></span> SISIUS </a>
-                                    <!--Dropdown lisk-->
-                                    <div class="dropdown-menu btn-light">
-                                            <a class="dropdown-item" href="https://investigacion.us.es/investigacion">Investigaci&oacuten</a>
-                                            <a class="dropdown-item" href="https://investigacion.us.es/secretariado-investigacion">Secretariado de Investigaci&oacuten</a>
-                                            <a class="dropdown-item" href="https://investigacion.us.es/promocion">Secretariado de Promoci&oacuten</a>
-                                            <a class="dropdown-item" href="https://investigacion.us.es/scisi">Secretariado SCISI</a>
-                                            <a class="dropdown-item" href="https://investigacion.us.es/doctorado">Doctorado</a>
-                                            <a class="dropdown-item" href="https://investigacion.us.es/area-investigacion">&Aacuterea de Investigaci&oacuten</a>
-                                            <a class="dropdown-item" href="https://investigacion.us.es/encuentros-jornadas">Encuentros y Jornadas</a>
-                                    </div>
-                            </li>
-        
-                            <li><a class="labels" href="index.html">
-                                <span class="glyphicon glyphicon-book"></span> PROYECTOS </a></li>
-        
-                            <li><a class="labels" href="http://investigacion.us.es/contactos">
-                                <span class="glyphicon glyphicon-phone-alt"></span> CONTACTOS </a></li>
-                        </ul>
-                         <!--Begining Logout-->
-                     <ul class="nav navbar-nav navbar-right">
-                        <li><a class="labels" href="index.html">LOGOUT<span class="glyphicon glyphicon-log-out"></span></a>
+    <header>
+        <section class="proyectomenu">
+            <!--Menu-->
+            <nav class="menu navbar-expand-lg">
+                <div class="container-fluid">
+                    <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a class="labels" href="index.html">
+                                <span class="glyphicon glyphicon-home"></span> INICIO </a>
                         </li>
-                    </ul><!--End Logout-->
-                    <section>
-<div class="container">
-  <!-- Trigger the modal with a button -->
-  <span class="glyphicon glyphicon-plus" data-toggle="modal" data-target="#myModal"></span>
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog modal-lg">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h3 class="modal-title">Formulario para agregar proyecto</h3>
-        </div>
-        <div class="container">
-  <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#home">Datos generales</a></li>
-    <li><a data-toggle="tab" href="#menu1">Financiaci&oacuten</a></li>
-    <li><a data-toggle="tab" href="#menu3">Socios</a></li>
-    <li><a data-toggle="tab" href="#menu2">Equipo de investigaci&oacuten</a></li>
-    <li><a data-toggle="tab" href="#menu3">Equipo de trabajo</a></li>
-    <li><a data-toggle="tab" href="#menu4">Contratados</a></li>
-  </ul>
+                        <!--Dropdown-->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle labels" href="#" id="navbardrop" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-th-large"></span> SISIUS </a>
+                            <!--Dropdown lisk-->
+                            <div class="dropdown-menu btn-light">
+                                <a class="dropdown-item" href="https://investigacion.us.es/investigacion">Investigaci&oacuten</a>
+                                <a class="dropdown-item" href="https://investigacion.us.es/secretariado-investigacion">Secretariado de Investigaci&oacuten</a>
+                                <a class="dropdown-item" href="https://investigacion.us.es/promocion">Secretariado de Promoci&oacuten</a>
+                                <a class="dropdown-item" href="https://investigacion.us.es/scisi">Secretariado SCISI</a>
+                                <a class="dropdown-item" href="https://investigacion.us.es/doctorado">Doctorado</a>
+                                <a class="dropdown-item" href="https://investigacion.us.es/area-investigacion">&Aacuterea de Investigaci&oacuten</a>
+                                <a class="dropdown-item" href="https://investigacion.us.es/encuentros-jornadas">Encuentros y Jornadas</a>
+                            </div>
+                        </li>
 
-  <div class="tab-content">
-    <div id="home" class="tab-pane fade in active"> <!--Inicio datos generales proyecto--> 
-      <h4>Proyecto</h4>
-      <form ng-app="" name="myForm">
-      	Nombre <input class="form-control" type="text" ng-model="newProject.projname" name="Prjname" maxlength="60" size="60" required>
-      	Tipo/ayuda <input class="form-control" type="text" ng-model="newProject.tipo" name="tipo" maxlength="60" size="60" required>
-        Referencia <input class="form-control" type="text" ng-model="newProject.referencia" name="referencia" maxlength="60" size="60" required>
-        Fecha de inicio <input class="form-control" type="date" ng-model="newProject.fecha_ini" name="fch_ini" ng-pattern="/^(\d{4})-(\d{2})-(\d{2})$/"  maxlength="12" size="12" required>
-        Fecha de finalizaci&oacuten <input class="form-control" type="text" ng-model="newProject.fecha_fin" name="fch_fin" ng-pattern="/^(\d{4})-(\d{2})-(\d{2})$/" maxlength="12" size="12" required>
-        Responsable(es) Nombre <input class="form-control" type="text" ng-model="newProject.responsable" name="responsable" maxlength="60" size="60" required>
-		</form>
-    </div> <!--Fin datos generales proyecto--> 
-    <div id="menu1" class="tab-pane fade"> <!--Inicio financiadores--> 
-      <h4>Empresa/Organismo Financiador/es</h4> 
-      <form ng-app="" name="myForm">
-      	Nombre <input class="form-control" type="text" ng-model="newProject.financiador" name="financiador" maxlength="60" size="60" required>
-	  </form>
-    </div> <!--Fin financiadores--> 
-    <div id="menu2" class="tab-pane fade"> <!--Inicio Socios--> 
-      <h4>Socios</h4>
-      <form ng-app="" name="myForm">
-      	Nombre <input class="form-control" type="text" ng-model="newProject.socio" name="socio" maxlength="60" size="60" required>
-	  </form>
-    </div> <!--Fin Socios--> 
-    <div id="menu3" class="tab-pane fade"> <!--Inicio Equipo de Investigación--> 
-      <h3>Investigadores</h3>
-      <form ng-app="" name="myForm">
-      	<input class="form-control" list="browsers" type="text" id="InpEqInv" ng-model="nuevoInv" placeholder="Title...">  					
-			<span class="glyphicon glyphicon-plus" ng-click="agregarTarea(0);"></span>
-			<datalist id="browsers">		
-				<option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name}}</option>			
-			</datalist>
-	  </form>
-            <ul class="list-unstyled">
-		      <li ng-repeat="tarea in tareas">
-		         <span class="hecho-{{tarea.hecho}}" >{{tarea.inv_name}} </span>
-				 <span class="glyphicon glyphicon-trash" ng-click="eliminarTarea(0,$index)"></span>
-		      </li>
-			</ul>
-    </div> <!--Fin Equipo de Investigación--> 
-      <div id="menu4" class="tab-pane fade"> <!--Inicio Equipo de Trabajo--> 
-     	<h3>Equipo de trabajo</h3>
-     		 <form ng-app="" name="myForm">
-      	<input class="form-control" list="Workgroup" type="text" id="InpEqTrb" ng-model="nuevoTrb" placeholder="Title...">  					
-			<span class="glyphicon glyphicon-plus" ng-click="agregarPtrabajo(0);"></span>
-				   
-		<datalist id="Workgroup">		<!--Lista de Trabajo -->	
-			<option ng-repeat="pt_name in pertrab" value="{{pt_name}}">{{pt_name}}</option>			
-		</datalist>
-	  </form>
-      	<ul class="list-unstyled">
-		   <li ng-repeat="tarea in grTrab">
-		     <span class="hecho-{{tarea.hecho}}" >{{tarea.trb_name}} </span>
-				<span class="glyphicon glyphicon-trash" ng-click="eliminarPtrabajo(0,$index)">&times;</span>
-		   </li>
-		</ul>
-    </div><!--Fin Equipo de Trabajo--> 
-    	 
-    <div id="menu5" class="tab-pane fade"> <!--Inicio Contratados--> 
-      <h3>Contratados</h3>
-      <form ng-app="" name="myForm">
-      	<input class="form-control" list="browsers" type="text" id="InpEqInv" ng-model="nuevoInv" placeholder="Title...">  					
-			<span class="glyphicon glyphicon-plus" ng-click="agregarTarea(0);"></span>
-			<datalist id="browsers">		
-				<option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name}}</option>			
-			</datalist>
-	  </form>
-      		<ul class="list-unstyled">
-		      <li ng-repeat="tarea in tareas">
-		          <span class="hecho-{{tarea.hecho}}" >{{tarea.inv_name}} </span>
-				 <span class="glyphicon glyphicon-trash" ng-click="eliminarTarea(0,$index)"></span>
-		      </li>
-			</ul>
-    </div> <!--Fin Contratados-->
-  </div>
-</div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-  
-</div>
-</section>
-                        
-                  </div>
-                  <!-- Form to add projects -->
-                </nav>
+                        <!--Dropdown-->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle labels" href="#" id="navbardrop" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-book"></span> PROYECTOS </a>
+                            <!--Dropdown lisk-->
+                            <div class="dropdown-menu btn-light">
+                                <!-- Trigger the modal create project -->
+                                <a class="dropdown-item" href="" data-toggle="modal" data-target="#myModal">
+                                    <span class="glyphicon glyphicon-plus">Agregar</span>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="labels" href="http://investigacion.us.es/contactos">
+                                <span class="glyphicon glyphicon-phone-alt"></span> CONTACTOS </a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <!--Begining Logout-->
+                        <li>
+                            <a class="labels" href="index.html">LOGOUT
+                                <span class="glyphicon glyphicon-log-out"></span>
+                            </a>
+                        </li>
+                    </ul>
+                    <!--End Logout-->
+
+                    <!--Dropdown search begining-->
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle labels" data-toggle="dropdown" href="#">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </a>
+                            <div class="dropdown-menu">
+                                <input type="text" name="search" placeholder="Buscar" aria-describedby="sizing-addon1" ng-model="newProject.projname" />
+                                <a href="" class="glyphicon glyphicon-search labels" ng-click="GetProject()"></a>
+                            </div>
+                        </li>
+                    </ul>
+                    <!--End search-->
+                </div>
+            </nav>
             <div>
                 <div class="Wid90 OvHidden MarAuto"></div>
             </div>
@@ -189,229 +107,595 @@
                 Proyectos de investigaci&oacuten de la USE</h1>
         </div>
     </header>
-
     <section class="proyectos">
-            <div class="container">
-                <div class="row">
-                    <!--Inicio del Repeat del card-->
-                    <div ng-repeat="contact in projects"  class="col-sm">
-                        <div class="card proyecto" style="width: 18rem;">
-                                <img class="card-img-top" src="https://eldia.com.do/wp-content/uploads/2017/08/12-ECONO-1p01-1.jpg" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">{{contact.projname}} </h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Tipo: {{contact.tipo}}</h6>
-                                <p class="card-text">
-                                    <p class="h6">Responsable: {{contact.respondable}}</p>
-                                    <p class="h6">Referencia: {{contact.referencia}}</p>
-                                    <p class="h6">Fecha de Inicio: {{contact.fecha_ini}}</p>
-                                    <p class="h6">Fecha de Finalización: {{contact.fecha_fin}}</p>
-                                </p>
-                                <a href="#" class="card-link" data-toggle="modal" data-target="#exampleModalCenter" ng-click="indice($index)">Más información</a>
-                                <a href="#" class="card-link" data-toggle="modal" data-target="#ModalEdit" ng-click="indice($index)">Editar</a>
-                                
-                            </div>
+        <div class="container">
+            <div class="row">
+                <!--Inicio del Repeat del card-->
+                <div ng-repeat="contact in projects" class="col-sm">
+                    <div class="card proyecto" style="width: 18rem;">
+                        <img class="card-img-top" src="https://eldia.com.do/wp-content/uploads/2017/08/12-ECONO-1p01-1.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">{{contact.projname}} </h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Tipo: {{contact.tipo}}</h6>
+                            <p class="card-text">
+                                <p class="h6">Responsable: {{contact.respondable}}</p>
+                                <p class="h6">Referencia: {{contact.referencia}}</p>
+                                <p class="h6">Fecha de Inicio: {{contact.fecha_ini}}</p>
+                                <p class="h6">Fecha de Finalización: {{contact.fecha_fin}}</p>
+                            </p>
+                            <a href="#" class="card-link" data-toggle="modal" data-target="#ModalInfo" ng-click="indice($index)">Más información</a>
+                            <a href="#" class="card-link" data-toggle="modal" data-target="#ModalEdit" ng-click="indice($index)">Editar</a>
+
                         </div>
-                    </div><!--Fin del Repeat del card-->
-    
-                    <!--Inicio del Modal del Mostrar detalle-->
-                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    
-                                    <h5 class="modal-title" id="exampleModalLongTitle">{{OneProject.projname}} </h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-sm">
-                                                    <img src="https://eldia.com.do/wp-content/uploads/2017/08/12-ECONO-1p01-1.jpg" style="width:100%;height:250px;"/>
-                                            </div>
-                                            <div class="col-sm">
-                                                    <p>Responsable:
-                                                            <a href="/sisius/sis_showpub.php?idpers=4046">{{OneProject.respondable}}</a> 
-                                                            <br>Tipo de Proyecto/Ayuda: {{OneProject.tipo}}
-                                                            <br>Referencia: {{OneProject.referencia}}
-                                                            <br>Fecha de Inicio: {{OneProject.fecha_ini}}
-                                                            <br>Fecha de Finalización: {{OneProject.fecha_fin}}
-                                                            <br>
-                                                        </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                        
-                                    <div align="left" style="margin-left:1cm">
-                                      
-                                        <p>
-                                            <b>Empresa/Organismo financiador/es:</b>
-                                        </p>
-                                        <ul>
-                                            <li>{{OneProject.respondable}}</li>
-                                        </ul>
-                                        </ul>
-                                        <p>
-                                            <b>Equipo:</b>
-                                        </p>
-                                        <ul>
-                                            <li>Equipo de Investigación:
-                                                <ul>
-                                                    <li ng-repeat="Inv in OneProject.grInv ">
-                                                        <a href="/sisius/sis_showpub.php?idpers=4045">{{Inv.inv_name}}</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>Equipo de Trabajo:
-                                                <ul>
-                                                    <li ng-repeat="Trb in OneProject.grTrb ">
-                                                        <a href="/sisius/sis_showpub.php?idpers=4045">{{Trb.trb_name}}</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            
-                                </div>
-                            </div>
-                        </div>
-                    </div> <!--Fin del Modal del Mostrar detalle-->
-                    
-                    <!--Inicio del Modal del Mostrar editar-->
-                    <div class="modal fade" id="ModalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    
-                                    <h5 class="modal-title" id="exampleModalLongTitle">Editar {{OneProject.projname}}</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-sm">
-                                                    <img src="https://eldia.com.do/wp-content/uploads/2017/08/12-ECONO-1p01-1.jpg" style="width:100%;height:250px;"/>
-                                            </div>
-                                            <div class="col-sm">
-                                                    <p>
-                                                        <table>
-                                                            <tr>
-                                                                <td>Responsable:</td>
-                                                                <td><input type="text" name="responsable" placeholder="Responsable" ng-model="OneProject.respondable"/></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Tipo de Proyecto/Ayuda:</td>
-                                                                <td><input type="text" name="tipo" placeholder="Tipo de Proyecto" ng-model="OneProject.tipo"/> </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Referencia: </td>
-                                                                <td><input type="text" name="referencia" placeholder="Referencia" ng-model="OneProject.referencia"/> </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Fecha de Inicio:</td>
-                                                                <td><input type="text" name="fech_ini" placeholder="Fecha de Inicio" ng-model="OneProject.fecha_ini"/> </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Fecha de Finalización:</td>
-                                                                <td><input type="text" name="fech_fin" placeholder="Fecha de Finalización" ng-model="OneProject.fecha_fin"/>  </td>
-                                                            </tr>
-                                                        </table>
-    
-                                                    </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                        
-                                    <div align="left" style="margin-left:1cm">
-                                      
-                                        <p>
-                                            <b>Empresa/Organismo financiador/es:</b>
-                                        </p>
-                                        <ul>
-                                            <li>{{OneProject.respondable}}</li>
-                                        </ul>
-                                        </ul>
-                                        <p>
-                                            <b>Equipo:</b>
-                                        </p>
-                                        <li>
-                                          <datalist id="browsers">		
-                                                   <option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name}}</option>			
-                                         </datalist>
-                                         </li>
-                                         
-                                        <ul>
-                                            <li> 
-                                                <div id="myDIV" >Equipo de Investigación: 
-                                                     <input list="browsers" type="text"  ng-model="EditaInv" placeholder="Title...">  					
-                                                     <button class="btn btn-primary" ng-click="agregarTarea(1)" >Add</span>
-                                                 </div>
-                                             
-                                             
-                                                <ul  style="width:250px">
-                                                    <li ng-repeat="Inv in OneProject.grInv ">
-                                                        <a href="/sisius/sis_showpub.php?idpers=4045">{{Inv.inv_name}}</a>
-                                                        <button type="button" class="close" aria-label="Close" ng-click="eliminarTarea(1,$index)">&times;</button>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                           <datalist id="Workgroup">		<!--Lista de Trabajo -->	
-                                                <option ng-repeat="pt_name in pertrab" value="{{pt_name}}">{{pt_name}}</option>			
-                                            </datalist>                                            
-                                            </li>
-                                            <li>Equipo de Trabajo:
-                                                               <input list="Workgroup" type="text" id="InpEqTrb" ng-model="EditaTrb" placeholder="Title...">  					
-                                                               <span  ng-click="agregarPtrabajo(1);" class="addBtn">Add</span>
-                                                <ul style="width:250px">
-                                                    <li ng-repeat="Trb in OneProject.grTrb ">
-                                                        <a href="/sisius/sis_showpub.php?idpers=4045">{{Trb.trb_name}}</a>
-                                                        <button type="button" class="close" aria-label="Close" ng-click="eliminarPtrabajo(1,$index)">&times;</button>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary" ng-click="updateProject1()" data-dismiss="modal">Save</button>
-            
-                                </div>
-                            </div>
-                        </div>
-                    </div> <!--Inicio del Modal del Mostrar editar-->
+                    </div>
                 </div>
+                <!--Fin del Repeat del card-->
+
+                <!--Begining Form Project Information-->
+                <section class="projectFormInf">
+                    <div class="container">
+                        <!-- Modal -->
+                        <div class="modal fade" id="ModalInfo" role="dialog">
+                            <div class="modal-dialog modal-lg">
+                                <!--Begining modal dialog-->
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title" id="exampleModalLongTitle">Proyecto: {{OneProject.projname}} </h4>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <form name="myFormConsulta">
+                                        <div class="container">
+                                            <ul class="nav nav-tabs">
+                                                <li class="active">
+                                                    <a data-toggle="tab" href="#Inf_home">Datos generales</a>
+                                                </li>
+                                                <li>
+                                                    <a data-toggle="tab" href="#Inf_menu1">Financiaci&oacuten</a>
+                                                </li>
+                                                <li>
+                                                    <a data-toggle="tab" href="#Inf_menu2">Socios</a>
+                                                </li>
+                                                <li>
+                                                    <a data-toggle="tab" href="#Inf_menu3">Equipo de investigaci&oacuten</a>
+                                                </li>
+                                                <li>
+                                                    <a data-toggle="tab" href="#Inf_menu4">Equipo de trabajo</a>
+                                                </li>
+                                                <li>
+                                                    <a data-toggle="tab" href="#Inf_menu5">Contratados</a>
+                                                </li>
+                                            </ul>
+
+                                            <div class="tab-content">
+                                                <div id="Inf_home" class="tab-pane fade in active">
+                                                    <!--Inicio datos generales proyecto-->
+                                                    <h4>Proyecto</h4>
+
+                                                    <!-- <p>Nombre
+                                            <input class="" type="text" ng-model="OneProject.projname" name="Prjname" maxlength="100" size="60" required>
+                                        </p>-->
+                                                    <p>Tipo/ayuda
+                                                        <input class="" type="text" ng-model="OneProject.tipo" name="tipo" disabled=true maxlength="40" size="40">
+                                                    </p>
+                                                    <p>Referencia
+                                                        <input class="" type="text" ng-model="OneProject.referencia" name="referencia" disabled=true maxlength="20" size="20">
+                                                    </p>
+                                                    <p> Fecha de inicio
+                                                        <input class="" type="date" ng-model="OneProject.fecha_ini" name="fch_ini" disabled=true ng-pattern="/^(\d{4})-(\d{2})-(\d{2})$/">
+                                                    </p>
+                                                    <p> Fecha de finalizaci&oacuten
+                                                        <input class="" type="date" ng-model="OneProject.fecha_fin" name="fch_fin" disabled=true ng-pattern="/^(\d{4})-(\d{2})-(\d{2})$/">
+                                                    </p>
+                                                    <p>Responsable(es)</p>
+
+                                                    <ul class="list-unstyled">
+                                                        <li ng-repeat="tarea in OneProject.grResp">
+                                                            <span class="hecho-{{tarea.hecho}}">{{tarea.Resp_name}} </span>
+                                                        </li>
+                                                    </ul>
+
+                                                </div>
+                                                <!--Fin datos generales proyecto-->
+                                                <div id="Inf_menu1" class="tab-pane fade">
+                                                    <!--Inicio financiadores-->
+                                                    <h4>Empresa/Organismo Financiador/es</h4>
+
+                                                    <ul class="list-unstyled">
+                                                        <li ng-repeat="tarea in OneProject.grFnc">
+                                                            <span class="hecho-{{tarea.hecho}}">{{tarea.Fnc_name}} </span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--Fin financiadores-->
+                                                <div id="Inf_menu2" class="tab-pane fade">
+                                                    <!--Inicio Socios-->
+                                                    <h4>Socios</h4>
+                                                    <ul class="list-unstyled">
+                                                        <li ng-repeat="tarea in OneProject.grSoc">
+                                                            <span class="hecho-{{tarea.hecho}}">{{tarea.Soc_name}} </span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--Fin Socios-->
+                                                <div id="Inf_menu3" class="tab-pane fade">
+                                                    <!--Inicio Equipo de Investigación-->
+                                                    <h4>Investigadores</h4>
+                                                    <ul class="list-unstyled">
+                                                        <li ng-repeat="Inv in OneProject.grInv">
+                                                            <span class="hecho-{{tarea.hecho}}">{{Inv.inv_name}} </span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--Fin Equipo de Investigación-->
+                                                <div id="Inf_menu4" class="tab-pane fade">
+                                                    <!--Inicio Equipo de Trabajo-->
+                                                    <h4>Equipo de trabajo</h4>
+                                                    <ul class="list-unstyled">
+                                                        <li ng-repeat="Trb in OneProject.grTrb">
+                                                            <span class="hecho-{{tarea.hecho}}">{{Trb.trb_name}} </span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--Fin Equipo de Trabajo-->
+
+                                                <div id="Inf_menu5" class="tab-pane fade">
+                                                    <!--Inicio Contratados-->
+                                                    <h4>Contratados</h4>
+                                                    <ul class="list-unstyled">
+                                                        <li ng-repeat="tarea in OneProject.grCtr">
+                                                            <span class="hecho-{{tarea.hecho}}">{{tarea.Ctr_name}} </span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--Fin Contratados-->
+                                            </div>
+
+                                        </div>
+                                    </form>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Modal dialog end-->
+                        </div>
+                    </div>
+                </section>
+                <!-- Project Form Information End-->
+
+
+                <!--Begining Form New Project-->
+                <section class="projectForm">
+                    <div class="container">
+                        <!-- Modal -->
+                        <div class="modal fade" id="myModal" role="dialog">
+                            <div class="modal-dialog modal-lg">
+                                <!--Begining modal dialog-->
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Nuevo proyecto</h4>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <form name="myForm">
+                                        <div class="container">
+                                            <ul class="nav nav-tabs">
+                                                <li class="active">
+                                                    <a data-toggle="tab" href="#home">Datos generales</a>
+                                                </li>
+                                                <li>
+                                                    <a data-toggle="tab" href="#menu1">Financiaci&oacuten</a>
+                                                </li>
+                                                <li>
+                                                    <a data-toggle="tab" href="#menu2">Socios</a>
+                                                </li>
+                                                <li>
+                                                    <a data-toggle="tab" href="#menu3">Equipo de investigaci&oacuten</a>
+                                                </li>
+                                                <li>
+                                                    <a data-toggle="tab" href="#menu4">Equipo de trabajo</a>
+                                                </li>
+                                                <li>
+                                                    <a data-toggle="tab" href="#menu5">Contratados</a>
+                                                </li>
+                                            </ul>
+
+                                            <div class="tab-content">
+                                                <div id="home" class="tab-pane fade in active">
+                                                    <!--Inicio datos generales proyecto-->
+                                                    <h4>Proyecto</h4>
+
+                                                    <p>Nombre
+                                                        <input class="" type="text" ng-model="newProject.projname" name="Prjname" maxlength="100" size="60" required>
+                                                    </p>
+                                                    <p>Tipo/ayuda
+                                                        <input class="" type="text" ng-model="newProject.tipo" name="tipo" maxlength="40" size="40" required>
+                                                    </p>
+                                                    <p>Referencia
+                                                        <input class="" type="text" ng-model="newProject.referencia" name="referencia" maxlength="20" size="20" required>
+                                                    </p>
+                                                    <p> Fecha de inicio
+                                                        <input class="" type="date" ng-model="newProject.fecha_ini" name="fch_ini" required>
+                                                    </p>
+                                                    <p> Fecha de finalizaci&oacuten
+                                                        <input class="" type="date" ng-model="newProject.fecha_fin" name="fch_fin" required>
+                                                    </p>
+                                                    <p>Responsable(es)
+                                                        <input class="" list="resp_list" type="text" id="InpResp" ng-model="nuevoResp" size="50" placeholder="Seleccione o agregue responsable(s)">
+                                                        <span class="glyphicon glyphicon-plus gp_color" ng-click="agregar_responsable(0)"></span>
+                                                    </p>
+                                                    <datalist id="resp_list">
+                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name}}</option>
+                                                    </datalist>
+
+                                                    <ul class="list-unstyled">
+                                                        <li ng-repeat="tarea in grResp">
+                                                            <span class="hecho-{{tarea.hecho}}">{{tarea.Resp_name}} </span>
+                                                            <span class="glyphicon glyphicon-trash gb_color" ng-click="eliminar_responsable(0,$index)"></span>
+                                                        </li>
+                                                    </ul>
+
+                                                </div>
+                                                <!--Fin datos generales proyecto-->
+                                                <div id="menu1" class="tab-pane fade">
+                                                    <!--Inicio financiadores-->
+                                                    <h4>Empresa/Organismo Financiador/es</h4>
+
+                                                    <p>Indique financiadores
+                                                        <input class="" list="financial_list" type="text" id="InpFnc" ng-model="nuevoFnc" size="50" placeholder="Seleccione o agregue financiador">
+                                                        <span class="glyphicon glyphicon-plus gp_color" ng-click="agregar_financiador(0)"></span>
+                                                    </p>
+                                                    <datalist id="financial_list">
+                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name}}</option>
+                                                    </datalist>
+
+                                                    <ul class="list-unstyled">
+                                                        <li ng-repeat="tarea in grFnc">
+                                                            <span class="hecho-{{tarea.hecho}}">{{tarea.Fnc_name}} </span>
+                                                            <span class="glyphicon glyphicon-trash gb_color" ng-click="eliminar_financiador(0,$index)"></span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--Fin financiadores-->
+                                                <div id="menu2" class="tab-pane fade">
+                                                    <!--Inicio Socios-->
+                                                    <h4>Socios</h4>
+
+                                                    <p>Indique socios
+                                                        <input class="" list="socio_list" type="text" id="InpSoc" ng-model="nuevoSoc" size="50" placeholder="Seleccione o agregue socios">
+                                                        <span class="glyphicon glyphicon-plus gp_color" ng-click="agregar_socio(0)"></span>
+                                                    </p>
+                                                    <datalist id="socio_list">
+                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name}}</option>
+                                                    </datalist>
+
+                                                    <ul class="list-unstyled">
+                                                        <li ng-repeat="tarea in grSoc">
+                                                            <span class="hecho-{{tarea.hecho}}">{{tarea.Soc_name}} </span>
+                                                            <span class="glyphicon glyphicon-trash gb_color" ng-click="eliminar_socio(0,$index)"></span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--Fin Socios-->
+                                                <div id="menu3" class="tab-pane fade">
+                                                    <!--Inicio Equipo de Investigación-->
+                                                    <h4>Investigadores</h4>
+
+                                                    <p>Indique los investigadores
+                                                        <input class="" list="browsers" type="text" id="InpEqInv" ng-model="nuevoInv" size="50" placeholder="Seleccione o agregue investigadores">
+                                                        <span class="glyphicon glyphicon-plus gp_color" ng-click="agregarTarea(0)"></span>
+                                                    </p>
+                                                    <datalist id="browsers">
+                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name}}</option>
+                                                    </datalist>
+
+                                                    <ul class="list-unstyled">
+                                                        <li ng-repeat="tarea in tareas">
+                                                            <span class="hecho-{{tarea.hecho}}">{{tarea.inv_name}} </span>
+                                                            <span class="glyphicon glyphicon-trash gb_color" ng-click="eliminarTarea(0,$index)"></span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--Fin Equipo de Investigación-->
+                                                <div id="menu4" class="tab-pane fade">
+                                                    <!--Inicio Equipo de Trabajo-->
+                                                    <h4>Equipo de trabajo</h4>
+
+                                                    <p>Indique el equipo de trabajo
+                                                        <input class="" list="Workgroup" type="text" id="InpEqTrb" ng-model="nuevoTrb" size="50" placeholder="Seleccione o agregue equipo de trabajo">
+                                                        <span class="glyphicon glyphicon-plus gp_color" ng-click="agregarPtrabajo(0)"></span>
+                                                    </p>
+
+                                                    <datalist id="Workgroup">
+                                                        <!--Lista de Trabajo -->
+                                                        <option ng-repeat="pt_name in pertrab" value="{{pt_name}}">{{pt_name}}</option>
+                                                    </datalist>
+
+                                                    <ul class="list-unstyled">
+                                                        <li ng-repeat="tarea in grTrab">
+                                                            <span class="hecho-{{tarea.hecho}}">{{tarea.trb_name}} </span>
+                                                            <span class="glyphicon glyphicon-trash gb_color" ng-click="eliminarPtrabajo(0,$index)"></span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--Fin Equipo de Trabajo-->
+
+                                                <div id="menu5" class="tab-pane fade">
+                                                    <!--Inicio Contratados-->
+                                                    <h4>Contratados</h4>
+
+                                                    <p>Indique los contratados
+                                                        <input class="" list="ctr_list" type="text" id="InpCtr" ng-model="nuevoCtr" size="50" placeholder="Seleccione o agregue contratados">
+                                                        <span class="glyphicon glyphicon-plus gp_color" ng-click="agregarP_contratado(0);"></span>
+                                                    </p>
+                                                    <datalist id="ctr_list">
+                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name}}</option>
+                                                    </datalist>
+
+                                                    <ul class="list-unstyled">
+                                                        <li ng-repeat="tarea in grCtr">
+                                                            <span class="hecho-{{tarea.hecho}}">{{tarea.Ctr_name}} </span>
+                                                            <span class="glyphicon glyphicon-trash gb_color" ng-click="eliminarP_contratado(0,$index)"></span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--Fin Contratados-->
+                                            </div>
+
+                                        </div>
+                                    </form>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        <button type="button" ng-disabled="!myForm.$valid" class="btn btn-primary" ng-click="addProject()" data-dismiss="modal">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Modal dialog end-->
+                        </div>
+                    </div>
+                </section>
+                <!--New Project Form End-->
+
+                <!--Begining Project Form  Edition-->
+                <section class="projectFormEdit">
+                    <div class="container">
+                        <!-- Modal -->
+                        <div class="modal fade" id="ModalEdit" role="dialog">
+                            <div class="modal-dialog modal-lg">
+                                <!--Begining modal dialog-->
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title" id="exampleModalLongTitle">Editando: {{OneProject.projname}}</h4>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <form name="myFormEdit">
+                                        <div class="container">
+                                            <ul class="nav nav-tabs">
+                                                <li class="active">
+                                                    <a data-toggle="tab" href="#edit_home">Datos generales</a>
+                                                </li>
+                                                <li>
+                                                    <a data-toggle="tab" href="#edit_menu1">Financiaci&oacuten</a>
+                                                </li>
+                                                <li>
+                                                    <a data-toggle="tab" href="#edit_menu2">Socios</a>
+                                                </li>
+                                                <li>
+                                                    <a data-toggle="tab" href="#edit_menu3">Equipo de investigaci&oacuten</a>
+                                                </li>
+                                                <li>
+                                                    <a data-toggle="tab" href="#edit_menu4">Equipo de trabajo</a>
+                                                </li>
+                                                <li>
+                                                    <a data-toggle="tab" href="#edit_menu5">Contratados</a>
+                                                </li>
+                                            </ul>
+
+                                            <div class="tab-content">
+                                                <div id="edit_home" class="tab-pane fade in active">
+                                                    <!--Inicio datos generales proyecto-->
+                                                    <h4>Proyecto</h4>
+
+                                                    <!--<p>Nombre
+                                                        <input class="" type="text" ng-model="OneProject.projname" name="Prjname" disabled=true maxlength="100" size="60">
+                                                    </p>-->
+                                                    <p>Tipo/ayuda
+                                                        <input class="" type="text" ng-model="OneProject.tipo" name="tipo" maxlength="40" size="40" required>
+                                                    </p>
+                                                    <p>Referencia
+                                                        <input class="" type="text" ng-model="OneProject.referencia" name="referencia" maxlength="20" size="20" required>
+                                                    </p>
+                                                    <p> Fecha de inicio
+                                                        <input class="" type="date" ng-model="OneProject.fecha_ini" name="fch_ini" required>
+                                                    </p>
+                                                    <p> Fecha de finalizaci&oacuten
+                                                        <input class="" type="date" ng-model="OneProject.fecha_fin" name="fch_fin" required>
+                                                    </p>
+                                                    <p>Responsable(es)
+                                                        <input class="" list="respEdita_list" type="text" id="InpResp" ng-model="EditaResp" size="50" placeholder="Seleccione o agregue responsable(s)">
+                                                        <span class="glyphicon glyphicon-plus gp_color" ng-click="agregar_responsable(1)"></span>
+                                                    </p>
+                                                    <datalist id="respEdita_list">
+                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name}}</option>
+                                                    </datalist>
+
+                                                    <ul class="list-unstyled">
+                                                        <li ng-repeat="tarea in OneProject.grResp">
+                                                            <span class="hecho-{{tarea.hecho}}">{{tarea.Resp_name}} </span>
+                                                            <span class="glyphicon glyphicon-trash gb_color" ng-click="eliminar_responsable(1,$index)"></span>
+                                                        </li>
+                                                    </ul>
+
+                                                </div>
+                                                <!--Fin datos generales proyecto-->
+                                                <div id="edit_menu1" class="tab-pane fade">
+                                                    <!--Inicio financiadores-->
+                                                    <h4>Empresa/Organismo Financiador/es</h4>
+
+                                                    <p>Indique financiadores
+                                                        <input class="" list="FncEdita_list" type="text" id="InpFnc" ng-model="EditaFnc" size="50" placeholder="Seleccione o agregue financiador">
+                                                        <span class="glyphicon glyphicon-plus gp_color" ng-click="agregar_financiador(1)"></span>
+                                                    </p>
+                                                    <datalist id="FncEdita_list">
+                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name}}</option>
+                                                    </datalist>
+
+                                                    <ul class="list-unstyled">
+                                                        <li ng-repeat="tarea in OneProject.grFnc">
+                                                            <span class="hecho-{{tarea.hecho}}">{{tarea.Fnc_name}} </span>
+                                                            <span class="glyphicon glyphicon-trash gb_color" ng-click="eliminar_financiador(1,$index)"></span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--Fin financiadores-->
+                                                <div id="edit_menu2" class="tab-pane fade">
+                                                    <!--Inicio Socios-->
+                                                    <h4>Socios</h4>
+
+                                                    <p>Indique socios
+                                                        <input class="" list="socioEdita_list" type="text" id="InpSoc" ng-model="EditaSoc" size="50" placeholder="Seleccione o agregue socios">
+                                                        <span class="glyphicon glyphicon-plus gp_color" ng-click="agregar_socio(1)"></span>
+                                                    </p>
+                                                    <datalist id="socioEdita_list">
+                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name}}</option>
+                                                    </datalist>
+
+                                                    <ul class="list-unstyled">
+                                                        <li ng-repeat="tarea in OneProject.grSoc">
+                                                            <span class="hecho-{{tarea.hecho}}">{{tarea.Soc_name}} </span>
+                                                            <span class="glyphicon glyphicon-trash gb_color" ng-click="eliminar_socio(1,$index)"></span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--Fin Socios-->
+                                                <div id="edit_menu3" class="tab-pane fade">
+                                                    <!--Inicio Equipo de Investigación-->
+                                                    <h4>Investigadores</h4>
+
+                                                    <p>Indique los investigadores
+                                                        <input class="" list="invest_edita" type="text" id="InpEqInv" ng-model="EditaInv" size="50" placeholder="Seleccione o agregue investigadores">
+                                                        <span class="glyphicon glyphicon-plus gp_color" ng-click="agregarTarea(1)"></span>
+                                                    </p>
+                                                    <datalist id="invest_edita">
+                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name}}</option>
+                                                    </datalist>
+
+                                                    <ul class="list-unstyled">
+                                                        <li ng-repeat="Inv in OneProject.grInv">
+                                                            <span class="hecho-{{tarea.hecho}}">{{Inv.inv_name}} </span>
+                                                            <span class="glyphicon glyphicon-trash gb_color" ng-click="eliminarTarea(1,$index)"></span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--Fin Equipo de Investigación-->
+                                                <div id="edit_menu4" class="tab-pane fade">
+                                                    <!--Inicio Equipo de Trabajo-->
+                                                    <h4>Equipo de trabajo</h4>
+
+                                                    <p>Indique el equipo de trabajo
+                                                        <input class="" list="teamgroup" type="text" id="InpEqTrb" ng-model="EditaTrb" size="50" placeholder="Seleccione o agregue equipo de trabajo">
+                                                        <span class="glyphicon glyphicon-plus gp_color" ng-click="agregarPtrabajo(1)"></span>
+                                                    </p>
+
+                                                    <datalist id="teamgroup">
+                                                        <!--Lista de Trabajo -->
+                                                        <option ng-repeat="pt_name in pertrab" value="{{pt_name}}">{{pt_name}}</option>
+                                                    </datalist>
+
+                                                    <ul class="list-unstyled">
+                                                        <li ng-repeat="Trb in OneProject.grTrb">
+                                                            <span class="hecho-{{tarea.hecho}}">{{Trb.trb_name}} </span>
+                                                            <span class="glyphicon glyphicon-trash gb_color" ng-click="eliminarPtrabajo(1,$index)"></span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--Fin Equipo de Trabajo-->
+
+                                                <div id="edit_menu5" class="tab-pane fade">
+                                                    <!--Inicio Contratados-->
+                                                    <h4>Contratados</h4>
+
+                                                    <p>Indique los contratados
+                                                        <input class="" list="ctrEdita_list" type="text" id="InpCtr" ng-model="EditaCtr" size="50" placeholder="Seleccione o agregue contratados">
+                                                        <span class="glyphicon glyphicon-plus gp_color" ng-click="agregarP_contratado(1);"></span>
+                                                    </p>
+                                                    <datalist id="ctrEdita_list">
+                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name}}</option>
+                                                    </datalist>
+
+                                                    <ul class="list-unstyled">
+                                                        <li ng-repeat="tarea in OneProject.grCtr">
+                                                            <span class="hecho-{{tarea.hecho}}">{{tarea.Ctr_name}} </span>
+                                                            <span class="glyphicon glyphicon-trash gb_color" ng-click="eliminarP_contratado(1,$index)"></span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--Fin Contratados-->
+                                            </div>
+
+                                        </div>
+                                    </form>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                        <button type="button" class="btn btn-secundary" ng-click="delProject(OneProject.projname)" data-dismiss="modal">Eliminar</button>
+                                        <button type="button" ng-disabled="!myFormEdit.$valid" class="btn btn-primary" ng-click="updateProject1()" data-dismiss="modal">Actualizar</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Modal dialog end-->
+                        </div>
+                    </div>
+                </section>
+                <!--Project Form Edition End-->
+
             </div>
-        </section>
-    
+        </div>
+    </section>
+
     <footer>
 
         <div>
             Universidad de Sevilla. C/ S. Fernando, 4, C.P. 41004-Sevilla, España. Centralita exterior: 954551000
         </div>
-         <!--Social sharing-->
-         <aside class="social-sharing">
-                <ul class="menu-social">
-                    <li class="social-item"><a title="Twitter" href="https://twitter.com/unisevilla" target="_blank"><span class="screen-reader-text">Twitter</span></a></li>
-                    <li class="social-item"><a title="Facebook" href="https://www.facebook.com/UniversidaddeSevillaoficial" target="_blank"><span class="screen-reader-text">Facebook</span></a></li>
-                    <li class="social-item"><a title="YouTube" href="http://www.youtube.com/universidaddesevilla" target="_blank"><span class="screen-reader-text">YouTube</span></a></li>
-                    <li class="social-item"><a title="Instagram" href="https://www.instagram.com/unisevilla/" target="_blank" data-action="share/whatsapp/share"><span class="screen-reader-text">Instagram</span></a></li>
-                </ul>
+        <!--Social sharing-->
+        <aside class="social-sharing">
+            <ul class="menu-social">
+                <li class="social-item">
+                    <a title="Twitter" href="https://twitter.com/unisevilla" target="_blank">
+                        <span class="screen-reader-text">Twitter</span>
+                    </a>
+                </li>
+                <li class="social-item">
+                    <a title="Facebook" href="https://www.facebook.com/UniversidaddeSevillaoficial" target="_blank">
+                        <span class="screen-reader-text">Facebook</span>
+                    </a>
+                </li>
+                <li class="social-item">
+                    <a title="YouTube" href="http://www.youtube.com/universidaddesevilla" target="_blank">
+                        <span class="screen-reader-text">YouTube</span>
+                    </a>
+                </li>
+                <li class="social-item">
+                    <a title="Instagram" href="https://www.instagram.com/unisevilla/" target="_blank" data-action="share/whatsapp/share">
+                        <span class="screen-reader-text">Instagram</span>
+                    </a>
+                </li>
+            </ul>
         </aside>
 
     </footer>
 
 </body>
 <script>
-        $(document).ready(function(){
-            $(".dropdown-toggle").dropdown();
-        });
+    $(document).ready(function () {
+        $(".dropdown-toggle").dropdown();
+    });
 </script>
+
 </html>

@@ -121,72 +121,140 @@
                     </div>
                 </div><!--Fin del Repeat del card-->
 
-                <!--Inicio del Modal del Mostrar detalle-->
-                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title" id="exampleModalLongTitle">{{OneProject.projname}} </h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                                <img src="https://eldia.com.do/wp-content/uploads/2017/08/12-ECONO-1p01-1.jpg" class="img-modal"/>
+                <!--Begining Form Project Information-->
+                <section class="projectFormInf">
+                    <div class="container">
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModalCenter" role="dialog">
+                            <div class="modal-dialog modal-lg">
+                                <!--Begining modal dialog-->
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title" id="exampleModalLongTitle">Proyecto: {{OneProject.projname}} </h4>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <form name="myFormConsulta">
+                                        <div class="container">
+                                            <ul class="nav nav-tabs">
+                                                <li class="active">
+                                                    <a data-toggle="tab" href="#Inf_home">Datos generales</a>
+                                                </li>
+                                                <li>
+                                                    <a data-toggle="tab" href="#Inf_menu1">Financiaci&oacuten</a>
+                                                </li>
+                                                <li>
+                                                    <a data-toggle="tab" href="#Inf_menu2">Socios</a>
+                                                </li>
+                                                <li>
+                                                    <a data-toggle="tab" href="#Inf_menu3">Equipo de investigaci&oacuten</a>
+                                                </li>
+                                                <li>
+                                                    <a data-toggle="tab" href="#Inf_menu4">Equipo de trabajo</a>
+                                                </li>
+                                                <li>
+                                                    <a data-toggle="tab" href="#Inf_menu5">Contratados</a>
+                                                </li>
+                                            </ul>
+
+                                            <div class="tab-content">
+                                                <div id="Inf_home" class="tab-pane fade in active">
+                                                    <!--Inicio datos generales proyecto-->
+                                                    <h4>Proyecto</h4>
+
+                                                    <!-- <p>Nombre
+                                            <input class="" type="text" ng-model="OneProject.projname" name="Prjname" maxlength="100" size="60" required>
+                                        </p>-->
+                                                    <p>Tipo/ayuda
+                                                        <input class="" type="text" ng-model="OneProject.tipo" name="tipo" disabled=true maxlength="40" size="40">
+                                                    </p>
+                                                    <p>Referencia
+                                                        <input class="" type="text" ng-model="OneProject.referencia" name="referencia" disabled=true maxlength="20" size="20">
+                                                    </p>
+                                                    <p> Fecha de inicio
+                                                        <input class="" type="date" ng-model="OneProject.fecha_ini" name="fch_ini" disabled=true ng-pattern="/^(\d{4})-(\d{2})-(\d{2})$/">
+                                                    </p>
+                                                    <p> Fecha de finalizaci&oacuten
+                                                        <input class="" type="date" ng-model="OneProject.fecha_fin" name="fch_fin" disabled=true ng-pattern="/^(\d{4})-(\d{2})-(\d{2})$/">
+                                                    </p>
+                                                    <p>Responsable(es)</p>
+
+                                                    <ul class="list-unstyled">
+                                                        <li ng-repeat="tarea in OneProject.grResp">
+                                                            <span class="hecho-{{tarea.hecho}}">{{tarea.Resp_name}} </span>
+                                                        </li>
+                                                    </ul>
+
+                                                </div>
+                                                <!--Fin datos generales proyecto-->
+                                                <div id="Inf_menu1" class="tab-pane fade">
+                                                    <!--Inicio financiadores-->
+                                                    <h4>Empresa/Organismo Financiador/es</h4>
+
+                                                    <ul class="list-unstyled">
+                                                        <li ng-repeat="tarea in OneProject.grFnc">
+                                                            <span class="hecho-{{tarea.hecho}}">{{tarea.Fnc_name}} </span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--Fin financiadores-->
+                                                <div id="Inf_menu2" class="tab-pane fade">
+                                                    <!--Inicio Socios-->
+                                                    <h4>Socios</h4>
+                                                    <ul class="list-unstyled">
+                                                        <li ng-repeat="tarea in OneProject.grSoc">
+                                                            <span class="hecho-{{tarea.hecho}}">{{tarea.Soc_name}} </span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--Fin Socios-->
+                                                <div id="Inf_menu3" class="tab-pane fade">
+                                                    <!--Inicio Equipo de Investigación-->
+                                                    <h4>Investigadores</h4>
+                                                    <ul class="list-unstyled">
+                                                        <li ng-repeat="Inv in OneProject.grInv">
+                                                            <span class="hecho-{{tarea.hecho}}">{{Inv.inv_name}} </span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--Fin Equipo de Investigación-->
+                                                <div id="Inf_menu4" class="tab-pane fade">
+                                                    <!--Inicio Equipo de Trabajo-->
+                                                    <h4>Equipo de trabajo</h4>
+                                                    <ul class="list-unstyled">
+                                                        <li ng-repeat="Trb in OneProject.grTrb">
+                                                            <span class="hecho-{{tarea.hecho}}">{{Trb.trb_name}} </span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--Fin Equipo de Trabajo-->
+
+                                                <div id="Inf_menu5" class="tab-pane fade">
+                                                    <!--Inicio Contratados-->
+                                                    <h4>Contratados</h4>
+                                                    <ul class="list-unstyled">
+                                                        <li ng-repeat="tarea in OneProject.grCtr">
+                                                            <span class="hecho-{{tarea.hecho}}">{{tarea.Ctr_name}} </span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--Fin Contratados-->
+                                            </div>
+
                                         </div>
-                                        <div class="col-md-9">
-                                                <p>Responsable:
-                                                        <a href="/sisius/sis_showpub.php?idpers=4046">{{OneProject.respondable}}</a> 
-                                                        <br>Tipo de Proyecto/Ayuda: {{OneProject.tipo}}
-                                                        <br>Referencia: {{OneProject.referencia}}
-                                                        <br>Fecha de Inicio: {{OneProject.fecha_ini}}
-                                                        <br>Fecha de Finalización: {{OneProject.fecha_fin}}
-                                                        <br>
-                                                 </p>
-                                        </div>
+                                    </form>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+
                                     </div>
                                 </div>
-                                    
-                                <div align="left" style="margin-left:1cm">
-                                  
-                                    <p>
-                                        <b>Empresa/Organismo financiador/es:</b>
-                                    </p>
-                                    <ul>
-                                        <li>{{OneProject.respondable}}</li>
-                                    </ul>
-                                    </ul>
-                                    <p>
-                                        <b>Equipo:</b>
-                                    </p>
-                                    <ul>
-                                        <li>Equipo de Investigación:
-                                            <ul>
-                                                <li ng-repeat="Inv in OneProject.grInv ">
-                                                    <a href="/sisius/sis_showpub.php?idpers=4045">{{Inv.inv_name}}</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>Equipo de Trabajo:
-                                            <ul>
-                                                <li ng-repeat="Trb in OneProject.grTrb ">
-                                                    <a href="/sisius/sis_showpub.php?idpers=4045">{{Trb.trb_name}}</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </div>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-        
-                            </div>
+                            <!--Modal dialog end-->
                         </div>
                     </div>
-                </div> <!--Fin del Modal del Mostrar detalle-->
+                </section>
+                <!-- Project Form Information End-->
             </div>
         </div>
     </section>
