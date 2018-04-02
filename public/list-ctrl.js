@@ -133,7 +133,7 @@ angular
                 });
         }
         
-        $scope.delProject = function (){
+        /*$scope.delProject = function (){
             
             $http
                 .delete("/api/v1/projects/"+$scope.newProject.projname , $scope.deleteProject)
@@ -147,7 +147,7 @@ angular
                         alert("Not Found")
                     
                 });
-        }
+        } */
         
         $scope.delProject = function (_name){
             
@@ -168,7 +168,7 @@ angular
         $scope.updateProject1 = function (){
             
             $http
-                .put("/api/v1/projects/"+$scope.OneProject.projname , $scope.OneProject)
+                .put("/api/v1/projects/"+$scope.OneProject.referencia , $scope.OneProject)
                 .then(function (response){
                     refresh(); 
                     if(response.status==200)
@@ -415,45 +415,45 @@ angular
         $scope.grResp=[];
         $scope.agregar_responsable = function (_op) {
     
-    if(_op === 0){
-        
-        if ($scope.nuevoResp != null)
-        
-                $scope.grResp.push({Resp_name: $scope.nuevoResp});
-                $scope.nuevoResp = null;
-    }
-    else{
-        if(_op === 1){
-             if ($scope.EditaResp != null)
-               $scope.OneProject.grResp.push({Resp_name: $scope.EditaResp});
-                $scope.EditaResp = null;
-            
-        }
-    }
+            if(_op === 0){
+                
+                if ($scope.nuevoResp != null)
+                
+                        $scope.grResp.push({Resp_name: $scope.nuevoResp});
+                        $scope.nuevoResp = null;
+            }
+            else{
+                if(_op === 1){
+                     if ($scope.EditaResp != null)
+                       $scope.OneProject.grResp.push({Resp_name: $scope.EditaResp});
+                        $scope.EditaResp = null;
+                    
+                }
+            }
 }
 
         $scope.eliminar_responsable = function (_op,_index) {
-    if(_op === 0){
-          if (_index === 0 && $scope.grResp.length > 0){
-                $scope.grResp.splice(0,1)
+            if(_op === 0){
+                  if (_index === 0 && $scope.grResp.length > 0){
+                        $scope.grResp.splice(0,1)
+                    }
+                    else{
+                        $scope.grResp.splice(_index,1)
+                    }				    
             }
             else{
-                $scope.grResp.splice(_index,1)
-            }				    
-    }
-    else{
-        if(_op === 1){
-            
-            if (_index === 0 && $scope.OneProject.grResp.length > 0){
-                $scope.OneProject.grResp.splice(0,1)
+                if(_op === 1){
+                    
+                    if (_index === 0 && $scope.OneProject.grResp.length > 0){
+                        $scope.OneProject.grResp.splice(0,1)
+                    }
+                    else{
+                        $scope.OneProject.grResp.splice(_index,1)
+                        
+                    }
+                    
+                }
             }
-            else{
-                $scope.OneProject.grResp.splice(_index,1)
-                
-            }
-            
-        }
-    }
         
         
 }

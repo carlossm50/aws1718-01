@@ -17,22 +17,22 @@ app.use(bodyParser.json());
 app.get(baseAPI + "/projects", (request, response) => {
     console.log("GET /projects"); 
     
-    projects.allContacts((err,contacts)=>{
-        response.send(contacts);    
+    projects.allProjects((err,projects)=>{
+        response.send(projects);    
     });
 });
 
 app.post(baseAPI + "/projects", (request, response) => {
     console.log("POST /projects");
-    var contact = request.body;
+    var project = request.body;
      var name = request.body.projname;
      
-    projects.get(name,(err,contacts)=>{
-        if (contacts.length != 0) {
+    projects.get(name,(err,projects)=>{
+        if (projects.length != 0) {
             response.sendStatus(409);
         }
         else {
-            projects.add(contact);
+            projects.add(project);
             response.sendStatus(201)
         }
     });
@@ -54,23 +54,23 @@ app.delete(baseAPI + "/projects", (request, response) => {
 
 });
 
-app.get(baseAPI + "/projects/:projname", (request, response) => {
-    console.log("GET /projects/"+request.params.projname);
-    var name = request.params.projname;
+app.get(baseAPI + "/projects/:referencia", (request, response) => {
+    console.log("GET /projects/"+request.params.referencia);
+    var name = request.params.referencia;
 
-    projects.get(name,(err,contacts)=>{
-        if (contacts.length === 0) {
+    projects.get(name,(err,projects)=>{
+        if (projects.length === 0) {
             response.sendStatus(404);
         }
         else {
-            response.send(contacts); 
+            response.send(projects); 
         }
     });
 });
 
 
-app.delete(baseAPI + "/projects/:projname", (request, response) => {
-    var name = request.params.projname;
+app.delete(baseAPI + "/projects/:referencia", (request, response) => {
+    var name = request.params.referencia;
 
     projects.remove(name,(err,numRemoved)=>{
         console.log("projects removed:"+numRemoved);
@@ -84,11 +84,11 @@ app.delete(baseAPI + "/projects/:projname", (request, response) => {
 });
 
 
-app.put(baseAPI + "/projects/:projname", (request, response) => {
-    var name = request.params.projname;
-    var updatedContact = request.body;
+app.put(baseAPI + "/projects/:referencia", (request, response) => {
+    var name = request.params.referencia;
+    var updatedProject = request.body;
 
-    projects.update(name, updatedContact ,(err,numUpdates) => {
+    projects.update(name, updatedProject ,(err,numUpdates) => {
         console.log("projects updated:"+numUpdates);
         if (numUpdates === 0) {
             response.sendStatus(404);    
