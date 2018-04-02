@@ -86,15 +86,19 @@ angular
                         refresh();  
                         if(response.status==201)
                         alert("Created successfully")
-                        //limpiar_newProject();
+                        
                         $scope.limpiar_newProject();
                 })
                 .catch(function(rejection){
                     if(rejection.status==409)
                             alert("Conflict in data");
-                    else
+                    else{
                         if(rejection.status==405)
                             alert("Method Not Allowed")
+                        else 
+                            if(rejection.status==503)
+                            alert("Internal error  ");
+                    }
                     $scope.limpiar_newProject();
                 });
             

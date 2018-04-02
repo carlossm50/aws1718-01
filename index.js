@@ -24,22 +24,24 @@ app.get(baseAPI + "/projects", (request, response) => {
 
 app.post(baseAPI + "/projects", (request, response) => {
     console.log("POST /projects");
-    var project = request.body;
-     var name = request.body.projname;
+    var newproject = request.body;
+     var name = request.body.referencia;
      
-    projects.get(name,(err,projects)=>{
-        if (projects.length != 0) {
-            response.sendStatus(409);
-        }
-        else {
-            projects.add(project);
-            response.sendStatus(201)
-        }
+    projects.get(name,(err,project)=>{
+            if (project.length != 0) {
+                response.sendStatus(409);
+            }
+            else {
+                projects.add(newproject);
+                response.sendStatus(201)
+            }
+        
+ 
     });
     
 });
 
-app.post(baseAPI  + "/projects/:projname", (request, response) => {
+app.post(baseAPI  + "/projects/:referencia", (request, response) => {
     console.log("POS /projects");
     response.sendStatus(405);    
 });
