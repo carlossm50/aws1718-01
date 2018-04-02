@@ -33,7 +33,7 @@ app.post(baseAPI + "/projects", (request, response) => {
             }
             else {
                 projects.add(newproject);
-                response.sendStatus(201)
+                response.sendStatus(201);
             }
         
  
@@ -51,7 +51,12 @@ app.delete(baseAPI + "/projects", (request, response) => {
 
     projects.removeAll((err,numRemoved)=>{
         console.log("projects removed:"+numRemoved);
-        response.sendStatus(200);    
+        if (!err){
+            response.sendStatus(200);
+        }
+        else{
+            response.sendStatus(500);
+        }
     });
 
 });
@@ -76,10 +81,14 @@ app.delete(baseAPI + "/projects/:referencia", (request, response) => {
 
     projects.remove(name,(err,numRemoved)=>{
         console.log("projects removed:"+numRemoved);
-        if(numRemoved != 0)
-        response.sendStatus(200)
-        else
-          response.sendStatus(404)
+        
+            if(numRemoved != 0){
+                response.sendStatus(200);
+            }
+            else{
+              response.sendStatus(404);
+                
+            }
     });
 
     console.log("DELETE /projects/" + name);

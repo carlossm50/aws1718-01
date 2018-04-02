@@ -24,16 +24,16 @@ describe('Projects', function() {
         });
     });
     
-    describe('#allContacts()', function() {
-        it('should return all contacts', function(done) {
-            projects.allContacts((err, res) => {
+    describe('#allProjects()', function() {
+        it('should return all projects', function(done) {
+            projects.allProjects((err, res) => {
                 if (err) {
                     return done(err);
                 }
                 
                 expect(res).to.have.lengthOf(2);
-                expect(res).to.contain.an.item.with.property('projname', 'proyecto1');
-                expect(res).to.contain.an.item.with.property('projname', 'proyecto2');
+                expect(res).to.contain.an.item.with.property('referencia', 'proyecto-1');
+                expect(res).to.contain.an.item.with.property('referencia', 'proyecto-2');
                 done();
             });
         });
@@ -41,18 +41,18 @@ describe('Projects', function() {
     
     describe('#remove()', function() {
         it('should remove the element', function(done) {
-            projects.remove('proyecto1', (err) => {
+            projects.remove('proyecto-1', (err) => {
                 if (err) {
                     return done(err);
                 }
                 
-                projects.allContacts((err,res) => {
+                projects.allProjects((err,res) => {
                     if (err) {
                         return done(err);
                     }
                     
                     expect(res).to.have.lengthOf(1);
-                    expect(res).not.to.contain.an.item.with.property('projname', 'proyecto1');
+                    expect(res).not.to.contain.an.item.with.property('referencia', 'proyecto-1');
                     done();
                 });
             });

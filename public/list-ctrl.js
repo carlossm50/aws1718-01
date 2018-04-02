@@ -1,31 +1,16 @@
 angular
     .module("ProjectListApp")
     
-    .controller("ListCtrl", function($scope,$http) {
+    .controller("ListCtrl", function($scope,$http,$filter) {
         console.log("Controller initialized");
-        $scope.perinvest = ['David Benavides Cuevas',
-            'Beatriz Bernárdez Jiménez',
-            'Margarita Cruz Risco', 
-            'Amador Durán Toro', 
-            'Pablo Fernández Montes',
-            'José María García Rodríguez',
-            'Octavio Martín Díaz', 
-            'José Antonio Parejo Maestre', 
-            'Joaquín Peña Siles', 
-            'Sergio Segura Rueda',
-            'Pablo Trinidad Martín-Arroyo'];
-        
-        $scope.pertrab = ['Cristina Cabanillas Macías',
-        'Adela del Río Ortega',
-        'José Ángel Galindo Duarte ',
-        'Jesús García Galán', 
-        'Alfonso Eduardo Márquez Chamorro', 
-        'Carlos Müller Cejás',
-        'Irene Bedilia Estrada Torres',
-        'Antonio Gámez Díaz',
-        'Antonio Manuel Gutiérrez Fernández',
-        'Ana Belén Sánchez Jerez',
-        'Javier Troya Castilla'];
+        $scope.perinvest = ['David Benavides Cuevas','Beatriz Bernárdez Jiménez','Margarita Cruz Risco', 'Amador Durán Toro', 
+                            'Pablo Fernández Montes','José María García Rodríguez','Octavio Martín Díaz', 'José Antonio Parejo Maestre', 
+                            'Joaquín Peña Siles', 'Sergio Segura Rueda','Pablo Trinidad Martín-Arroyo'];
+
+        $scope.pertrab = ['Cristina Cabanillas Macías','Adela del Río Ortega','José Ángel Galindo Duarte ','Jesús García Galán', 
+                          'Alfonso Eduardo Márquez Chamorro', 'Carlos Müller Cejás','Irene Bedilia Estrada Torres','Antonio Gámez Díaz',
+                          'Antonio Manuel Gutiérrez Fernández','Ana Belén Sánchez Jerez','Javier Troya Castilla'];
+
 		$scope.grTrab = [];
         $scope.tareas = [];
         $scope.OneProject = [];
@@ -38,9 +23,12 @@ angular
 
         $scope.GetProject = function (){
             if ($scope.Search != null){
+                 $scope.Search = $filter('uppercase')($scope.Search);
+                 alert($scope.Search);
+                 return;
                 $http.get("/api/v1/projects/"+$scope.Search)
                 .then(function (response){
-                    $scope.projects = response.data;
+                    //$scope.projects = response.data;
                     $scope.Search = null;
                 })
                 .catch(function(rejection){
@@ -415,7 +403,7 @@ angular
 				
 		}
 
-//Inicio agregar y eliminar Responsable(s)
+    //Inicio agregar y eliminar Responsable(s)
         $scope.grResp=[];
         $scope.agregar_responsable = function (_op) {
     
@@ -464,7 +452,6 @@ angular
 
         refresh();
     
-
  /*     
         $scope.updateProject = function (){
             
