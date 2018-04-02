@@ -39,13 +39,13 @@
                                 <span class="glyphicon glyphicon-th-large"></span> SISIUS </a>
                             <!--Dropdown lisk-->
                             <div class="dropdown-menu btn-light">
-                                <a class="dropdown-item" href="https://investigacion.us.es/investigacion">Investigation</a>
-                                <a class="dropdown-item" href="https://investigacion.us.es/secretariado-investigacion">Research secretariat</a>
-                                <a class="dropdown-item" href="https://investigacion.us.es/promocion">Promotion secretariat</a>
-                                <a class="dropdown-item" href="https://investigacion.us.es/scisi">SCISI secretariat</a>
-                                <a class="dropdown-item" href="https://investigacion.us.es/doctorado">Doctorate</a>
-                                <a class="dropdown-item" href="https://investigacion.us.es/area-investigacion">Investigation area</a>
-                                <a class="dropdown-item" href="https://investigacion.us.es/encuentros-jornadas">Meetings and Conferences</a>
+                                <a class="dropdown-item" href="https://investigacion.us.es/investigacion" target="_blank">Investigation</a>
+                                <a class="dropdown-item" href="https://investigacion.us.es/secretariado-investigacion" target="_blank">Research secretariat</a>
+                                <a class="dropdown-item" href="https://investigacion.us.es/promocion" target="_blank">Promotion secretariat</a>
+                                <a class="dropdown-item" href="https://investigacion.us.es/scisi" target="_blank">SCISI secretariat</a>
+                                <a class="dropdown-item" href="https://investigacion.us.es/doctorado" target="_blank">Doctorate</a>
+                                <a class="dropdown-item" href="https://investigacion.us.es/area-investigacion" target="_blank">Investigation area</a>
+                                <a class="dropdown-item" href="https://investigacion.us.es/encuentros-jornadas" target="_blank">Meetings and Conferences</a>
                             </div>
                         </li>
 
@@ -59,10 +59,16 @@
                                 <a class="dropdown-item" href="" data-toggle="modal" data-target="#myModal">
                                     <span class="glyphicon glyphicon-plus">Add</span>
                                 </a>
+                                <a class="dropdown-item" href="" data-toggle="modal" data-target="#myModalTest">
+                                    <span class="glyphicon glyphicon-duplicate">Tests</span>
+                                </a>
+                                 <a class="dropdown-item" href="" data-toggle="" data-target="">
+                                    <span class="glyphicon glyphicon-erase">Delete all</span>
+                                </a>
                             </div>
                         </li>
                         <li>
-                            <a class="labels" href="http://investigacion.us.es/contactos">
+                            <a class="labels" href="http://investigacion.us.es/contactos" target="_blank">
                                 <span class="glyphicon glyphicon-phone-alt"></span> CONTACTS </a>
                         </li>
                     </ul>
@@ -112,6 +118,10 @@
                 <div ng-repeat="projectInv in projects" class="col-sm">
                     <div class="card proyecto">
                         <img class="card-img-top" src="https://eldia.com.do/wp-content/uploads/2017/08/12-ECONO-1p01-1.jpg" alt="Card image cap">
+                         <div>
+                         <a href="#" class="card-link glyphicon glyphicon-eye-open" data-toggle="modal" data-target="#ModalInfo" ng-click="indice($index)"></a>
+                         <a href="#" class="card-link glyphicon glyphicon-pencil gpen_color" data-toggle="modal" data-target="#ModalEdit" ng-click="indice($index)"></a>
+                        </div>
                         <div class="card-body">
                             <h5 class="card-title">{{projectInv.projname}} </h5>
                             
@@ -122,8 +132,7 @@
                                 <p class="h6">Star date: {{projectInv.fecha_ini| date: 'dd/MM/yyyy'}}</p>
                                 <p class="h6">Finish date: {{projectInv.fecha_fin| date: 'dd/MM/yyyy'}}</p>
                             </p>
-                            <a href="#" class="card-link glyphicon glyphicon-eye-open" data-toggle="modal" data-target="#ModalInfo" ng-click="indice($index)"></a>
-                            <a href="#" class="card-link glyphicon glyphicon-pencil" data-toggle="modal" data-target="#ModalEdit" ng-click="indice($index)"></a>
+                            <a href="#" class="card-link glyphicon glyphicon-trash gb_color"></a>
 
                         </div>
                     </div>
@@ -143,7 +152,7 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h4 class="modal-title" id="exampleModalLongTitle">Project: {{OneProject.projname}} </h4>
-                                        <button type="button" class="close" data-dismiss="modal" title="Close">&times;</button>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
                                     </div>
                                     <form name="myFormConsulta">
                                         <div class="container">
@@ -287,7 +296,7 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h4 class="modal-title">New project</h4>
-                                        <button type="button" class="close" ng-click="limpiar_newProject()" data-dismiss="modal" title="Close">&times;</button>
+                                        <button type="button" class="close" ng-click="limpiar_newProject()" data-dismiss="modal">&times;</button>
                                     </div>
                                     <form name="myForm" style="border:0px">
                                         <div class="container">
@@ -483,7 +492,7 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h4 class="modal-title" id="exampleModalLongTitle">Editting: {{OneProject.projname}}</h4>
-                                        <button type="button" class="close" data-dismiss="modal" title="Close">&times;</button>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
                                     </div>
                                     <form name="myFormEdit">
                                         <div class="container">
@@ -513,14 +522,14 @@
                                                     <!--Beginning project general data-->
                                                     <h4>Project</h4>
 
-                                                    <!--<p>Nombre
-                                                        <input class="" type="text" ng-model="OneProject.projname" name="Prjname" disabled=true maxlength="100" size="60">
-                                                    </p>-->
+                                                    <p>Nombre
+                                                        <input class="" type="text" ng-model="OneProject.projname" name="Prjname" maxlength="100" autofocus size="60">
+                                                    </p>
                                                     <p>Type/help
-                                                        <input class="" type="text" ng-model="OneProject.tipo" name="tipo" maxlength="40" size="40" autofocus required>
+                                                        <input class="" type="text" ng-model="OneProject.tipo" name="tipo" maxlength="40" size="40" required>
                                                     </p>
                                                     <p>Reference
-                                                        <input class="" type="text" ng-model="OneProject.referencia" name="referencia" maxlength="20" size="20" required>
+                                                        <input class="" type="text" ng-model="OneProject.referencia" disabled=true name="referencia" maxlength="20" size="20" required>
                                                     </p>
                                                     <p> Start date 
                                                         <input class="" type="date" ng-model="OneProject.fecha_ini" name="fch_ini"  required>
@@ -650,7 +659,7 @@
                                     </form>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-danger" ng-click="delProject(OneProject.referencia)" data-dismiss="modal">Delete</button>
+                                        <button type="button" class="btn btn-danger" ng-click="delProject(OneProject.projname)" data-dismiss="modal">Delete</button>
                                         <button type="button" ng-disabled="!myFormEdit.$valid" class="btn btn-primary" ng-click="updateProject1()" data-dismiss="modal">Update</button>
                                     </div>
                                 </div>
@@ -660,6 +669,129 @@
                     </div>
                 </section>
                 <!--Project Form Edition End-->
+                
+                 <!--Project Test Information  projectFormTest-->
+                <section class="projectFormTest">
+                    <div class="container">
+                        <!-- Modal -->
+                        <div class="modal fade" id="myModalTest" role="dialog">
+                            <div class="modal-dialog modal-lg">
+                                <!--Begining modal dialog-->
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title" id="exampleModalLongTitle">Project tests</h4>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <form name="myFormEdit">
+                                        <div class="container">
+                                            <ul class="nav nav-tabs">
+                                                <li class="active">
+                                                    <a data-toggle="tab" href="#test_home">POSTMAN</a>
+                                                </li>
+                                                <li>
+                                                    <a data-toggle="tab" href="#test_menu1">GRUNT</a>
+                                                </li>
+                                                <li>
+                                                    <a data-toggle="tab" href="#test_menu2">TRAVIS</a>
+                                                </li>
+                                            </ul>
+
+                                            <div class="tab-content">
+                                                <div id="test_home" class="tab-pane fade in active">
+                                                    <!--Beginning project general data-->
+                                                    <h4>Postman test</h4>
+
+                                                    <p>Nombre
+                                                        <input class="" type="text" ng-model="OneProject.projname" name="Prjname" maxlength="100" autofocus size="60">
+                                                    </p>
+                                                    <p>Type/help
+                                                        <input class="" type="text" ng-model="OneProject.tipo" name="tipo" maxlength="40" size="40" required>
+                                                    </p>
+                                                    <p>Reference
+                                                        <input class="" type="text" ng-model="OneProject.referencia" disabled=true name="referencia" maxlength="20" size="20" required>
+                                                    </p>
+                                                    <p> Start date 
+                                                        <input class="" type="date" ng-model="OneProject.fecha_ini" name="fch_ini"  required>
+                                                    </p>
+                                                    <p> Finish date
+                                                        <input class="" type="date" ng-model="OneProject.fecha_fin" name="fch_fin" required>
+                                                    </p>
+                                                    <p>Responsable(s)
+                                                        <input class="" list="respEdita_list" type="text" id="InpResp" ng-model="EditaResp" size="50" placeholder="Select responsable(s)">
+                                                        <span class="glyphicon glyphicon-plus gp_color" ng-click="agregar_responsable(1)"></span>
+                                                    </p>
+                                                    <datalist id="respEdita_list">
+                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name}}</option>
+                                                    </datalist>
+
+                                                    <ul class="list-unstyled">
+                                                        <li ng-repeat="responsable in OneProject.grResp">
+                                                            <span class="glyphicon glyphicon-user gp_color"></span>
+                                                            <span>{{responsable.Resp_name}} </span>
+                                                            <span class="glyphicon glyphicon-trash gb_color" ng-click="eliminar_responsable(1,$index)"></span>
+                                                        </li>
+                                                    </ul>
+
+                                                </div>
+                                                <!--Project general  data end -->
+                                                <div id="test_menu1" class="tab-pane fade">
+                                                        <!--Beginning funders data-->
+                                                    <h4>Grunt test</h4>
+                                                    <p>
+                                                        <input class="" list="FncEdita_list" type="text" id="InpFnc" ng-model="EditaFnc" size="50" placeholder="Seleccione funder(s)">
+                                                        <span class="glyphicon glyphicon-plus gp_color" ng-click="agregar_financiador(1)"></span>
+                                                    </p>
+                                                    <datalist id="FncEdita_list">
+                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name}}</option>
+                                                    </datalist>
+                                                    <h4>Selected financier(s) </h4>
+                                                    <ul class="list-unstyled">
+                                                        <li ng-repeat="funder in OneProject.grFnc">
+                                                            <span class="glyphicon glyphicon-euro gp_color"></span>
+                                                            <span >{{funder.Fnc_name}} </span>
+                                                            <span class="glyphicon glyphicon-trash gb_color" ng-click="eliminar_financiador(1,$index)"></span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--Funder data end-->
+                                                <div id="test_menu2" class="tab-pane fade">
+                                                        <!--Beginning menbers data-->
+                                                    <h4>Travis test</h4>
+                                                    <p>
+                                                        <input class="" list="socioEdita_list" type="text" id="InpSoc" ng-model="EditaSoc" size="50" placeholder="Select member(s)">
+                                                        <span class="glyphicon glyphicon-plus gp_color" ng-click="agregar_socio(1)"></span>
+                                                    </p>
+                                                    <datalist id="socioEdita_list">
+                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name}}</option>
+                                                    </datalist>
+                                                    <h4> Selected Partner(s) </h4>
+                                                    <ul class="list-unstyled">
+                                                        <li ng-repeat="member in OneProject.grSoc">
+                                                            <span class="glyphicon glyphicon-education gp_color"></span>
+                                                            <span >{{member.Soc_name}} </span>
+                                                            <span class="glyphicon glyphicon-trash gb_color" ng-click="eliminar_socio(1,$index)"></span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                
+                                            </div>
+
+                                        </div>
+                                    </form>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-danger" ng-click="delProject(OneProject.projname)" data-dismiss="modal">Delete</button>
+                                        <button type="button" ng-disabled="!myFormEdit.$valid" class="btn btn-primary" ng-click="updateProject1()" data-dismiss="modal">Update</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Modal dialog end-->
+                        </div>
+                    </div>
+                </section>
+                <!-- Test Information End-->
 
             </div>
         </div>
