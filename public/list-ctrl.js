@@ -2,6 +2,47 @@ angular
     .module("ProjectListApp")
     
     .controller("ListCtrl", function($scope,$http,$filter) {
+        
+        
+        /*Google login*/
+           $scope.gmail={
+        username: "",
+        email: ""
+    };
+    
+    $scope.onGoogleLogin= function() {
+        var params = {
+            'clientid': '33957089096-gh0s3hcut9raumdter912kki19g651qf.apps.googleusercontent.com',
+            'coockiepolicy': 'single_host_origin',
+            'callback': function(result) {
+                if(result['status']['signed_in']) {
+                    var request = gapi.client.plus.people.get (
+                        {
+                            'userId': 'me'
+                        }
+                        
+                        
+                        );
+                        request.execute(function(resp) {
+                            $scope.$apply(function() {
+                                $scope.gmail.username = resp.displayName;
+                                $scope.gmail.email= resp.emails[0].value;
+                                $scope.g_image= resp.image.url;
+                                
+                            });
+                        
+                        });
+                }
+                
+            },
+            'approvalprompt':'force',
+            'scope':'https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/plus.profile.emails.read'
+            
+        };
+        
+        gapi.auth.signIn(params);
+    }
+        /*Google login*/
         console.log("Controller initialized");
         $scope.perinvest = ['David Benavides Cuevas','Beatriz Bernárdez Jiménez','Margarita Cruz Risco', 'Amador Durán Toro', 
                             'Pablo Fernández Montes','José María García Rodríguez','Octavio Martín Díaz', 'José Antonio Parejo Maestre', 

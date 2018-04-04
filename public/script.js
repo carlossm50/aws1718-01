@@ -1,6 +1,7 @@
 var myApp = angular.module("myApp", []);
 
 myApp.controller("myController", ["$scope", function($scope) {
+
     $scope.gmail={
         username: "",
         email: ""
@@ -38,7 +39,7 @@ myApp.controller("myController", ["$scope", function($scope) {
         
         gapi.auth.signIn(params);
     }
-    
+    /*
      $scope.facebook={
         username: "",
         email: ""
@@ -65,9 +66,8 @@ myApp.controller("myController", ["$scope", function($scope) {
             scope: 'email, user_likes',
             return_scope: true
         });
-    }
+    }*/
     
-    
-    
-    
-}]);
+}
+
+]);
