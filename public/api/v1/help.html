@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html ng-app="ProjectListApp">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Research Project Admin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="start.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="project-list-app.js"></script>
+    <script type="text/javascript" src="list-ctrl.js"></script>
+</head>
+
+<body ng-controller="ListCtrl">
+
+    <header>
+        <section class="proyectomenu">
+            <!--Menu-->
+            <nav class="menu navbar-expand-lg">
+                <div class="container-fluid">
+                    <ul class="nav navbar-nav">
+                        <li class="">
+                            <a class="labels" href="index.html">
+                                <span class="glyphicon glyphicon-home"></span> HOME </a>
+                        </li>
+                        <!--Dropdown-->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle labels" href="#" id="navbardrop" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-th-large"></span> SISIUS </a>
+                            <!--Dropdown lisk-->
+                            <div class="dropdown-menu btn-light">
+                                <a class="dropdown-item" href="https://investigacion.us.es/investigacion" target="_blank">Investigation</a>
+                                <a class="dropdown-item" href="https://investigacion.us.es/secretariado-investigacion" target="_blank">Research secretariat</a>
+                                <a class="dropdown-item" href="https://investigacion.us.es/promocion" target="_blank">Promotion secretariat</a>
+                                <a class="dropdown-item" href="https://investigacion.us.es/scisi" target="_blank">SCISI secretariat</a>
+                                <a class="dropdown-item" href="https://investigacion.us.es/doctorado" target="_blank">Doctorate</a>
+                                <a class="dropdown-item" href="https://investigacion.us.es/area-investigacion" target="_blank">Investigation area</a>
+                                <a class="dropdown-item" href="https://investigacion.us.es/encuentros-jornadas" target="_blank">Meetings and Conferences</a>
+                            </div>
+                        </li>
+
+                        <li class="active">
+                            <a class="labels" href="" data-toggle="modal" data-target="#myModalTest">
+                                    <span class="glyphicon glyphicon-duplicate">Postman test</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div>
+                <div class="Wid90 OvHidden MarAuto"></div>
+            </div>
+        </section>
+        <div class="row">
+            <a href="http://www.us.es/">
+                <img class="logo" src="img/logoUS.png">
+            </a>
+            <h1 class="test">
+                API REST-USE RESEARCH PROJECT</h1>
+        </div>
+    </header>
+
+    <section class="proyectos">
+        <div class="container">
+            <div class="row">
+
+                <!--Project Test Information  projectFormTest-->
+                <section class="projectFormTest">
+                    <div class="container">
+                        <!-- Modal -->
+                        <div class="modal fade" id="myModalTest" role="dialog">
+                            <div class="modal-dialog modal-lg">
+                                <!--Begining modal dialog-->
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title" id="modaltest">Project tests</h4>
+                                        <button type="button" class="close" data-dismiss="modal" title="Close">&times;</button>
+                                    </div>
+                                    <!--<form name="myFormTest">-->
+                                    <div class="container">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active">
+                                                <a data-toggle="tab" href="#test_home">POSTMAN</a>
+                                            </li>
+                                            <li>
+                                                <a data-toggle="tab" href="#test_menu1">GRUNT</a>
+                                            </li>
+                                            <li>
+                                                <a data-toggle="tab" href="#test_menu2">TRAVIS</a>
+                                            </li>
+                                            <li>
+                                                <a data-toggle="tab" href="#test_menu3">GITHUB</a>
+                                            </li>
+                                        </ul>
+
+                                        <div class="tab-content">
+                                            <div id="test_home" class="tab-pane fade in active">
+                                                <!--Beginning postman test information-->
+                                                <h4>Postman test</h4>
+
+                                                <p>
+                                                    Allows to create and save a request from the: workspaces build view, new button and launch screen.
+                                                </p>
+                                                <p>
+                                                    Push Postman icon to see or run test to our project.
+                                                </p>
+                                                <a href="https://documenter.getpostman.com/view/3881776/collection/RVu2nqJ4" target="_blank">
+                                                            <img class="logo" src="img/postman_icon.png">
+                                                     </a>
+                                            </div>
+                                            <!--Project general  data end -->
+                                            <div id="test_menu1" class="tab-pane fade">
+
+                                                <!--Beginning grunt test information-->
+                                                <h4>Grunt test</h4>
+                                                <p>
+                                                    Our grunt test is based on the post, get, push and delete functionalities of the API, which constitute the CRUD of the API.</p>
+
+                                                <p>To generate the test, use the grunt test command from the project terminal. Push Grunt icon to see the project</p>
+                                                <a href="https://ide.c9.io/aws1718pmb/aws1718-pmb-sandbox1" target="_blank">
+                                                            <img class="logo" src="img/cloud9-logo.svg">
+                                                     </a>
+
+                                            </div>
+                                            <!--Grunt test information end-->
+
+                                            <div id="test_menu2" class="tab-pane fade">
+                                                <!--Beginning travis test information-->
+                                                <h4>Travis CI</h4>
+                                                <p>
+                                                    Is a hosted, distributed continuous integration service used to build and test software projects hosted at GitHub.
+                                                </p>
+                                                <p>Push Travis icon to see our project test.</p>
+                                                <a href="https://travis-ci.org/carlossm50/aws1718-01" target="_blank">
+                                                            <img class="logo" src="img/travisicon.png">
+                                                     </a>
+
+                                            </div>
+                                            <!--Travis test information end-->
+
+                                            <div id="test_menu3" class="tab-pane fade">
+                                                <!--Beginning Github repository-->
+                                                <h4>Github</h4>
+                                                <p>
+                                                    Forja (collaborative development platform) to host projects using the Git version control system.
+                                                </p>
+                                                <p>Push Github icon to see our project repository.</p>
+                                                <a href="https://github.com/carlossm50/aws1718-01" target="_blank">
+                                                            <img class="logo" src="img/github.png">
+                                                     </a>
+
+                                            </div>
+                                            <!--Github repository end-->
+                                        </div>
+                                    </div>
+                                    <!--</form>-->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Modal dialog end-->
+                        </div>
+                    </div>
+                </section>
+                <!-- Test Information End-->
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+
+        <div>
+            Universidad de Sevilla. C/ S. Fernando, 4, C.P. 41004-Sevilla, España. Centralita exterior: 954551000
+        </div>
+        <!--Social sharing-->
+        <aside class="social-sharing">
+            <ul class="menu-social">
+                <li class="social-item">
+                    <a title="Twitter" href="https://twitter.com/unisevilla" target="_blank">
+                        <span class="screen-reader-text"></span>
+                    </a>
+                </li>
+                <li class="social-item">
+                    <a title="Facebook" href="https://www.facebook.com/UniversidaddeSevillaoficial" target="_blank">
+                        <span class="screen-reader-text"></span>
+                    </a>
+                </li>
+                <li class="social-item">
+                    <a title="YouTube" href="http://www.youtube.com/universidaddesevilla" target="_blank">
+                        <span class="screen-reader-text"></span>
+                    </a>
+                </li>
+                <li class="social-item">
+                    <a title="Instagram" href="https://www.instagram.com/unisevilla/" target="_blank" data-action="share/whatsapp/share">
+                        <span class="screen-reader-text"></span>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+    </footer>
+
+</body>
+<script>
+    $(document).ready(function() {
+        $(".dropdown-toggle").dropdown();
+    });
+</script>
+
+</html>
