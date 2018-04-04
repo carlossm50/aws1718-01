@@ -3,9 +3,12 @@
     height: 100px;
     
 }
+.ng-invalid.ng-touched {
+	border:1px solid red;
+}
 
 header{
-   	padding-right: 0;
+   	
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
@@ -173,11 +176,26 @@ input {
 	background-color: #8C1227;
 }
 
+.card{
+	width: 25rem;
+    height: 40rem;
+    overflow: auto;
+}
+
+/*::-webkit-scrollbar {
+    width: 1px;
+}*/
+
+
 .gp_color{
 	color: #8C1227;
 }
 .gb_color{
 	color:red;
+}
+
+.gpen_color{
+	color: gold;
 }
 
 .nav-tabs { border-bottom: 2px solid #DDD;
@@ -190,3 +208,5 @@ input {
 .nav-tabs > li.active > a::after, .nav-tabs > li:hover > a::after { transform: scale(1); }
 .tab-pane { padding: 15px 0; }
 .tab-content{padding:20px}
+
+

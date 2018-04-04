@@ -1,56 +1,39 @@
 angular
     .module("ProjectListApp")
     
-    .controller("ListCtrl", function($scope,$http) {
+    .controller("ListCtrl", function($scope,$http,$filter) {
         console.log("Controller initialized");
-        $scope.perinvest = ['David Benavides Cuevas',
-            'Beatriz Bernárdez Jiménez',
-            'Margarita Cruz Risco', 
-            'Amador Durán Toro', 
-            'Pablo Fernández Montes',
-            'José María García Rodríguez',
-            'Octavio Martín Díaz', 
-            'José Antonio Parejo Maestre', 
-            'Joaquín Peña Siles', 
-            'Sergio Segura Rueda',
-            'Pablo Trinidad Martín-Arroyo'];
-        
-        $scope.pertrab = ['Cristina Cabanillas Macías',
-        'Adela del Río Ortega',
-        'José Ángel Galindo Duarte ',
-        'Jesús García Galán', 
-        'Alfonso Eduardo Márquez Chamorro', 
-        'Carlos Müller Cejás',
-        'Irene Bedilia Estrada Torres',
-        'Antonio Gámez Díaz',
-        'Antonio Manuel Gutiérrez Fernández',
-        'Ana Belén Sánchez Jerez',
-        'Javier Troya Castilla'];
+        $scope.perinvest = ['David Benavides Cuevas','Beatriz Bernárdez Jiménez','Margarita Cruz Risco', 'Amador Durán Toro', 
+                            'Pablo Fernández Montes','José María García Rodríguez','Octavio Martín Díaz', 'José Antonio Parejo Maestre', 
+                            'Joaquín Peña Siles', 'Sergio Segura Rueda','Pablo Trinidad Martín-Arroyo'];
+
+        $scope.pertrab = ['Cristina Cabanillas Macías','Adela del Río Ortega','José Ángel Galindo Duarte ','Jesús García Galán', 
+                          'Alfonso Eduardo Márquez Chamorro', 'Carlos Müller Cejás','Irene Bedilia Estrada Torres','Antonio Gámez Díaz',
+                          'Antonio Manuel Gutiérrez Fernández','Ana Belén Sánchez Jerez','Javier Troya Castilla'];
+
 		$scope.grTrab = [];
         $scope.tareas = [];
-
+        $scope.OneProject = [];
 
         function refresh(){
             $http.get("/api/v1/projects").then(function (response){
                 $scope.projects = response.data;
             });
         }
-        
-        $scope.indice = function (dato){
-            //alert(dato);
-            
-            $scope.OneProject = $scope.projects[dato];
-        }
+
         $scope.GetProject = function (){
-            if ($scope.newProject.projname != null){
-                $http.get("/api/v1/projects/"+$scope.newProject.projname)
+            if ($scope.Search != null){
+                 $scope.Search = $filter('uppercase')($scope.Search);
+                $http.get("/api/v1/projects/"+$scope.Search)
                 .then(function (response){
                     $scope.projects = response.data;
+                    $scope.Search = null;
                 })
                 .catch(function(rejection){
                     if(rejection.status==404){
                         alert("Not Found");
                         $scope.projects = null;
+                        $scope.Search = null;
                     }
                 })
                 ;
@@ -61,26 +44,78 @@ angular
             }
         }
         
+        $scope.indice = function (dato){
+            //alert(dato);
+            $scope.OneProject=Object.assign({}, $scope.projects[dato]);
+            
+            $scope.OneProject.fecha_ini = new Date($scope.OneProject.fecha_ini);
+            $scope.OneProject.fecha_fin = new Date($scope.OneProject.fecha_fin);
+            
+            $scope.OneProject.grResp = $scope.projects[dato].grResp.slice(0);
+            $scope.OneProject.grFnc = $scope.projects[dato].grFnc.slice(0);
+            $scope.OneProject.grInv = $scope.projects[dato].grInv.slice(0);
+            $scope.OneProject.grTrb = $scope.projects[dato].grTrb.slice(0);
+            $scope.OneProject.grSoc = $scope.projects[dato].grSoc.slice(0);
+            $scope.OneProject.grCtr = $scope.projects[dato].grCtr.slice(0);
+            
+        }
         $scope.addProject = function (){
+            
+            $scope.newProject.referencia=$filter('uppercase')($scope.newProject.referencia);
             $scope.newProject.grResp = $scope.grResp;
             $scope.newProject.grFnc = $scope.grFnc;
             $scope.newProject.grInv = $scope.tareas;
             $scope.newProject.grTrb = $scope.grTrab;
             $scope.newProject.grSoc = $scope.grSoc;
+            $scope.newProject.grCtr = $scope.grCtr;
+            
             $http
                 .post("/api/v1/projects", $scope.newProject)
                 .then(function (response){
                         refresh();  
                         if(response.status==201)
                         alert("Created successfully")
+                        
+                        $scope.limpiar_newProject();
                 })
                 .catch(function(rejection){
                     if(rejection.status==409)
                             alert("Conflict in data");
-                    else
+                    else{
                         if(rejection.status==405)
-                            alert("Method Not Allowed")   
+                            alert("Method Not Allowed")
+                        else 
+                            if(rejection.status==503)
+                            alert("Internal error  ");
+                    }
+                    $scope.limpiar_newProject();
                 });
+            
+        }
+        
+         $scope.limpiar_newProject = function (){
+            
+            $scope.newProject.projname = null;
+            $scope.newProject.tipo = null;
+            $scope.newProject.referencia = null;
+            $scope.newProject.fecha_ini= null;
+            $scope.newProject.fecha_fin = null;
+            $scope.newProject.grResp = [];
+            $scope.newProject.grFnc = [];
+            $scope.newProject.grInv = [];
+            $scope.newProject.grTrb = [];
+            $scope.newProject.grSoc = [];
+            $scope.newProject.grCtr = [];
+            
+            $scope.grResp = [];
+            $scope.grFnc = [];
+            $scope.grInv = [];
+            $scope.grTrab = [];
+            $scope.grSoc = [];
+            $scope.grCtr = [];
+            $scope.tareas = [];
+            
+            
         }
         
         $scope.delallProject = function (){
@@ -91,7 +126,7 @@ angular
                 });
         }
         
-        $scope.delProject = function (){
+        /*$scope.delProject = function (){
             
             $http
                 .delete("/api/v1/projects/"+$scope.newProject.projname , $scope.deleteProject)
@@ -105,7 +140,7 @@ angular
                         alert("Not Found")
                     
                 });
-        }
+        } */
         
         $scope.delProject = function (_name){
             
@@ -126,7 +161,7 @@ angular
         $scope.updateProject1 = function (){
             
             $http
-                .put("/api/v1/projects/"+$scope.OneProject.projname , $scope.OneProject)
+                .put("/api/v1/projects/"+$scope.OneProject.referencia , $scope.OneProject)
                 .then(function (response){
                     refresh(); 
                     if(response.status==200)
@@ -140,19 +175,7 @@ angular
                             alert("Method Not Allowed")   
                 });
         }
-     
-     /*     
-        $scope.updateProject = function (){
-            
-            $http
-                .put("/api/v1/projects/"+$scope.newProject.projname , {projname:$scope.newProject.projname,tipo:$scope.newProject.tipo,referencia:$scope.newProject.referencia})
-                .then(function (){
-                    refresh();  
-                });
-        }
-    */
-    
-    
+
     //Inicio agregar y eliminar invertigador de la lista 
         
 		$scope.agregarTarea = function (_op) {
@@ -199,7 +222,6 @@ angular
             }
 		}
     
-    
     //Inicio agregar y eliminar Personal de equipo de tabajo de la lista 
         
 		$scope.agregarPtrabajo = function (_op) {
@@ -245,7 +267,7 @@ angular
 		}
     
    //Inicio agregar y eliminar Personal contratado a la lista 
-   $scope.grCtr = [];
+        $scope.grCtr = [];
 		$scope.agregarP_contratado = function (_op) {
 		    if(_op === 0){
         		if ($scope.nuevoCtr != null)
@@ -337,7 +359,7 @@ angular
 		}
 
    //Inicio agregar y eliminar Socio
-   $scope.grSoc=[];
+        $scope.grSoc=[];
 		$scope.agregar_socio = function (_op) {
             
 		    if(_op === 0){
@@ -382,55 +404,64 @@ angular
 				
 		}
 
-//Inicio agregar y eliminar Responsable(s)
-$scope.grResp=[];
-$scope.agregar_responsable = function (_op) {
+    //Inicio agregar y eliminar Responsable(s)
+        $scope.grResp=[];
+        $scope.agregar_responsable = function (_op) {
     
-    if(_op === 0){
-        
-        if ($scope.nuevoResp != null)
-                $scope.grResp.push({Resp_name: $scope.nuevoResp});
-                $scope.nuevoResp = null;
-    }
-    else{
-        if(_op === 1){
-             if ($scope.EditaResp != null)
-                $scope.OneProject.grResp.push({Resp_name: $scope.EditaResp});
-                $scope.EditaResp = null;
-            
-        }
-    }
+            if(_op === 0){
+                
+                if ($scope.nuevoResp != null)
+                
+                        $scope.grResp.push({Resp_name: $scope.nuevoResp});
+                        $scope.nuevoResp = null;
+            }
+            else{
+                if(_op === 1){
+                     if ($scope.EditaResp != null)
+                       $scope.OneProject.grResp.push({Resp_name: $scope.EditaResp});
+                        $scope.EditaResp = null;
+                    
+                }
+            }
 }
 
-$scope.eliminar_responsable = function (_op,_index) {
-    if(_op === 0){
-          if (_index === 0 && $scope.grResp.length > 0){
-                $scope.grResp.splice(0,1)
+        $scope.eliminar_responsable = function (_op,_index) {
+            if(_op === 0){
+                  if (_index === 0 && $scope.grResp.length > 0){
+                        $scope.grResp.splice(0,1)
+                    }
+                    else{
+                        $scope.grResp.splice(_index,1)
+                    }				    
             }
             else{
-                $scope.grResp.splice(_index,1)
-            }				    
-    }
-    else{
-        if(_op === 1){
-            
-            if (_index === 0 && $scope.OneProject.grResp.length > 0){
-                $scope.OneProject.grResp.splice(0,1)
+                if(_op === 1){
+                    
+                    if (_index === 0 && $scope.OneProject.grResp.length > 0){
+                        $scope.OneProject.grResp.splice(0,1)
+                    }
+                    else{
+                        $scope.OneProject.grResp.splice(_index,1)
+                        
+                    }
+                    
+                }
             }
-            else{
-                $scope.OneProject.grResp.splice(_index,1)
-                
-            }
-            
-        }
-    }
         
         
 }
 
         refresh();
-        
-    });
+    
+ /*     
+        $scope.updateProject = function (){
+            
+            $http
+                .put("/api/v1/projects/"+$scope.newProject.projname , {projname:$scope.newProject.projname,tipo:$scope.newProject.tipo,referencia:$scope.newProject.referencia})
+                .then(function (){
+                    refresh();  
+                });
+        }
+    */
 
-    
-    
+    });

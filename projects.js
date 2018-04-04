@@ -10,30 +10,30 @@ var db = new DataStore({
 });
 
 
-var Contacts = function () {};
+var Projects = function () {};
 
-Contacts.prototype.allContacts = function(callback) {
+Projects.prototype.allProjects = function(callback) {
     return db.find({}, callback);
 };
 
-Contacts.prototype.add = function(contact, callback) {
-    return db.insert(contact, callback);
+Projects.prototype.add = function(project, callback) {
+    return db.insert(project, callback);
 };
 
-Contacts.prototype.removeAll = function(callback) {
+Projects.prototype.removeAll = function(callback) {
     return db.remove({},{ multi: true},callback);
 };
 
-Contacts.prototype.get = function(name, callback) {
-    return db.find({projname:name}, callback);
+Projects.prototype.get = function(name, callback) {
+    return db.find({referencia:name}, callback);
 };
 
-Contacts.prototype.remove = function(name, callback) {
-    return db.remove({projname:name},{ multi: true}, callback);
+Projects.prototype.remove = function(name, callback) {
+    return db.remove({referencia:name},{ multi: true}, callback);
 };
 
-Contacts.prototype.update = function(name, updatedContact, callback) {
-    return db.update({projname:name},updatedContact,{}, callback);
+Projects.prototype.update = function(name, updatedProject, callback) {
+    return db.update({referencia:name},updatedProject,{}, callback);
 };
 
-module.exports = new Contacts();
+module.exports = new Projects();

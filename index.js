@@ -17,29 +17,31 @@ app.use(bodyParser.json());
 app.get(baseAPI + "/projects", (request, response) => {
     console.log("GET /projects"); 
     
-    projects.allContacts((err,contacts)=>{
-        response.send(contacts);    
+    projects.allProjects((err,projects)=>{
+        response.send(projects);    
     });
 });
 
 app.post(baseAPI + "/projects", (request, response) => {
     console.log("POST /projects");
-    var contact = request.body;
-     var name = request.body.projname;
+    var newproject = request.body;
+     var name = request.body.referencia;
      
-    projects.get(name,(err,contacts)=>{
-        if (contacts.length != 0) {
-            response.sendStatus(409);
-        }
-        else {
-            projects.add(contact);
-            response.sendStatus(201)
-        }
+    projects.get(name,(err,project)=>{
+            if (project.length != 0) {
+                response.sendStatus(409);
+            }
+            else {
+                projects.add(newproject);
+                response.sendStatus(201);
+            }
+        
+ 
     });
     
 });
 
-app.post(baseAPI  + "/projects/:projname", (request, response) => {
+app.post(baseAPI  + "/projects/:referencia", (request, response) => {
     console.log("POS /projects");
     response.sendStatus(405);    
 });
@@ -49,46 +51,55 @@ app.delete(baseAPI + "/projects", (request, response) => {
 
     projects.removeAll((err,numRemoved)=>{
         console.log("projects removed:"+numRemoved);
-        response.sendStatus(200);    
+        if (!err){
+            response.sendStatus(200);
+        }
+        else{
+            response.sendStatus(500);
+        }
     });
 
 });
 
-app.get(baseAPI + "/projects/:projname", (request, response) => {
-    console.log("GET /projects/"+request.params.projname);
-    var name = request.params.projname;
+app.get(baseAPI + "/projects/:referencia", (request, response) => {
+    console.log("GET /projects/"+request.params.referencia);
+    var name = request.params.referencia;
 
-    projects.get(name,(err,contacts)=>{
-        if (contacts.length === 0) {
+    projects.get(name,(err,projects)=>{
+        if (projects.length === 0) {
             response.sendStatus(404);
         }
         else {
-            response.send(contacts); 
+            response.send(projects); 
         }
     });
 });
 
 
-app.delete(baseAPI + "/projects/:projname", (request, response) => {
-    var name = request.params.projname;
+app.delete(baseAPI + "/projects/:referencia", (request, response) => {
+    var name = request.params.referencia;
 
     projects.remove(name,(err,numRemoved)=>{
         console.log("projects removed:"+numRemoved);
-        if(numRemoved != 0)
-        response.sendStatus(200)
-        else
-          response.sendStatus(404)
+        
+            if(numRemoved != 0){
+                response.sendStatus(200);
+            }
+            else{
+              response.sendStatus(404);
+                
+            }
     });
 
     console.log("DELETE /projects/" + name);
 });
 
 
-app.put(baseAPI + "/projects/:projname", (request, response) => {
-    var name = request.params.projname;
-    var updatedContact = request.body;
+app.put(baseAPI + "/projects/:referencia", (request, response) => {
+    var name = request.params.referencia;
+    var updatedProject = request.body;
 
-    projects.update(name, updatedContact ,(err,numUpdates) => {
+    projects.update(name, updatedProject ,(err,numUpdates) => {
         console.log("projects updated:"+numUpdates);
         if (numUpdates === 0) {
             response.sendStatus(404);    
