@@ -20,6 +20,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+    <!--Google LogIn-->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js" src=""></script>
+        <script src="script.js"></script>
+        <script type="text/javascript" src="https://apis.google.com/js/client.js"></script>
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <meta name="google-signin-client_id" content="821528296369-r33mnvi12t4o5p3v1mhlsu0mgd4ehefg.apps.googleusercontent.com">
+
+    <!--Google LogIn-->
+
 </head>
 
 <body ng-controller="ListCtrl">
@@ -65,6 +74,9 @@
                                     <div class="Icon">
                                         <!--User Icon-->
                                         <span class="glyphicon glyphicon-user"></span>
+                                        <!--Google LogIn-->
+                                          <img ng-src="{{g_image}}" style="width:100px; height:100px">
+                                      <!--Google LogIn-->
                                     </div>
                                     <div class="ContentForm">
                                         <form class="form container-fluid" action="indexadmin.html" method="get" name="Login">
@@ -76,6 +88,11 @@
                                             <div class="input-group input-group-lg">
                                                 <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-lock"></i></span>
                                                 <input type="password" name="password" class="form-control" placeholder="******" aria-describedby="sizing-addon1" required>
+                                                <!--Google LogIn-->
+                                                <div class="g-signin2" data-onsuccess="onSignIn">
+                                                    <input type="button" ng-click="onGoogleLogin()"  value="Login" style="width:100px; height:60px"/>
+                                                </div>
+                                                <!--Google LogIn-->
                                             </div>
                                             <br>
                                             <button class="btn btn-lg btn-primary btn-block btn-signin" id="IngresoLog" type="submit">Sing In</button>
@@ -99,7 +116,20 @@
             </div>
         </section>
     </header>
-
+  <!--LogIng Google-->
+    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript">
+        (function() {
+            var p = document.createElement('script');
+            p.type= 'text/javascript';
+            p.async=true;
+            p.src= 'https://apis.google.com/js/client.js?onload=onLoadFunction';
+            var s= document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(p, s);
+            
+            })();
+    </script>
+    <!--LogIng Google-->
     <section class="proyectos">
         <div class="container">
             <div class="row">
