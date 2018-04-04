@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Research Project Admin</title>
-    <meta name="description" content="An interactive getting started guide for Brackets.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="start.css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -59,12 +59,20 @@
                                 <a class="dropdown-item" href="" data-toggle="modal" data-target="#myModal">
                                     <span class="glyphicon glyphicon-plus">Add</span>
                                 </a>
-                                <a class="dropdown-item" href="" data-toggle="modal" data-target="#myModalTest">
-                                    <span class="glyphicon glyphicon-duplicate">Tests</span>
-                                </a>
                                 <a class="dropdown-item" href="" data-toggle="" data-target="">
                                     <span class="glyphicon glyphicon-erase" ng-click="delallProject()">Delete all</span>
                                 </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="" data-toggle="modal" data-target="#myModalTest">
+                                    <span class="glyphicon glyphicon-duplicate">Tests and repository</span>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <div class="dropdown-submenu">
+                                  <a  class="dropdown-item" tabindex="-1" href="#">Heroku</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown-item"><a tabindex="-1" href="#">Second level</a></li>
+                                    </ul>
+                                 </div>
                             </div>
                         </li>
                         <li>
