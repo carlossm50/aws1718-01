@@ -121,8 +121,10 @@ angular
         $scope.delallProject = function (){
             $http
                 .delete("/api/v1/projects", $scope.delallProject)
-                .then(function (){
-                    refresh();  
+                .then(function (require){
+                    if(require.status == 200)
+                        alert("Deleted successfully")
+                        refresh();
                 });
         }
         
@@ -150,6 +152,7 @@ angular
                     refresh();
                     if(require.status == 200)
                         alert("Deleted successfully")
+                        
                 })
                 .catch(function(rejection){
                     if(rejection.status == 404)
@@ -160,21 +163,23 @@ angular
         
         $scope.updateProject1 = function (){
             
-            $http
-                .put("/api/v1/projects/"+$scope.OneProject.referencia , $scope.OneProject)
-                .then(function (response){
-                    refresh(); 
-                    if(response.status==200)
-                        alert("Update successfully")
-                })
-                .catch(function(rejection){
-                    if(rejection.status==404)
-                            alert("Not Found");
-                    else
-                        if(rejection.status==405)
-                            alert("Method Not Allowed")   
-                });
-        }
+               
+                $http
+                    .put("/api/v1/projects/"+$scope.OneProject.referencia , $scope.OneProject)
+                    .then(function (response){
+                        refresh(); 
+                        if(response.status==200)
+                            alert("Update successfully")
+                    })
+                    .catch(function(rejection){
+                        if(rejection.status==404)
+                                alert("Not Found");
+                        else
+                            if(rejection.status==405)
+                                alert("Method Not Allowed")   
+                    });
+            }    
+        
 
     //Inicio agregar y eliminar invertigador de la lista 
         

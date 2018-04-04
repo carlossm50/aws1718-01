@@ -19,6 +19,17 @@
     <script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
     <script type="text/javascript" src="project-list-app.js"></script>
     <script type="text/javascript" src="list-ctrl.js"></script>
+    <style>
+        .dropdown-submenu {
+            position: relative;
+        }
+
+        .dropdown-submenu .dropdown-menu {
+            top: 0;
+            left: 100%;
+            margin-top: -1px;
+        }
+    </style>
 </head>
 
 <body ng-controller="ListCtrl">
@@ -66,13 +77,27 @@
                                 <a class="dropdown-item" href="" data-toggle="modal" data-target="#myModalTest">
                                     <span class="glyphicon glyphicon-duplicate">Tests and repository</span>
                                 </a>
-                                <div class="dropdown-divider"></div>
-                                <div class="dropdown-submenu">
-                                  <a  class="dropdown-item" tabindex="-1" href="#">Heroku</a>
-                                    <ul class="dropdown-menu">
-                                        <li class="dropdown-item"><a tabindex="-1" href="#">Second level</a></li>
-                                    </ul>
-                                 </div>
+                                <a class="dropdown-item" href="https://docs.google.com/presentation/d/1Uj_03LvRhrSzfdEMF9JS99iOM-NG1SRgZjSm1WTkzOg/edit#slide=id.p3" target="_blank">
+                                    <span class="glyphicon glyphicon-unchecked">Presentation</span>
+                                </a>
+                            </div>
+                        </li>
+                        <!--Dropdown Heroku-->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle labels" href="#" id="navbardrop" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-play-circle"></span> HEROKU</a>
+                            <!--Dropdown lisk-->
+                            <div class="dropdown-menu btn-light">
+                                <!-- Trigger the modal create project -->
+                                <a class="dropdown-item" href="https://aws1718-01.herokuapp.com/" target="_blank">
+                                    <span class="glyphicon glyphicon-plane">Despliegue</span>
+                                </a>
+                                <a class="dropdown-item" href="https://aws1718-01.herokuapp.com/api/v1/projects" target="_blank">
+                                    <span class="glyphicon glyphicon-blackboard">API</span>
+                                </a>
+                                <a class="dropdown-item" href="https://aws1718-01.herokuapp.com/api/v1/projects/help" target="_blank">
+                                    <span class="glyphicon glyphicon-phone">Help</span>
+                                </a>
                             </div>
                         </li>
                         <li>
@@ -140,7 +165,7 @@
                                 <p class="h6">Star date: {{projectInv.fecha_ini| date: 'dd/MM/yyyy'}}</p>
                                 <p class="h6">Finish date: {{projectInv.fecha_fin| date: 'dd/MM/yyyy'}}</p>
                             </p>
-                            <a href="#" class="card-link glyphicon glyphicon-trash gb_color" title="Delete"></a>
+                            <a href="#" class="card-link glyphicon glyphicon-trash gb_color" title="Delete" ng-click="delProject(projectInv.referencia)"></a>
 
                         </div>
                     </div>
@@ -667,7 +692,7 @@
                                     </form>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-danger" ng-click="delProject(OneProject.projname)" data-dismiss="modal">Delete</button>
+                                        <button type="button" class="btn btn-danger" ng-click="delProject(OneProject.referencia)" data-dismiss="modal">Delete</button>
                                         <button type="button" ng-disabled="!myFormEdit.$valid" class="btn btn-primary" ng-click="updateProject1()" data-dismiss="modal">Update</button>
                                     </div>
                                 </div>
@@ -703,6 +728,9 @@
                                             </li>
                                             <li>
                                                 <a data-toggle="tab" href="#test_menu2">TRAVIS</a>
+                                            </li>
+                                            <li>
+                                                <a data-toggle="tab" href="#test_menu3">GITHUB</a>
                                             </li>
                                         </ul>
 
@@ -750,6 +778,20 @@
 
                                             </div>
                                             <!--Travis test information end-->
+                                            
+                                            <div id="test_menu3" class="tab-pane fade">
+                                                <!--Beginning Github repository-->
+                                                <h4>Github</h4>
+                                                <p>
+                                                    Forja (collaborative development platform) to host projects using the Git version control system.
+                                                </p>
+                                                <p>Push Github icon to see our project repository.</p>
+                                                <a href="https://github.com/carlossm50/aws1718-01" target="_blank">
+                                                            <img class="logo" src="img/github.png">
+                                                     </a>
+
+                                            </div>
+                                            <!--Github repository end-->
                                         </div>
                                     </div>
                                     <!--</form>-->
