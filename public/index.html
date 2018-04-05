@@ -118,7 +118,14 @@
                             <p class="card-text">
                                 <p class="h6">Type/help: {{projectInv.tipo}}</p>
                                 <p class="h6">Responsable(s): {{projectInv.respondable}}</p>
-                                <p class="h6">Reference: {{projectInv.referencia}}</p>
+                                <p class="h6">Reference: 
+                                    <ul class="list-unstyled">
+                                            <li ng-repeat="research in projectInv.grResp">
+                                                
+                                                <span class="glyphicon glyphicon-user"> {{research.Resp_name}}</span>
+                                            </li>
+                                        </ul>
+                                </p>
                                 <p class="h6">Start date: {{projectInv.fecha_ini| date: 'dd/MM/yyyy'}}</p>
                                 <p class="h6">Finish date: {{projectInv.fecha_fin| date: 'dd/MM/yyyy'}}</p>
                             </p>
