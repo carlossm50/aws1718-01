@@ -84,7 +84,7 @@
                                 <a class="dropdown-item" href="https://aws1718-01.herokuapp.com/api/v1/projects" target="_blank">
                                     <span class="glyphicon glyphicon-blackboard">API</span>
                                 </a>
-                                <a class="dropdown-item" href="https://aws1718-01.herokuapp.com/api/v1/help" target="_blank">
+                                <a class="dropdown-item" href="/api/v1/help" target="_blank">
                                     <span class="glyphicon glyphicon-phone">API Documentation</span>
                                 </a>
                             </div>
@@ -145,11 +145,20 @@
                             <a href="#" class="card-link glyphicon glyphicon-pencil gpen_color" data-toggle="modal" data-target="#ModalEdit" ng-click="indice($index)" title="Edit"></a>
                         </dib>
                         <div class="card-body">
-                            <h5 class="card-title">{{projectInv.projname}} </h5>
+                            <h5 class="card-title"><b>{{projectInv.projname}}</b> </h5>
 
                             <p class="card-text">
                                 <p class="h6">Type/help: {{projectInv.tipo}}</p>
-                                <p class="h6">Responsable(s): {{projectInv.respondable}}</p>
+                                <p class="h6">Responsable(s): 
+                                <ul class="list-unstyled">
+                                        <li ng-repeat="research in projectInv.grResp">
+                                            
+                                            <span class="glyphicon glyphicon-user"> {{research.Resp_name}}</span>
+                                        </li>
+                                    </ul>
+                                </p>
+                                
+                                
                                 <p class="h6">Reference: {{projectInv.referencia}}</p>
                                 <p class="h6">Star date: {{projectInv.fecha_ini| date: 'dd/MM/yyyy'}}</p>
                                 <p class="h6">Finish date: {{projectInv.fecha_fin| date: 'dd/MM/yyyy'}}</p>

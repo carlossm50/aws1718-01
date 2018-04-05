@@ -1,16 +1,4 @@
-{"projname":"ppppp","tipo":"pppp","referencia":"PPP","fecha_ini":"2018-04-11T22:00:00.000Z","fecha_fin":"2018-04-27T22:00:00.000Z","grResp":[{"Resp_name":"Amador Durán Toro"}],"grFnc":[],"grInv":[],"grTrb":[],"grSoc":[],"grCtr":[],"_id":"pSRQIHsGzhMgMnZ5"}
-{"$$deleted":true,"_id":"pSRQIHsGzhMgMnZ5"}
-{"projname":"prueba prueba","tipo":"Prueba","referencia":"PRUEBA","fecha_ini":"2018-04-03T22:00:00.000Z","fecha_fin":"2018-04-29T22:00:00.000Z","grResp":[{"Resp_name":"Beatriz Bernárdez Jiménez"}],"grFnc":[],"grInv":[],"grTrb":[],"grSoc":[],"grCtr":[],"_id":"2dPbB7PmPn0B6TSI"}
-{"$$deleted":true,"_id":"2dPbB7PmPn0B6TSI"}
-{"projname":"ads","tipo":"sds","referencia":"DSAD","fecha_ini":"2018-04-03T22:00:00.000Z","fecha_fin":"2018-04-29T22:00:00.000Z","grResp":[],"grFnc":[],"grInv":[],"grTrb":[],"grSoc":[],"grCtr":[],"_id":"wFY3riUfjaTvBDNL"}
-{"projname":"sadsaidso","tipo":"hkjhkj","referencia":"JHGJ","fecha_ini":"2018-03-31T22:00:00.000Z","fecha_fin":"2018-04-29T22:00:00.000Z","grResp":[],"grFnc":[],"grInv":[],"grTrb":[],"grSoc":[],"grCtr":[],"_id":"m4xs6qP74vxhdkiQ"}
-{"$$deleted":true,"_id":"m4xs6qP74vxhdkiQ"}
-{"$$deleted":true,"_id":"wFY3riUfjaTvBDNL"}
-{"projname":"sad","tipo":"dasd","referencia":"ASAD","fecha_ini":"2018-04-10T22:00:00.000Z","fecha_fin":"2018-04-26T22:00:00.000Z","grResp":[],"grFnc":[],"grInv":[],"grTrb":[],"grSoc":[],"grCtr":[],"_id":"FMogEOJVCEcxigsG"}
-{"$$deleted":true,"_id":"FMogEOJVCEcxigsG"}
-{"projname":"da","tipo":"dsad","referencia":"ASD","fecha_ini":"2017-12-31T23:00:00.000Z","fecha_fin":"2017-12-31T23:00:00.000Z","grResp":[],"grFnc":[],"grInv":[],"grTrb":[],"grSoc":[],"grCtr":[],"_id":"X0utKcueLHXMVxZF"}
-{"$$deleted":true,"_id":"X0utKcueLHXMVxZF"}
-{"projname":"prueba prueba","tipo":"prueba","referencia":"PRUEBA","fecha_ini":"2017-12-31T23:00:00.000Z","fecha_fin":"2017-12-31T23:00:00.000Z","grResp":[{"Resp_name":"Margarita Cruz Risco"}],"grFnc":[],"grInv":[],"grTrb":[],"grSoc":[],"grCtr":[],"_id":"ZdClpaDAinasybnE"}
 {"projname":"prueba prueba","tipo":"prueba","referencia":"PRUEBA","fecha_ini":"2017-12-31T23:00:00.000Z","fecha_fin":"2017-12-03T23:00:00.000Z","grResp":[{"Resp_name":"Margarita Cruz Risco"}],"grFnc":[],"grInv":[],"grTrb":[],"grSoc":[],"grCtr":[],"_id":"ZdClpaDAinasybnE"}
-{"projname":"prueba prueba","tipo":"prueba","referencia":"PRUEBA","fecha_ini":"2017-12-31T23:00:00.000Z","fecha_fin":"2017-12-03T23:00:00.000Z","grResp":[{"Resp_name":"Margarita Cruz Risco"}],"grFnc":[],"grInv":[],"grTrb":[],"grSoc":[],"grCtr":[],"_id":"ZdClpaDAinasybnE"}
-{"projname":"prueba prueba","tipo":"prueba","referencia":"PRUEBA","fecha_ini":"2017-12-31T23:00:00.000Z","fecha_fin":"2017-12-03T23:00:00.000Z","grResp":[{"Resp_name":"Margarita Cruz Risco"}],"grFnc":[],"grInv":[],"grTrb":[],"grSoc":[],"grCtr":[],"_id":"ZdClpaDAinasybnE"}
+{"projname":"prueba prueba","tipo":"prueba","referencia":"PRUEBA","fecha_ini":"2017-12-31T23:00:00.000Z","fecha_fin":"2017-12-03T23:00:00.000Z","grResp":[{"Resp_name":"Margarita Cruz Risco"},{"Resp_name":"Beatriz Bernárdez Jiménez"},{"Resp_name":"Amador Durán Toro"}],"grFnc":[],"grInv":[],"grTrb":[],"grSoc":[],"grCtr":[],"_id":"ZdClpaDAinasybnE"}
+{"projname":"prueba prueba","tipo":"prueba","referencia":"PRUEBA","fecha_ini":"2017-12-31T23:00:00.000Z","fecha_fin":"2017-12-03T23:00:00.000Z","grResp":[{"Resp_name":"Margarita Cruz Risco"},{"Resp_name":"Beatriz Bernárdez Jiménez"}],"grFnc":[],"grInv":[],"grTrb":[],"grSoc":[],"grCtr":[],"_id":"ZdClpaDAinasybnE"}
+{"projname":"Prueba WAS","tipo":"prueba","referencia":"PRUEBA","fecha_ini":"2017-12-31T23:00:00.000Z","fecha_fin":"2017-12-03T23:00:00.000Z","grResp":[{"Resp_name":"Margarita Cruz Risco"},{"Resp_name":"Beatriz Bernárdez Jiménez"}],"grFnc":[],"grInv":[],"grTrb":[],"grSoc":[],"grCtr":[],"_id":"ZdClpaDAinasybnE"}

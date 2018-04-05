@@ -186,7 +186,7 @@ angular
         } */
         
         $scope.delProject = function (_name){
-            
+          if(confirm('Are you sure you want to delete the project?')){
             $http
                 .delete("/api/v1/projects/"+_name , $scope.deleteProject)
                 .then(function (require){
@@ -200,6 +200,9 @@ angular
                         alert("Not Found")
                     
                 });
+                
+                
+        }
         }
         
         $scope.updateProject1 = function (){
