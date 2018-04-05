@@ -160,13 +160,15 @@ angular
         }
         
         $scope.delallProject = function (){
-            $http
-                .delete("/api/v1/projects", $scope.delallProject)
-                .then(function (require){
-                    if(require.status == 200)
-                        alert("Deleted successfully")
-                        refresh();
-                });
+            if(confirm('Are you sure you want to delete all project?')){
+                $http
+                    .delete("/api/v1/projects", $scope.delallProject)
+                    .then(function (require){
+                        if(require.status == 200)
+                            alert("Deleted successfully")
+                            refresh();
+                    });
+            }
         }
         
         /*$scope.delProject = function (){
@@ -202,7 +204,7 @@ angular
                 });
                 
                 
-        }
+            }
         }
         
         $scope.updateProject1 = function (){

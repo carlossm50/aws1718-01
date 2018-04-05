@@ -19,9 +19,10 @@
     <script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
     <script type="text/javascript" src="project-list-app.js"></script>
     <script type="text/javascript" src="list-ctrl.js"></script>
+    
 </head>
 
-<body ng-controller="ListCtrl">
+<body ng-controller="ListCtrl" onload="renderButton()">
 
     <header>
         <section class="proyectomenu">
@@ -743,7 +744,7 @@
                                                 <p>
                                                     Push Postman icon to see or run test to our project.
                                                 </p>
-                                                <a href="https://documenter.getpostman.com/view/3881776/collection/RVu2nqJ4" target="_blank">
+                                                <a href="https://documenter.getpostman.com/view/3881776/aws18_projects/RVu2nqXG" target="_blank">
                                                             <img class="logo" src="img/postman_icon.png">
                                                      </a>
                                             </div>
@@ -840,7 +841,27 @@
         </aside>
 
     </footer>
-
+<script>
+    function onSuccess(googleUser) {
+      console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+      window.open("https://aws1718-01.herokuapp.com/indexadmin.html");
+    }
+    function onFailure(error) {
+      console.log(error);
+    }
+    function renderButton() {
+      gapi.signin2.render('my-signin2', {
+        'scope': 'profile email',
+        'width': 240,
+        'height': 50,
+        'longtitle': true,
+        'theme': 'dark',
+        'onsuccess': onSuccess,
+        'onfailure': onFailure
+      });
+    }
+  </script>
+  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
 </body>
 <script>
     $(document).ready(function() {
