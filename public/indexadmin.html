@@ -21,48 +21,47 @@
     <script type="text/javascript" src="project-list-app.js"></script>
     <script type="text/javascript" src="list-ctrl.js"></script>
 
-<script>
-/**
- * The Sign-In client object.
- */
-var auth2;
-
-/**
- * Initializes the Sign-In client.
- */
-var initClient = function() {
-    gapi.load('auth2', function(){
+    <script>
         /**
-         * Retrieve the singleton for the GoogleAuth library and set up the
-         * client.
+         * The Sign-In client object.
          */
-        auth2 = gapi.auth2.init({
-            client_id: 'CLIENT_ID.apps.googleusercontent.com'
-        });
+        var auth2;
 
-        // Attach the click handler to the sign-in button
-        auth2.attachClickHandler('signin-button', {}, onSuccess, onFailure);
-    });
-};
+        /**
+         * Initializes the Sign-In client.
+         */
+        var initClient = function() {
+            gapi.load('auth2', function() {
+                /**
+                 * Retrieve the singleton for the GoogleAuth library and set up the
+                 * client.
+                 */
+                auth2 = gapi.auth2.init({
+                    client_id: 'CLIENT_ID.apps.googleusercontent.com'
+                });
 
-/**
- * Handle successful sign-ins.
- */
-var onSuccess = function(user) {
-    console.log('Signed in as ' + user.getBasicProfile().getName());
-    
- };
+                // Attach the click handler to the sign-in button
+                auth2.attachClickHandler('signin-button', {}, onSuccess, onFailure);
+            });
+        };
 
-/**
- * Handle sign-in failures.
- */
-var onFailure = function(error) {
-    console.log(error);
-    window.open("https://aws1718-01.herokuapp.com/index.html");
-};
-    
-  </script>
-    
+        /**
+         * Handle successful sign-ins.
+         */
+        var onSuccess = function(user) {
+            console.log('Signed in as ' + user.getBasicProfile().getName());
+
+        };
+
+        /**
+         * Handle sign-in failures.
+         */
+        var onFailure = function(error) {
+            console.log(error);
+            window.open("https://aws1718-01.herokuapp.com/index.html");
+        };
+    </script>
+
 </head>
 
 <body ng-controller="ListCtrl">
@@ -193,16 +192,16 @@ var onFailure = function(error) {
 
                             <p class="card-text">
                                 <p class="h6">Type/help: {{projectInv.tipo}}</p>
-                                <p class="h6">Responsable(s): 
-                                <ul class="list-unstyled">
+                                <p class="h6">Responsable(s):
+                                    <ul class="list-unstyled">
                                         <li ng-repeat="research in projectInv.grResp">
-                                            
+
                                             <span class="glyphicon glyphicon-user"> {{research.Resp_name}}</span>
                                         </li>
                                     </ul>
                                 </p>
-                                
-                                
+
+
                                 <p class="h6">Reference: {{projectInv.referencia}}</p>
                                 <p class="h6">Star date: {{projectInv.fecha_ini| date: 'dd/MM/yyyy'}}</p>
                                 <p class="h6">Finish date: {{projectInv.fecha_fin| date: 'dd/MM/yyyy'}}</p>
@@ -829,8 +828,8 @@ var onFailure = function(error) {
                                                 </p>
                                                 <p>Push Github icon to see our project repository.</p>
                                                 <a href="https://github.com/carlossm50/aws1718-01" target="_blank">
-                                                            <img class="logo" src="img/github.png">
-                                                     </a>
+                                                 <img class="logo" src="img/github.png">
+                                                </a>
 
                                             </div>
                                             <!--Github repository end-->
@@ -884,7 +883,7 @@ var onFailure = function(error) {
         </aside>
 
     </footer>
-  
+
 </body>
 <script>
     $(document).ready(function() {

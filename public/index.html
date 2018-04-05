@@ -51,7 +51,7 @@
                             </div>
                         </li>
 
-                       <!--Dropdown-->
+                        <!--Dropdown-->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle labels" href="#" id="navbardrop" data-toggle="dropdown">
                                 <span class="glyphicon glyphicon-book"></span> PROYECTS</a>
@@ -80,6 +80,9 @@
                                 <!--Login begining-->
                                 <div id="Contenedor">
                                     <div class="Icon">
+                                        <!--User Icon-->
+                                        <span class="glyphicon glyphicon-user"></span>
+
                                     </div>
                                     <div class="ContentForm">
                                         <form class="form container-fluid" action="indexadmin.html" method="get" name="Login">
@@ -91,14 +94,14 @@
                                             <div class="input-group input-group-lg">
                                                 <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-lock"></i></span>
                                                 <input type="password" name="password" class="form-control" placeholder="******" aria-describedby="sizing-addon1" required>
-                                                
+
                                             </div>
                                             <br>
                                             <button class="btn btn-lg btn-primary btn-block btn-signin" id="IngresoLog" type="submit">Sing In</button>
                                             <br>
-                                            
+
                                             <div id="my-signin2"></div>
-                                            
+
                                             <div class="opcioncontra"><a href="" style="color:blue;">Did you forget your password?</a></div>
                                         </form>
                                     </div>
@@ -119,7 +122,7 @@
             </div>
         </section>
     </header>
-    
+
     <section class="proyectos">
         <div class="container">
             <div class="row">
@@ -129,17 +132,17 @@
                     <div class="card proyecto" style="width: 25rem;">
                         <img class="card-img-top" src="https://eldia.com.do/wp-content/uploads/2017/08/12-ECONO-1p01-1.jpg" alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title">{{projectInv.projname}} </h5>
+                            <h5 class="card-title"><b> {{projectInv.projname}}</b> </h5>
 
                             <p class="card-text">
                                 <p class="h6">Type/help: {{projectInv.tipo}}</p>
-                                <p class="h6">Responsable(s): 
-                                        <ul class="list-unstyled">
-                                            <li ng-repeat="research in projectInv.grResp">
-                                                
-                                                <span class="glyphicon glyphicon-user"> {{research.Resp_name}}</span>
-                                            </li>
-                                        </ul>
+                                <p class="h6">Responsable(s):
+                                    <ul class="list-unstyled">
+                                        <li ng-repeat="research in projectInv.grResp">
+
+                                            <span class="glyphicon glyphicon-user"> {{research.Resp_name}}</span>
+                                        </li>
+                                    </ul>
                                 </p>
                                 <p class="h6">Reference: {{projectInv.referencia}}</p>
                                 <p class="h6">Start date: {{projectInv.fecha_ini| date: 'dd/MM/yyyy'}}</p>
@@ -324,30 +327,32 @@
     </script>
 
 
-<!--Google Login-->
-  <script>
-    function onSuccess(googleUser) {
-      console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
-      window.open("https://aws1718-01.herokuapp.com/indexadmin.html");
-    }
-    function onFailure(error) {
-      console.log(error);
-    }
-    function renderButton() {
-      gapi.signin2.render('my-signin2', {
-        'scope': 'profile email',
-        'width': 240,
-        'height': 50,
-        'longtitle': true,
-        'theme': 'dark',
-        'onsuccess': onSuccess,
-        'onfailure': onFailure
-      });
-    }
-  </script>
-<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+    <!--Google Login-->
+    <script>
+        function onSuccess(googleUser) {
+            console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+            window.open("https://aws1718-01.herokuapp.com/indexadmin.html");
+        }
 
-<!--Google Login-->
+        function onFailure(error) {
+            console.log(error);
+        }
+
+        function renderButton() {
+            gapi.signin2.render('my-signin2', {
+                'scope': 'profile email',
+                'width': 240,
+                'height': 50,
+                'longtitle': true,
+                'theme': 'dark',
+                'onsuccess': onSuccess,
+                'onfailure': onFailure
+            });
+        }
+    </script>
+    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+
+    <!--Google Login-->
 </body>
 
 
