@@ -72,14 +72,50 @@
         </div>
     </header>
     <div class="postman-run-button" data-postman-action="collection/import" data-postman-var-1="3881776-9fbcfc55-6619-45b5-9f10-73f4991950a3-RVu2nqXG"></div>
-    <!--****************************************************************************************-->
+    
     <section class="">
         <div class="container bootstrap snippet">
          <div class="row">
             <div class="col-lg-6">
                 <div class="panel panel-default">
-                    <div class="panel-body p-t-0">
-                        <h2>Test that we run</h2>
+                    <div class="panel-body">
+                        <h4>Test that we run about POST</h4>
+                        <hr>
+                        <ol>
+                            <li>
+                                <b>Create new project -
+                                    <span class="text-success">OK 201</span>
+                                </b>
+                            </li>
+                            <ol>
+                                This test tries to create a new project in the system, having a successful result.
+                            </ol>
+                            <li>
+                                <b>Create an existing project -
+                                    <span class="text-danger">FAIL 409</span>
+                                </b>
+                            </li>
+                            <ol>
+                                This test tries to create a new project in the system, having a failed result because there is an existing project.
+                                with the same Reference.
+                            </ol>
+                            <li>
+                                <b>Create a wrong project -
+                                    <span class="text-danger">FAIL 400</span>
+                                </b>
+                            </li>
+                            <ol>
+                                This test tries to create a new project in the system, having a failed result because the project on the request body
+                                is wrong.
+                            </ol>
+                            </ol>
+                        </div>
+                </div>
+            </div>
+                 <div class="col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h4>Test that we run about GET</h4>
                         <hr>
                         <ol>
                             <li>
@@ -107,32 +143,16 @@
                                 This test tries to get a no existing project in the system, having a no found result because there is not any project with the
                                 specified Reference.
                             </ol>
-                            <li>
-                                <b>Create new project -
-                                    <span class="text-success">OK 201</span>
-                                </b>
-                            </li>
-                            <ol>
-                                This test tries to create a new project in the system, having a successful result.
-                            </ol>
-                            <li>
-                                <b>Create an existing project -
-                                    <span class="text-danger">FAIL 409</span>
-                                </b>
-                            </li>
-                            <ol>
-                                This test tries to create a new project in the system, having a failed result because there is an existing project.
-                                with the same Reference.
-                            </ol>
-                            <li>
-                                <b>Create a wrong project -
-                                    <span class="text-danger">FAIL 400</span>
-                                </b>
-                            </li>
-                            <ol>
-                                This test tries to create a new project in the system, having a failed result because the project on the request body
-                                is wrong.
-                            </ol>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+                 <div class="col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h4>Test that we run about PUT</h4>
+                        <hr>
+                        <ol>
                             <li>
                                 <b>Update a specific project -
                                     <span class="text-success">OK 200</span>
@@ -150,6 +170,16 @@
                                 This test tries to update an existing project in the system, having a failed result because there is not an existing project
                                 with the same Reference.
                             </ol>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+                 <div class="col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h4>Test that we run about DELETE</h4>
+                        <hr>
+                        <ol>
                             <li>
                                 <b>Delete a specific project -
                                     <span class="text-success">OK 200</span>

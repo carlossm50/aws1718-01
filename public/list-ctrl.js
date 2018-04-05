@@ -160,7 +160,7 @@ angular
         }
         
         $scope.delallProject = function (){
-            if(confirm('Are you sure you want to delete all project?')){
+            if(confirm('Are you sure you want to delete all projects?')){
                 $http
                     .delete("/api/v1/projects", $scope.delallProject)
                     .then(function (require){
@@ -188,7 +188,7 @@ angular
         } */
         
         $scope.delProject = function (_name){
-          if(confirm('Are you sure you want to delete the project?')){
+          if(confirm('Are you sure you want to delete this project?')){
             $http
                 .delete("/api/v1/projects/"+_name , $scope.deleteProject)
                 .then(function (require){

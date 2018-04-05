@@ -51,10 +51,24 @@
                             </div>
                         </li>
 
-                        <!--<li><a class="labels" href="index.html">
-                        <span class="glyphicon glyphicon-book"></span> PROJECTS 
-                        </a>
-                    </li>-->
+                       <!--Dropdown-->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle labels" href="#" id="navbardrop" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-book"></span> PROYECTS</a>
+                            <!--Dropdown lisk-->
+                            <div class="dropdown-menu btn-light">
+                                <!-- Trigger the modal create project -->
+                                <a class="dropdown-item" href="https://github.com/carlossm50/aws1718-01" target="_blank">
+                                <span class="glyphicon glyphicon-cloud"> Github</span>
+                                 </a>
+                                <a class="dropdown-item" href="https://docs.google.com/presentation/d/1Uj_03LvRhrSzfdEMF9JS99iOM-NG1SRgZjSm1WTkzOg/edit#slide=id.p3" target="_blank">
+                                    <span class="glyphicon glyphicon-unchecked"> Presentation</span>
+                                </a>
+                                <a class="dropdown-item" href="help.html" target="_blank">
+                                    <span class="glyphicon glyphicon-phone"> API Documentation</span>
+                                </a>
+                            </div>
+                        </li>
 
                         <li><a class="labels" href="http://investigacion.us.es/contactos" target="_blank">
                         <span class="glyphicon glyphicon-phone-alt"></span> CONTACTS </a></li>
@@ -119,15 +133,15 @@
 
                             <p class="card-text">
                                 <p class="h6">Type/help: {{projectInv.tipo}}</p>
-                                <p class="h6">Responsable(s): {{projectInv.respondable}}</p>
-                                <p class="h6">Reference: 
-                                    <ul class="list-unstyled">
+                                <p class="h6">Responsable(s): 
+                                        <ul class="list-unstyled">
                                             <li ng-repeat="research in projectInv.grResp">
                                                 
                                                 <span class="glyphicon glyphicon-user"> {{research.Resp_name}}</span>
                                             </li>
                                         </ul>
                                 </p>
+                                <p class="h6">Reference: {{projectInv.referencia}}</p>
                                 <p class="h6">Start date: {{projectInv.fecha_ini| date: 'dd/MM/yyyy'}}</p>
                                 <p class="h6">Finish date: {{projectInv.fecha_fin| date: 'dd/MM/yyyy'}}</p>
                             </p>
