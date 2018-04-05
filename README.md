@@ -1,4 +1,12 @@
-Important Project URLs
+---Members of the project-----------------------------------------------------------------------------------------------------------
+
+• Paola Martínez Bautista
+
+• Carlos A. Severino Mejía
+
+• Mairelis A. Arroyo Burgos
+
+-----Important Project URLs---------------------------------------------------------------------------------------------------------
 
 Heroku
 
