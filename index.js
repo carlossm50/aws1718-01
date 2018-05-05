@@ -117,6 +117,14 @@ app.put(baseAPI  + "/projects", (request, response) => {
     response.sendStatus(405);    
 });
 
+projects.connectDb((err) => {
+    if (err) {
+        console.log("Could not connect with MongoDB");
+        process.exit(1);
+    }
+
 app.listen(port, () => {
     console.log("Server with GUI up and running!!");
+});
+
 });

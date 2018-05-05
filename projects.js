@@ -1,19 +1,34 @@
 'use strict';
 
-var path = require('path');
+/*var path = require('path');
 var DataStore = require('nedb');
 var dbFileName = path.join(__dirname, 'projects.json');
 
 var db = new DataStore({
     filename : dbFileName,
     autoload : true
-});
+});*/
 
+var MongoClient = require('mongodb').MongoClient;
+var db;
 
 var Projects = function () {};
 
+Projects.prototype.connectDb = function(callback) {
+    MongoClient.connect(process.env.MONGODB_URL, function(err, database) {
+        if(err) {
+            callback(err);
+        }
+        
+        db = database.db('aws').collection('projects');
+        
+        callback(err, db);
+    });
+};
+
+
 Projects.prototype.allProjects = function(callback) {
-    return db.find({}, callback);
+    return db.find({}).toArray(callback);
 };
 
 Projects.prototype.add = function(project, callback) {
@@ -25,7 +40,7 @@ Projects.prototype.removeAll = function(callback) {
 };
 
 Projects.prototype.get = function(name, callback) {
-    return db.find({referencia:name}, callback);
+    return db.find({referencia:name}).toArray(callback);
 };
 
 Projects.prototype.remove = function(name, callback) {
