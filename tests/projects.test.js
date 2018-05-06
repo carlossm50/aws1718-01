@@ -27,9 +27,6 @@ describe('Projects', function() {
             if (err) {
                 return done(err);
             }
-
-
-
             projects.removeAll(function(err) {
                 if (err) {
                     return done(err);
@@ -67,8 +64,6 @@ describe('Projects', function() {
             });
         });
     });
-
-
     describe('#allProjects()', function() {
         it('should return all projects', function(done) {
             projects.allProjects((err, res) => {

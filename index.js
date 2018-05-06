@@ -154,6 +154,7 @@ projects.connectDb((err) => {
         process.exit(1);
     }
 
+
     users.connectDb((err) => {
         if (err) {
             console.log("Could not connect with MongoDB");

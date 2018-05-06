@@ -17,8 +17,6 @@ Projects.prototype.connectDb = function(callback) {
     });
 };
 
-
-
 Projects.prototype.allProjects = function(callback) {
     return db.find({}).toArray(callback);
 };
