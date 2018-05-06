@@ -1,5 +1,5 @@
 {
-  "name": "l03",
+  "name": "aws1718-01",
   "version": "1.0.0",
   "description": "Aplicacion de aws",
   "main": "index.js",
@@ -9,8 +9,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/carlossm50/aws18_projects.git",
-    "github": "https://github.com/carlossm50/aws18_projects"
+    "url": "git://github.com/carlossm50/aws1718-01.git",
+    "github": "https://github.com/carlossm50/aws1718-01"
   },
   "author": "",
   "license": "ISC",
@@ -22,6 +22,7 @@
     "nedb": "^1.8.0",
     "passport": "^0.4.0",
     "passport-http": "^0.3.0",
+    "passport-localapikey": "0.0.3",
     "request": "^2.85.0",
     "url-join": "^4.0.0"
   },

@@ -1,4 +1,14 @@
 'use strict';
+
+/*var path = require('path');
+var DataStore = require('nedb');
+var dbFileName = path.join(__dirname, 'projects.json');
+
+var db = new DataStore({
+    filename : dbFileName,
+    autoload : true
+});*/
+
 var MongoClient = require('mongodb').MongoClient;
 var db;
 

@@ -6,19 +6,19 @@ var expect = chai.expect;
 var projects = require('../projects.js');
 
 var updateproject = {
-    projname: "Proyecto updated",
-    tipo: "Ayuda comunitaria con nombre",
-    referencia: "AWS1718-01",
-    fecha_ini: "2016-01-30",
-    fecha_fin: "2018-12-30",
-    grResp: [{ "Resp_name": "Pablo Fernández Montes" }, { "Resp_name": "Octavio Martín Díaz" }],
-    grFnc: [{ "Fnc_name": "Amador Durán Toro" }],
-    grInv: [{ "inv_name": "Margarita Cruz Risco" }, { "inv_name": "José Antonio Parejo Maestre" }],
-    grTrb: [{ "trb_name": "Alfonso Eduardo Márquez Chamorro" }, { "trb_name": "Ana Belén Sánchez Jerez" }],
-    grSoc: [{ "Soc_name": "Margarita Cruz Risco" }, { "Soc_name": "José María García Rodríguez" }],
-    grCtr: [{ "Ctr_name": "José María García Rodríguez" }, { "Ctr_name": "Sergio Segura Rueda" }]
-
-};
+                            projname:"Proyecto updated",
+                            tipo:"Ayuda comunitaria con nombre",
+                            referencia:"AWS1718-01",
+                            fecha_ini:"2016-01-30",
+                            fecha_fin:"2018-12-30",
+                            grResp:[{"Resp_name":"Pablo Fernández Montes"},{"Resp_name":"Octavio Martín Díaz"}],
+                            grFnc:[{"Fnc_name":"Amador Durán Toro"}],
+                            grInv:[{"inv_name":"Margarita Cruz Risco"},{"inv_name":"José Antonio Parejo Maestre"}],
+                            grTrb:[{"trb_name":"Alfonso Eduardo Márquez Chamorro"},{"trb_name":"Ana Belén Sánchez Jerez"}],
+                            grSoc:[{"Soc_name":"Margarita Cruz Risco"},{"Soc_name":"José María García Rodríguez"}],
+                            grCtr:[{"Ctr_name":"José María García Rodríguez"},{"Ctr_name":"Sergio Segura Rueda"}]
+                
+                        };
 
 
 describe('Projects', function() {
@@ -27,6 +27,8 @@ describe('Projects', function() {
             if (err) {
                 return done(err);
             }
+
+
             projects.removeAll(function(err) {
                 if (err) {
                     return done(err);
