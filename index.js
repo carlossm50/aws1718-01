@@ -28,8 +28,8 @@ passport.use(new BasicStrategy(function(username, password, done) {
 
 passport.use(new LocalAPIKey(
     function(apikey, done) {
-        users.findOne({ apikey, apikey }, function(err, user) {
-            if (err) { return done(err); };
+        users.findOne({ apikey: apikey }, function(err, user) {
+            if (err) { return done(err); }
             if (!user) { return done(null, false); }
             return done(null, user);
         });
