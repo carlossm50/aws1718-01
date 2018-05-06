@@ -40,10 +40,14 @@ passport.use(new LocalAPIKey(
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
+app.use(passport.initialize());
+
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.json());
 
 
 app.get(baseAPI + "/projects",
-    //passport.authenticate(['basic','localapikey'], { session: false }),
+    passport.authenticate(['basic','localapikey'], { session: false }),
     (request, response) => {
         console.log("GET /projects");
 
@@ -148,13 +152,14 @@ app.put(baseAPI + "/projects", (request, response) => {
     response.sendStatus(405);
 });
 
+
+
 projects.connectDb((err) => {
     if (err) {
         console.log("Could not connect with MongoDB");
         process.exit(1);
     }
-
-
+    
     users.connectDb((err) => {
         if (err) {
             console.log("Could not connect with MongoDB");
@@ -162,6 +167,7 @@ projects.connectDb((err) => {
         }
         app.listen(port, () => {
             console.log("Server with GUI up and running!!");
-        });
+        });   
+        
     });
 });
