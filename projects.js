@@ -1,5 +1,4 @@
 'use strict';
-
 var MongoClient = require('mongodb').MongoClient;
 var db;
 
@@ -16,6 +15,7 @@ Projects.prototype.connectDb = function(callback) {
         callback(err, db);
     });
 };
+
 
 Projects.prototype.allProjects = function(callback) {
     return db.find({}).toArray(callback);
