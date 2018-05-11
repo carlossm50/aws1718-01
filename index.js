@@ -9,6 +9,7 @@ var passport = require('passport');
 var BasicStrategy = require('passport-http').BasicStrategy;
 var LocalAPIKey = require('passport-localapikey').Strategy;
 var users  = require("./users.js");
+var cors = require("cors");
 
 var port = (process.env.PORT || 16778);
 var baseAPI = "/api/v1";
@@ -39,6 +40,7 @@ passport.use(new LocalAPIKey(
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(passport.initialize());
+app.use(cors()); 
 
 app.get(baseAPI + "/projects",
 passport.authenticate(['basic','localapikey'], {session:false}), 
