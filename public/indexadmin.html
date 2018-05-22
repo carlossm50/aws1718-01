@@ -20,7 +20,6 @@
     <script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
     <script type="text/javascript" src="project-list-app.js"></script>
     <script type="text/javascript" src="list-ctrl.js"></script>
-
     <script>
         /**
          * The Sign-In client object.
@@ -60,6 +59,40 @@
             console.log(error);
             window.open("https://aws1718-01.herokuapp.com/index.html");
         };
+    </script>
+
+
+    <!-- Search -->
+    <script language="javascript">
+        function doSearch(input, j) {
+            var tableReg = document.getElementById('datos');
+            var searchText = document.getElementById(input).value.toLowerCase();
+            var cellsOfRow = "";
+            var found = false;
+            var compareWith = "";
+
+            // Recorremos todas las filas con contenido de la tabla
+            for (var i = 1; i < tableReg.rows.length; i++) {
+                cellsOfRow = tableReg.rows[i].getElementsByTagName('td');
+                found = false;
+                // Recorremos todas las celdas
+                //for (var j = 0; j < cellsOfRow.length && !found; j++) {
+                compareWith = cellsOfRow[j].innerHTML.toLowerCase();
+                // Buscamos el texto en el contenido de la celda
+                if (searchText.length == 0 || (compareWith.indexOf(searchText) > -1)) {
+                    found = true;
+                }
+                //}
+                if (found) {
+                    tableReg.rows[i].style.display = '';
+                }
+                else {
+                    // si no ha encontrado ninguna coincidencia, esconde la
+                    // fila de la tabla
+                    tableReg.rows[i].style.display = 'none';
+                }
+            }
+        }
     </script>
 
 </head>
@@ -108,6 +141,9 @@
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="" data-toggle="modal" data-target="#myModalTest">
                                     <span class="glyphicon glyphicon-duplicate">Tests and repository</span>
+                                </a>
+                                <a class="dropdown-item" href="" data-toggle="modal" data-target="#myModalIntegration">
+                                    <span class="glyphicon glyphicon-duplicate">Integration</span>
                                 </a>
                                 <a class="dropdown-item" href="https://docs.google.com/presentation/d/1Uj_03LvRhrSzfdEMF9JS99iOM-NG1SRgZjSm1WTkzOg/edit#slide=id.p3" target="_blank">
                                     <span class="glyphicon glyphicon-unchecked">Presentation</span>
@@ -188,7 +224,9 @@
                             <a href="#" class="card-link glyphicon glyphicon-pencil gpen_color" data-toggle="modal" data-target="#ModalEdit" ng-click="indice($index)" title="Edit"></a>
                         </dib>
                         <div class="card-body">
-                            <h5 class="card-title"><b>{{projectInv.projname}}</b> </h5>
+                            <h5 class="card-title">
+                                <b>{{projectInv.projname}}</b>
+                            </h5>
 
                             <p class="card-text">
                                 <p class="h6">Type/help: {{projectInv.tipo}}</p>
@@ -270,6 +308,8 @@
                                                     <p> Finish date
                                                         <input class="" type="date" ng-model="OneProject.fecha_fin" name="fch_fin" disabled=true ng-pattern="/^(\d{4})-(\d{2})-(\d{2})$/">
                                                     </p>
+                                                    Group
+                                                    <input class="" type="text" ng-model="OneProject.prjGroup" name="referencia" disabled=true maxlength="20" size="20">
                                                     <h4>Responsable(s):</h4>
                                                     <ul class="list-unstyled">
                                                         <li ng-repeat="research in OneProject.grResp">
@@ -358,7 +398,7 @@
                 <!-- Project Form Information End-->
 
 
-                <!--Begining Form New Project-->
+                <!--Beginning Form New Project-->
                 <section class="projectForm">
                     <div class="container">
                         <!-- Modal -->
@@ -416,12 +456,17 @@
                                                     <p> Finish date
                                                         <input class="" type="date" ng-model="newProject.fecha_fin" name="fch_fin" required>
                                                     </p>
+                                                    Group
+                                                    <select ng-model="newProject.prjGroup">
+                                                      <option value="" > </option>
+                                                      <option ng-repeat="groups in SelectGroups" value="{{groups.name}}">{{groups.name}}</option>
+                                                    </select>
                                                     <p>Responsable(s)
                                                         <input class="" list="resp_list" type="text" id="InpResp" ng-model="nuevoResp" size="50" placeholder="Select responsable(s)">
                                                         <span class="glyphicon glyphicon-plus gp_color" ng-click="agregar_responsable(0)"></span>
                                                     </p>
                                                     <datalist id="resp_list">
-                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name}}</option>
+                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name.name}}">{{pi_name.name}}</option>
                                                     </datalist>
 
                                                     <ul class="list-unstyled">
@@ -442,7 +487,7 @@
                                                         <span class="glyphicon glyphicon-plus gp_color" ng-click="agregar_financiador(0)"></span>
                                                     </p>
                                                     <datalist id="financial_list">
-                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name}}</option>
+                                                        <option ng-repeat="_university in prjuniversities" value="{{_university.name}}">{{_university.name}}</option>
                                                     </datalist>
                                                     <h4>Selected financier(s)</h4>
                                                     <ul class="list-unstyled">
@@ -462,7 +507,7 @@
                                                         <span class="glyphicon glyphicon-plus gp_color" ng-click="agregar_socio(0)"></span>
                                                     </p>
                                                     <datalist id="socio_list">
-                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name}}</option>
+                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name.name}}">{{pi_name.name}}</option>
                                                     </datalist>
                                                     <h4>Selected partner(s)</h4>
                                                     <ul class="list-unstyled">
@@ -482,7 +527,7 @@
                                                         <span class="glyphicon glyphicon-plus gp_color" ng-click="agregarTarea(0)"></span>
                                                     </p>
                                                     <datalist id="browsers">
-                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name}}</option>
+                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name.name}}">{{pi_name.name}}</option>
                                                     </datalist>
                                                     <h4>Selected researcher(s)</h4>
                                                     <ul class="list-unstyled">
@@ -504,7 +549,7 @@
 
                                                     <datalist id="Workgroup">
                                                         <!--Work list -->
-                                                        <option ng-repeat="pt_name in pertrab" value="{{pt_name}}">{{pt_name}}</option>
+                                                        <option ng-repeat="pt_name in pertrab" value="{{pt_name.name}}">{{pt_name.name}}</option>
                                                     </datalist>
 
                                                     <h4>Selected workteam</h4>
@@ -526,7 +571,7 @@
                                                         <span class="glyphicon glyphicon-plus gp_color" ng-click="agregarP_contratado(0);"></span>
                                                     </p>
                                                     <datalist id="ctr_list">
-                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name}}</option>
+                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name.name}}">{{pi_name.name}}</option>
                                                     </datalist>
                                                     <h4>contrated Selected</h4>
                                                     <ul class="list-unstyled">
@@ -554,7 +599,7 @@
                 </section>
                 <!--New Project Form End-->
 
-                <!--Begining Project Form  Edition-->
+                <!--Beginning Project Form  Edition-->
                 <section class="projectFormEdit">
                     <div class="container">
                         <!-- Modal -->
@@ -611,12 +656,17 @@
                                                     <p> Finish date
                                                         <input class="" type="date" ng-model="OneProject.fecha_fin" name="fch_fin" required>
                                                     </p>
+                                                    Group
+                                                    <select ng-model="OneProject.prjGroup">
+                                                      <option value="" > </option>
+                                                      <option ng-repeat="groups in SelectGroups" value="{{groups.name}}">{{groups.name}}</option>
+                                                    </select>
                                                     <p>Responsable(s)
                                                         <input class="" list="respEdita_list" type="text" id="InpResp" ng-model="EditaResp" size="50" placeholder="Select responsable(s)">
                                                         <span class="glyphicon glyphicon-plus gp_color" ng-click="agregar_responsable(1)"></span>
                                                     </p>
                                                     <datalist id="respEdita_list">
-                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name}}</option>
+                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name.name}}">{{pi_name.name}}</option>
                                                     </datalist>
 
                                                     <ul class="list-unstyled">
@@ -636,7 +686,7 @@
                                                         <span class="glyphicon glyphicon-plus gp_color" ng-click="agregar_financiador(1)"></span>
                                                     </p>
                                                     <datalist id="FncEdita_list">
-                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name}}</option>
+                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name.name}}">{{pi_name.name}}</option>
                                                     </datalist>
                                                     <h4>Selected financier(s) </h4>
                                                     <ul class="list-unstyled">
@@ -655,7 +705,7 @@
                                                         <span class="glyphicon glyphicon-plus gp_color" ng-click="agregar_socio(1)"></span>
                                                     </p>
                                                     <datalist id="socioEdita_list">
-                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name}}</option>
+                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name.name}}">{{pi_name.name}}</option>
                                                     </datalist>
                                                     <h4> Selected Partner(s) </h4>
                                                     <ul class="list-unstyled">
@@ -674,7 +724,7 @@
                                                         <span class="glyphicon glyphicon-plus gp_color" ng-click="agregarTarea(1)"></span>
                                                     </p>
                                                     <datalist id="invest_edita">
-                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name}}</option>
+                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name.name}}">{{pi_name.name}}</option>
                                                     </datalist>
                                                     <h4>Selected researcher(s)</h4>
                                                     <ul class="list-unstyled">
@@ -694,8 +744,8 @@
                                                     </p>
 
                                                     <datalist id="teamgroup">
-                                                
-                                                        <option ng-repeat="pt_name in pertrab" value="{{pt_name}}">{{pt_name}}</option>
+
+                                                        <option ng-repeat="pt_name in pertrab" value="{{pt_name.name}}">{{pt_name.name}}</option>
                                                     </datalist>
                                                     <h4>Selected Workteam</h4>
                                                     <ul class="list-unstyled">
@@ -715,7 +765,7 @@
                                                         <span class="glyphicon glyphicon-plus gp_color" ng-click="agregarP_contratado(1);"></span>
                                                     </p>
                                                     <datalist id="ctrEdita_list">
-                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name}}</option>
+                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name.name}}">{{pi_name.name}}</option>
                                                     </datalist>
                                                     <h4>Contracted selected )</h4>
                                                     <ul class="list-unstyled">
@@ -744,7 +794,7 @@
                 </section>
                 <!--Project Form Edition End-->
 
-                <!--Project Test Information  projectFormTest-->
+                <!--Beginning Project Test Information-->
                 <section class="projectFormTest">
                     <div class="container">
                         <!-- Modal -->
@@ -787,8 +837,8 @@
                                                     Push Postman icon to see or run test to our project.
                                                 </p>
                                                 <a href="https://documenter.getpostman.com/view/3881776/aws18_projects/RVu2nqXG" target="_blank">
-                                                            <img class="logo" src="img/postman_icon.png">
-                                                     </a>
+                                                    <img class="logo" src="img/postman_icon.png">
+                                                </a>
                                             </div>
                                             <!--Project general  data end -->
                                             <div id="test_menu1" class="tab-pane fade">
@@ -800,8 +850,8 @@
 
                                                 <p>To generate the test, use the grunt test command from the project terminal. Push Grunt icon to see the project</p>
                                                 <a href="https://ide.c9.io/aws1718pmb/aws1718-pmb-sandbox1" target="_blank">
-                                                            <img class="logo" src="img/cloud9-logo.svg">
-                                                     </a>
+                                                    <img class="logo" src="img/cloud9-logo.svg">
+                                                </a>
 
                                             </div>
                                             <!--Grunt test information end-->
@@ -814,8 +864,8 @@
                                                 </p>
                                                 <p>Push Travis icon to see our project test.</p>
                                                 <a href="https://travis-ci.org/carlossm50/aws1718-01" target="_blank">
-                                                            <img class="logo" src="img/travisicon.png">
-                                                     </a>
+                                                    <img class="logo" src="img/travisicon.png">
+                                                </a>
 
                                             </div>
                                             <!--Travis test information end-->
@@ -828,7 +878,7 @@
                                                 </p>
                                                 <p>Push Github icon to see our project repository.</p>
                                                 <a href="https://github.com/carlossm50/aws1718-01" target="_blank">
-                                                 <img class="logo" src="img/github.png">
+                                                    <img class="logo" src="img/github.png">
                                                 </a>
 
                                             </div>
@@ -845,7 +895,126 @@
                         </div>
                     </div>
                 </section>
-                <!-- Test Information End-->
+                <!-- Project Test Information End-->
+
+                <!--Beginning Project Integration-->
+                <section class="projectIntegration">
+                    <div class="container">
+                        <!-- Modal -->
+                        <div class="modal fade" id="myModalIntegration" role="dialog">
+                            <div class="modal-dialog modal-lg">
+                                <!--Beginning modal dialog-->
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title" id="modalintegration">Project Integration</h4>
+                                        <button type="button" class="close" data-dismiss="modal" title="Close">&times;</button>
+                                    </div>
+                                    <!--<form name="tableIntegration">-->
+                                    <div class="container">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active">
+                                                <a data-toggle="tab" href="#integration_home">API Integration</a>
+                                            </li>
+                                            <li>
+                                                <a data-toggle="tab" href="#integration_menu1">Statistics</a>
+                                            </li>
+                                            <li>
+                                                <a data-toggle="tab" href="#integration_menu2">TRAVIS</a>
+                                            </li>
+                                            <li>
+                                                <a data-toggle="tab" href="#integration_menu3">GITHUB</a>
+                                            </li>
+                                        </ul>
+
+                                        <div class="tab-content">
+                                            <div id="integration_home" class="tab-pane fade in active">
+                                                <!--Beginning API Integration-->
+                                                <form>
+                                                    Search
+                                                    <input id="searchTerm" list="integr_list" ng-model="SearchUniversity" type="text" />
+                                                    <button type="button" class="btn btn-primary" ng-click="GetOneUniversity()">Search</button>
+                                                </form>
+                                                <datalist id="integr_list">
+                                                        <option ng-repeat="pi_name in prjuniversities" value="{{pi_name.name}}">{{pi_name.name}}</option>
+                                                </datalist>
+                                                <div class="container">
+
+                                                    <table class="table table-striped" id="datos">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>University <br>
+                                                                    <input id="txtuniversity" type="text" onkeyup="doSearch('txtuniversity',0)" />
+                                                                </th>
+
+                                                                <th>Group <br>
+                                                                    <input id="txtproject" type="text" onkeyup="doSearch('txtproject',1)" />
+                                                                </th>
+                                                                <th>Project <br>
+                                                                    <input id="txtgroup" type="text" onkeyup="doSearch('txtgroup',2)" />
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr ng-repeat="Groups in filteredGroups">
+                                                                <td>{{Groups.university}}</td>
+                                                                <td>{{Groups.name}}</td>
+                                                                <td>
+                                                                    <div ng-repeat = "proj in Groups.projects" >{{proj.projname}}</div>
+                                                                </td>
+
+                                                            </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+
+                                            </div>
+                                            <!--Project API Integration end -->
+                                            <div id="integration_menu1" class="tab-pane fade">
+
+                                                <!--Beginning chart information-->
+                                                <div class="panel-body">
+                                                    <div style="text-align:center;padding:1em 0;"> 
+                                                        <iframe src="/widget.html" width="100%" height="350" frameborder="0" seamless></iframe> 
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <!--Chart information end-->
+
+                                            <div id="test_menu2" class="tab-pane fade">
+                                                <!--Beginning animation chart information-->
+                                            </div>
+                                            <!--Animation chart information end-->
+
+                                            <div id="test_menu3" class="tab-pane fade">
+                                                <!--Beginning Github repository-->
+                                                <h4>Github</h4>
+                                                <p>
+                                                    Forja (collaborative development platform) to host projects using the Git version control system.
+                                                </p>
+                                                <p>Push Github icon to see our project repository.</p>
+                                                <a href="https://github.com/carlossm50/aws1718-01" target="_blank">
+                                                    <img class="logo" src="img/github.png">
+                                                </a>
+
+                                            </div>
+                                            <!--Github repository end-->
+                                        </div>
+                                    </div>
+                                    <!--</form>-->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Modal dialog end-->
+                        </div>
+                    </div>
+                </section>
+                <!-- Project Integration End-->
 
             </div>
         </div>

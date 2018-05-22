@@ -44,23 +44,101 @@ angular
     }
         /*Google login*/
         console.log("Controller initialized");
-        $scope.perinvest = ['David Benavides Cuevas','Beatriz Bernárdez Jiménez','Margarita Cruz Risco', 'Amador Durán Toro', 
-                            'Pablo Fernández Montes','José María García Rodríguez','Octavio Martín Díaz', 'José Antonio Parejo Maestre', 
-                            'Joaquín Peña Siles', 'Sergio Segura Rueda','Pablo Trinidad Martín-Arroyo'];
-
-        $scope.pertrab = ['Cristina Cabanillas Macías','Adela del Río Ortega','José Ángel Galindo Duarte ','Jesús García Galán', 
-                          'Alfonso Eduardo Márquez Chamorro', 'Carlos Müller Cejás','Irene Bedilia Estrada Torres','Antonio Gámez Díaz',
-                          'Antonio Manuel Gutiérrez Fernández','Ana Belén Sánchez Jerez','Javier Troya Castilla'];
 
 		$scope.grTrab = [];
         $scope.tareas = [];
         $scope.OneProject = [];
+        
 
         function refresh(){
             $http.get("/api/v1/projects").then(function (response){
                 $scope.projects = response.data;
             });
         }
+
+         function GetUniversities (){
+                $http.get("https://aws1718-04.herokuapp.com/api/v1/universities?apikey=123456").then(function (response){    
+                    $scope.prjuniversities = response.data;
+                });
+            }
+    
+        $scope.GetOneUniversity = function (){
+            if ($scope.SearchUniversity != null && $scope.SearchUniversity !=''){
+                $http.get("https://aws1718-04.herokuapp.com/api/v1/universities/"+$scope.SearchUniversity+"?apikey=123456")
+                .then(function (response){
+                    $scope.University = response.data;
+                    GetGroups();
+                })
+                .catch(function(rejection){
+                    if(rejection.status==404){
+                        alert("Not Found");
+                    }
+                })
+                ;
+            }
+        } 
+        
+        
+        function GetGroups(){
+        if ($scope.SearchUniversity != null && $scope.SearchUniversity !=''){
+            $http.get("https://aws1718-03.herokuapp.com/api/v1/groups?apikey=asdfg")
+                .then(function (response){
+                    $scope.Groups = response.data;
+                    filterGroups();
+                    
+                })
+                .catch(function(rejection){
+                    if(rejection.status==404){
+                        alert("Not Found");
+                    }
+                });
+            }
+        }
+        
+        function filterGroups(){
+            var pryectos = [];
+            $scope.filteredGroups = [];
+            $scope.filteredGroups.slice(0);
+
+            //var results = $scope.projects.grFnc.filter(function (univ) { return univ.Fnc_name == $scope.SearchUniversity; });
+
+                for (var x=0; $scope.Groups.length; x++){
+                    
+                    if ($scope.Groups[x].university == $scope.SearchUniversity )
+                    {
+                        //$scope.filteredGroups.push({name:$scope.Groups[x].name,university:$scope.Groups[x].university,projects:[{projname:"Projecto AWS"},{projname:"Projecto DAW"}]});
+                        $scope.filteredGroups.push({name:$scope.Groups[x].name,university:$scope.Groups[x].university,projects:[]});
+                        
+                        /**************************************************/
+                        for (var i = 0; $scope.filteredGroups.length; i++ ){
+                            for(var j = 0; $scope.projects.length; j++)
+                            {
+                                if ($scope.filteredGroups[i].name == $scope.projects[j].prjGroup)
+                                {
+                                    //alert('Grupo');
+                                    $scope.filteredGroups[i].projects.push({projname:$scope.projects[j].projname});
+                                }
+                            }
+                        }
+                        /**************************************************/
+                        
+                    }
+                }
+        }
+
+        function selectGroups(){
+                    $http.get("https://aws1718-03.herokuapp.com/api/v1/groups?apikey=asdfg")
+                        .then(function (response){
+                            $scope.SelectGroups = response.data;
+                        });
+                }
+
+        function GetResearchers(){
+                $http.get("https://aws1718-02.herokuapp.com/api/v1/researchers?apikey=asdf1234").then(function (response){
+                      $scope.perinvest = response.data;
+                      $scope.pertrab = response.data;
+                });
+            }
 
         $scope.GetProject = function (){
             if ($scope.Search != null){
@@ -93,11 +171,11 @@ angular
             $scope.OneProject.fecha_fin = new Date($scope.OneProject.fecha_fin);
             
             $scope.OneProject.grResp = $scope.projects[dato].grResp.slice(0);
-            $scope.OneProject.grFnc = $scope.projects[dato].grFnc.slice(0);
-            $scope.OneProject.grInv = $scope.projects[dato].grInv.slice(0);
-            $scope.OneProject.grTrb = $scope.projects[dato].grTrb.slice(0);
-            $scope.OneProject.grSoc = $scope.projects[dato].grSoc.slice(0);
-            $scope.OneProject.grCtr = $scope.projects[dato].grCtr.slice(0);
+            $scope.OneProject.grFnc  = $scope.projects[dato].grFnc.slice(0);
+            $scope.OneProject.grInv  = $scope.projects[dato].grInv.slice(0);
+            $scope.OneProject.grTrb  = $scope.projects[dato].grTrb.slice(0);
+            $scope.OneProject.grSoc  = $scope.projects[dato].grSoc.slice(0);
+            $scope.OneProject.grCtr  = $scope.projects[dato].grCtr.slice(0);
             
         }
         $scope.addProject = function (){
@@ -109,6 +187,7 @@ angular
             $scope.newProject.grTrb = $scope.grTrab;
             $scope.newProject.grSoc = $scope.grSoc;
             $scope.newProject.grCtr = $scope.grCtr;
+            
             
             $http
                 .post("/api/v1/projects", $scope.newProject)
@@ -170,22 +249,6 @@ angular
                     });
             }
         }
-        
-        /*$scope.delProject = function (){
-            
-            $http
-                .delete("/api/v1/projects/"+$scope.newProject.projname , $scope.deleteProject)
-                .then(function (require){
-                    refresh();
-                    if(require.status == 200)
-                        alert("Deleted successfully")
-                })
-                .catch(function(rejection){
-                    if(rejection.status == 404)
-                        alert("Not Found")
-                    
-                });
-        } */
         
         $scope.delProject = function (_name){
           if(confirm('Are you sure you want to delete this project?')){
@@ -501,18 +564,67 @@ angular
         
         
 }
-
-        refresh();
     
- /*     
-        $scope.updateProject = function (){
-            
-            $http
-                .put("/api/v1/projects/"+$scope.newProject.projname , {projname:$scope.newProject.projname,tipo:$scope.newProject.tipo,referencia:$scope.newProject.referencia})
-                .then(function (){
-                    refresh();  
-                });
-        }
-    */
+    //Widgets
+    
+    
+/*Data chart
 
+var dataSource = [{
+    university: "Illinois",
+    projects: 423.721,
+    groups: 476.851,
+},
+{
+    university: "Sevilla",
+    projects: 423.721,
+    groups: 476.851,
+}];
+
+Data chart end*/
+
+/*
+var DemoApp = angular.module('DemoApp', ['dx']);
+
+DemoApp.controller('DemoController', function DemoController($scope) {
+    $scope.chartOptions = {
+        dataSource: dataSource,
+        commonSeriesSettings: {
+            argumentField: "state",
+            type: "bar",
+            hoverMode: "allArgumentPoints",
+            selectionMode: "allArgumentPoints",
+            label: {
+                visible: true,
+                format: {
+                    type: "fixedPoint",
+                    precision: 0
+                }
+            }
+        },
+        series: [
+            { valueField: "year2004", name: "2004" },
+            { valueField: "year2001", name: "2001" },
+            { valueField: "year1998", name: "1998" }
+        ],
+        title: "Gross State Product within the Great Lakes Region",
+        legend: {
+            verticalAlignment: "bottom",
+            horizontalAlignment: "center"
+        },
+        "export": {
+            enabled: true
+        },
+        onPointClick: function (e) {
+            e.target.select();
+        }
+    };
+});
+    */
+    
+    
+        refresh();
+        GetUniversities();
+        selectGroups();
+        GetResearchers();
     });
