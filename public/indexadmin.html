@@ -421,7 +421,7 @@
                                                         <span class="glyphicon glyphicon-plus gp_color" ng-click="agregar_responsable(0)"></span>
                                                     </p>
                                                     <datalist id="resp_list">
-                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name}}</option>
+                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name.name}}</option>
                                                     </datalist>
 
                                                     <ul class="list-unstyled">
@@ -442,7 +442,7 @@
                                                         <span class="glyphicon glyphicon-plus gp_color" ng-click="agregar_financiador(0)"></span>
                                                     </p>
                                                     <datalist id="financial_list">
-                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name}}</option>
+                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name.name}}</option>
                                                     </datalist>
                                                     <h4>Selected financier(s)</h4>
                                                     <ul class="list-unstyled">
@@ -462,7 +462,7 @@
                                                         <span class="glyphicon glyphicon-plus gp_color" ng-click="agregar_socio(0)"></span>
                                                     </p>
                                                     <datalist id="socio_list">
-                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name}}</option>
+                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name.name}}</option>
                                                     </datalist>
                                                     <h4>Selected partner(s)</h4>
                                                     <ul class="list-unstyled">
@@ -482,7 +482,7 @@
                                                         <span class="glyphicon glyphicon-plus gp_color" ng-click="agregarTarea(0)"></span>
                                                     </p>
                                                     <datalist id="browsers">
-                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name}}</option>
+                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name.name}}</option>
                                                     </datalist>
                                                     <h4>Selected researcher(s)</h4>
                                                     <ul class="list-unstyled">
@@ -526,7 +526,7 @@
                                                         <span class="glyphicon glyphicon-plus gp_color" ng-click="agregarP_contratado(0);"></span>
                                                     </p>
                                                     <datalist id="ctr_list">
-                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name}}</option>
+                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name.name}}</option>
                                                     </datalist>
                                                     <h4>contrated Selected</h4>
                                                     <ul class="list-unstyled">
@@ -616,7 +616,7 @@
                                                         <span class="glyphicon glyphicon-plus gp_color" ng-click="agregar_responsable(1)"></span>
                                                     </p>
                                                     <datalist id="respEdita_list">
-                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name}}</option>
+                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name.name}}</option>
                                                     </datalist>
 
                                                     <ul class="list-unstyled">
@@ -636,7 +636,7 @@
                                                         <span class="glyphicon glyphicon-plus gp_color" ng-click="agregar_financiador(1)"></span>
                                                     </p>
                                                     <datalist id="FncEdita_list">
-                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name}}</option>
+                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name.name}}</option>
                                                     </datalist>
                                                     <h4>Selected financier(s) </h4>
                                                     <ul class="list-unstyled">
@@ -655,7 +655,7 @@
                                                         <span class="glyphicon glyphicon-plus gp_color" ng-click="agregar_socio(1)"></span>
                                                     </p>
                                                     <datalist id="socioEdita_list">
-                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name}}</option>
+                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name.name}}</option>
                                                     </datalist>
                                                     <h4> Selected Partner(s) </h4>
                                                     <ul class="list-unstyled">
@@ -674,7 +674,7 @@
                                                         <span class="glyphicon glyphicon-plus gp_color" ng-click="agregarTarea(1)"></span>
                                                     </p>
                                                     <datalist id="invest_edita">
-                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name}}</option>
+                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name.name}}</option>
                                                     </datalist>
                                                     <h4>Selected researcher(s)</h4>
                                                     <ul class="list-unstyled">
@@ -715,7 +715,7 @@
                                                         <span class="glyphicon glyphicon-plus gp_color" ng-click="agregarP_contratado(1);"></span>
                                                     </p>
                                                     <datalist id="ctrEdita_list">
-                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name}}</option>
+                                                        <option ng-repeat="pi_name in perinvest" value="{{pi_name}}">{{pi_name.name}}</option>
                                                     </datalist>
                                                     <h4>Contracted selected )</h4>
                                                     <ul class="list-unstyled">
