@@ -256,3 +256,19 @@ input {
 .tab-content {
 	padding: 20px
 }
+
+#datos{
+	width:65%;
+	
+}
+
+#pie {
+    height: 440px;
+}
+
+#pie * {
+    margin: 0 auto;
+}
+
+
+
