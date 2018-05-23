@@ -11,12 +11,14 @@ DemoApp.controller('DemoController', function DemoController($scope, $http) {
     function refresh() {
         $http.get("https://aws1718-03.herokuapp.com/api/v1/groups?apikey=asdfg").then(function(response) {
             $scope.groups = response.data;
-            $scope.filterGroups = response.data;
+            //$scope.filterGroups = response.data;
             var records = $scope.groups.length;
             for (x = 0; x < records; x++) {
                 cant_groups = 0;
-                if (universitypushed != $scope.groups[x].university) {
-                    results = $scope.filterGroups.filter(function(univ) {
+                //if (universitypushed != $scope.groups[x].university) {
+                if(dataSource.filter(function(filtro) {return filtro.university == $scope.groups[x].university}).length==0)
+                {
+                    results = $scope.groups.filter(function(univ) {
                         return univ.university == $scope.groups[x].university;
                     });
 
