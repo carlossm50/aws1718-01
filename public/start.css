@@ -262,8 +262,10 @@ input {
 	
 }
 
-#chart {
-    height: 440px;
-	}
-    
+iframe {
+    max-width: 745;
+    height: 450;
+}
+
+
 

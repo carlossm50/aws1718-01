@@ -14,12 +14,21 @@
 <script>window.angular || document.write(decodeURIComponent('%3Cscript src="js/angular.min.js"%3E%3C\/script%3E'))</script>
     <script src="https://cdn3.devexpress.com/jslib/18.1.3/js/dx.all.js"></script>
     <script src="data.js"></script>
-    <link rel="stylesheet" type ="text/css" href ="styles.css" />
     <script src="widget.js"></script>
+    
+    <style type="text/css">
+        #pie {
+            height: 440px;
+        }
+
+        #pie * {
+            margin: 0 auto;
+        }
+    </style>
 </head>
 <body class="dx-viewport">
     <div class="demo-container" ng-app="DemoApp" ng-controller="DemoController">
-        <div id="chart" dx-chart="chartOptions" style="height: 440px;"></div>
+        <div id="pie" dx-pie-chart="chartOptions"></div>
     </div>
 </body>
 </html>
