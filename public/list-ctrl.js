@@ -2,8 +2,6 @@ angular
     .module("ProjectListApp")
     
     .controller("ListCtrl", function($scope,$http,$filter) {
-        
-        
         /*Google login*/
            $scope.gmail={
         username: "",
@@ -49,7 +47,6 @@ angular
         $scope.tareas = [];
         $scope.OneProject = [];
         
-
         function refresh(){
             $http.get("/api/v1/projects").then(function (response){
                 $scope.projects = response.data;
@@ -78,7 +75,6 @@ angular
             }
         } 
         
-        
         function GetGroups(){
         if ($scope.SearchUniversity != null && $scope.SearchUniversity !=''){
             $http.get("https://aws1718-03.herokuapp.com/api/v1/groups?apikey=asdfg")
@@ -100,16 +96,12 @@ angular
             $scope.filteredGroups = [];
             $scope.filteredGroups.slice(0);
 
-            //var results = $scope.projects.grFnc.filter(function (univ) { return univ.Fnc_name == $scope.SearchUniversity; });
-
                 for (var x=0; $scope.Groups.length; x++){
                     
                     if ($scope.Groups[x].university == $scope.SearchUniversity )
                     {
-                        //$scope.filteredGroups.push({name:$scope.Groups[x].name,university:$scope.Groups[x].university,projects:[{projname:"Projecto AWS"},{projname:"Projecto DAW"}]});
                         $scope.filteredGroups.push({name:$scope.Groups[x].name,university:$scope.Groups[x].university,projects:[]});
                         
-                        /**************************************************/
                         for (var i = 0; $scope.filteredGroups.length; i++ ){
                             for(var j = 0; $scope.projects.length; j++)
                             {
@@ -120,8 +112,6 @@ angular
                                 }
                             }
                         }
-                        /**************************************************/
-                        
                     }
                 }
         }
@@ -562,6 +552,7 @@ angular
                 }
             }
 }
+        
         refresh();
         GetUniversities();
         selectGroups();
