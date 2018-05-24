@@ -457,7 +457,7 @@
                                                         <input class="" type="date" ng-model="newProject.fecha_fin" name="fch_fin" required>
                                                     </p>
                                                     Group
-                                                    <select ng-model="newProject.prjGroup">
+                                                    <select ng-model="newProject.prjGroup" required>
                                                       <option value="" > </option>
                                                       <option ng-repeat="groups in SelectGroups" value="{{groups.name}}">{{groups.name}}</option>
                                                     </select>
@@ -961,7 +961,7 @@
                                                                 <td>{{Groups.university}}</td>
                                                                 <td>{{Groups.name}}</td>
                                                                 <td>
-                                                                    <div ng-repeat = "proj in Groups.projects" >{{proj.projname}}</div>
+                                                                    <div ng-repeat = "proj in Groups.projects" >- {{proj.projname}}</div>
                                                                 </td>
 
                                                             </tr>
