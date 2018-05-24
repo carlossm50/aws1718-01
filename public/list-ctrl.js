@@ -105,16 +105,19 @@ angular
                 for (var x=0; $scope.Groups.length; x++){
                     $scope.resultsGroups = $scope.Groups.filter(function (univ) { return univ.university == $scope.SearchUniversity; });
                     $scope.resultsFilteredGroups = $scope.filteredGroups.filter(function (univ) { return univ.university == $scope.SearchUniversity; });
+                    
                     if ($scope.resultsGroups.length > 0 && $scope.resultsFilteredGroups.length == 0)
                     {
                         for (var y = 0; $scope.resultsGroups.length; y++){
                             $scope.filteredGroups.push({name:$scope.resultsGroups[y].name,university:$scope.resultsGroups[y].university,projects:[]});
                             
-                            for(var j = 0; $scope.projects.length; j++)
-                            {
-                                if ($scope.filteredGroups[y].name == $scope.projects[j].prjGroup)
+                            for(var i=0; $scope.filteredGroups.length; i++) {
+                                for(var j = 0; $scope.projects.length; j++)
                                 {
-                                    $scope.filteredGroups[y].projects.push({projname:$scope.projects[j].projname});
+                                    if ($scope.filteredGroups[i].name == $scope.projects[j].prjGroup)
+                                    {
+                                      $scope.filteredGroups[i].projects.push({projname:$scope.projects[j].projname});
+                                    }
                                 }
                             }
                         }
